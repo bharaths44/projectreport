@@ -26,9 +26,4 @@ H.~Garg and M.~Dave, ``Securing iot devices and securelyconnecting the dots usin
 \bibitem{xu2023vitpose++}
 Y.~Xu, J.~Zhang, Q.~Zhang, and D.~Tao, ``Vitpose++: Vision transformer for generic body pose estimation,'' \emph{IEEE Transactions on Pattern Analysis and Machine Intelligence}, 2023.
 
-\bibitem{dd2}
-\BIBentryALTinterwordspacing
-``Deadly driver distractions,'' December 2007. [Online]. Available: \url{http://www.driving.ca/news/story.html?id=93f2c537-f17e-4302-91b5-4ea6a544165c}
-\BIBentrySTDinterwordspacing
-
 \end{thebibliography}
