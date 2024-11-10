@@ -1,0 +1,74 @@
+Here's a structured chapter in the form of **System Architecture** with sections and subsections corresponding to each component you've provided:
+
+---
+
+\chapter{System Architecture}
+
+This chapter describes the architecture of the system, outlining each component involved in creating an efficient demand forecasting and vendor collaboration platform. The system utilizes advanced machine learning and optimization techniques to support small-scale vendors by providing demand forecasting, order aggregation, and logistics optimization.
+
+\section{Dataset}
+
+The dataset is the foundation of the demand forecasting model, containing historical sales data at the store-item level. This data enables the platform to make informed predictions and optimizations.
+
+\section{Preprocessing}
+
+Data preprocessing is crucial to ensure that the dataset is clean, consistent, and ready for model training. This step includes handling missing values, standardizing date formats, and splitting data into training and testing sets.
+
+\section{Feature Extraction}
+
+Feature extraction involves deriving additional information from raw data to improve the model’s predictive accuracy. The platform applies various feature engineering techniques to capture meaningful patterns in the dataset.
+
+\subsection{Time-Based Features}
+
+Time-based features include day-of-week, month, season, and holiday indicators. These features help capture temporal patterns and seasonality, which are important in predicting demand trends.
+
+\subsection{Lagged Variables}
+
+Lagged variables capture dependencies between current sales and past sales. These features are essential for understanding demand fluctuations and for integrating historical patterns into the forecasting model.
+
+\section{Demand Forecasting with Neural Prophet}
+
+Demand forecasting is achieved using the Neural Prophet model, which incorporates seasonality, trend components, and other covariates. This section outlines the implementation and configuration of the model to predict future sales.
+
+\section{Order Aggregation using Genetic Algorithm}
+
+Order aggregation is an optimization process using a Genetic Algorithm to combine multiple vendor orders. The aim is to meet minimum order quantities (MOQs) and maximize cost savings through bulk purchasing.
+
+\section{Logistics Optimization with Green Routing}
+
+The system’s logistics optimization uses Green Routing techniques to reduce transportation costs and minimize environmental impact. This section details the two main components of the routing optimization.
+
+\subsection{Path Flexibility}
+
+Path flexibility allows for alternative routes within delivery schedules. It ensures efficiency in logistics by adapting routes to current traffic conditions and delivery requirements.
+
+\subsection{Service Time Window}
+
+Service time windows define acceptable delivery times for each location. This feature ensures timely delivery while optimizing route scheduling to meet vendor and customer needs.
+
+\section{Model Evaluation and Optimization}
+
+Model evaluation is performed using metrics like Mean Absolute Error (MAE) and Root Mean Square Error (RMSE) to ensure accurate predictions. Optimization steps are undertaken to enhance model performance.
+
+\subsection{Evaluation}
+
+This step involves assessing the model's accuracy and performance on validation data. Evaluation metrics help identify areas for improvement in the forecasting model.
+
+\subsection{Hyperparameter Tuning}
+
+Hyperparameter tuning uses techniques like grid search to optimize model parameters. The goal is to enhance prediction accuracy and generalization to new data.
+
+\subsection{Iterative Optimization}
+
+An iterative optimization process allows the model to continuously improve by refining feature engineering and adjusting model parameters based on feedback from performance metrics.
+
+\section{System Integration and Notifications}
+
+The system integrates each component to ensure seamless data flow and effective communication between users. Notifications inform vendors about important updates, such as order status, inventory levels, and delivery schedules.
+
+\par 
+This chapter has outlined the system architecture, providing a detailed view of each component’s role in the platform's functionality. Together, these components create a cohesive system that supports demand forecasting, order aggregation, and efficient logistics management for vendors.
+
+--- 
+
+This structure integrates your sections and subsections while describing their purpose in the system's context. Let me know if you’d like additional details in any section!
