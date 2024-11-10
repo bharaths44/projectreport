@@ -3,6 +3,17 @@
 \contentsline {table}{\numberline {1.1}{\ignorespaces Insert table caption here}}{2}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Example of Min-Max Scaling}}{9}{}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Examples of Lagged and Rolling Features}}{10}{}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Example of One-Hot Encoding}}{10}{}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Examples of Lagged and Rolling Features}}{13}{}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Example of Fourier Series Representation for Seasonality}}{15}{}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Example of Genetic Algorithm Parameters for Order Aggregation}}{17}{}%
+\contentsline {table}{\numberline {3.7}{\ignorespaces Example of Route Evaluation Criteria}}{20}{}%
+\contentsline {table}{\numberline {3.8}{\ignorespaces Evaluation Metrics for Forecasting Model}}{21}{}%
+\contentsline {table}{\numberline {3.9}{\ignorespaces Hyperparameter Tuning Results}}{22}{}%
+\contentsline {table}{\numberline {3.10}{\ignorespaces Iterative Optimization Performance Over Time}}{23}{}%
+\contentsline {table}{\numberline {3.11}{\ignorespaces Notification Types and Triggers}}{25}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

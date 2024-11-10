@@ -2,27 +2,46 @@
 %% RSET Project / Seminar LaTex Template Version 1.0 - November 2023
 
 \documentclass[12pt,a4paper,titlepage]{report}
-\usepackage{graphicx}
-\usepackage[left=2.8cm, right=2.2cm, top=3cm, bottom=2.5cm]{geometry}
-\usepackage{latexsym}		% to get LASY symbols
-\usepackage{epsfig}			% to insert PostScript figures
-\usepackage{eufrak}
-\usepackage{type1cm}
-\usepackage{newsec}
-\usepackage{titlesec}
-\usepackage{longtable}
-\usepackage{url}
-\usepackage[export]{adjustbox}
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{pdfpages}
-\usepackage{caption}
-\usepackage{listings}
-\usepackage{float}
-\usepackage{acro}
 
-\usepackage{caption}
-\usepackage{subcaption}
+% Page layout
+\usepackage[left=2.8cm, right=2.2cm, top=3cm, bottom=2.5cm]{geometry}
+
+% Graphics and figure handling
+\usepackage{graphicx}        % for including graphics
+\usepackage{float}           % for precise placement of figures and tables
+\usepackage{caption}         % for caption adjustments
+\usepackage{subcaption}      % for subfigures
+
+% Mathematical symbols and environments
+\usepackage{amsmath}         % for math symbols and environments
+\usepackage{amssymb}         % for additional math symbols
+
+% Fonts and symbols
+\usepackage{latexsym}        % LASY symbols
+\usepackage{eufrak}          % for Fraktur fonts
+\usepackage{type1cm}         % scalable fonts
+
+% Other useful packages
+\usepackage{longtable}       % for tables that span multiple pages
+\usepackage{listings}        % for code listings
+\usepackage{xcolor}          % for color support in listings
+\usepackage{pdfpages}        % for including PDF pages
+\usepackage{url}             % for handling URLs
+\usepackage{acro}            % for acronyms
+\usepackage{titlesec}        % for section title formatting
+
+% Formatting
+\captionsetup{justification=centering}  % Centering captions
+
+% Color and formatting for listings (code)
+\lstset{basicstyle=\ttfamily, columns=fullflexible, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+
+% Example new sectioning titles format (optional)
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+
+% Additional packages if needed
+\usepackage{epsfig}          % legacy support for PostScript figures
+
 
 \definecolor{customgreen}{rgb}{0,0.6,0}
 \definecolor{customgray}{rgb}{0.5,0.5,0.5}

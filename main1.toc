@@ -25,52 +25,64 @@
 \contentsline {section}{\numberline {2.3}Summary and Gaps Identified}{4}{}%
 \contentsline {paragraph}{\ }{4}{}%
 \contentsline {chapter}{\numberline {3}System Architecture}{5}{}%
-\contentsline {section}{\numberline {3.1}Dataset}{5}{}%
-\contentsline {section}{\numberline {3.2}Preprocessing}{5}{}%
-\contentsline {section}{\numberline {3.3}Feature Extraction}{5}{}%
-\contentsline {subsection}{\numberline {3.3.1}Time-Based Features}{5}{}%
-\contentsline {subsection}{\numberline {3.3.2}Lagged Variables}{6}{}%
-\contentsline {section}{\numberline {3.4}Demand Forecasting with Neural Prophet}{6}{}%
-\contentsline {section}{\numberline {3.5}Order Aggregation using Genetic Algorithm}{6}{}%
-\contentsline {section}{\numberline {3.6}Logistics Optimization with Green Routing}{6}{}%
-\contentsline {subsection}{\numberline {3.6.1}Path Flexibility}{6}{}%
-\contentsline {subsection}{\numberline {3.6.2}Service Time Window}{6}{}%
-\contentsline {section}{\numberline {3.7}Model Evaluation and Optimization}{7}{}%
-\contentsline {subsection}{\numberline {3.7.1}Evaluation}{7}{}%
-\contentsline {subsection}{\numberline {3.7.2}Hyperparameter Tuning}{7}{}%
-\contentsline {subsection}{\numberline {3.7.3}Iterative Optimization}{7}{}%
-\contentsline {section}{\numberline {3.8}System Integration and Notifications}{7}{}%
-\contentsline {chapter}{\numberline {4}DESIGN AND MODELING}{8}{}%
-\contentsline {section}{\numberline {4.1}Activity Diagram}{8}{}%
-\contentsline {subsection}{\numberline {4.1.1}Key elements of Activity Diagrams}{8}{}%
-\contentsline {subsection}{\numberline {4.1.2}Key Entities and Components}{10}{}%
-\contentsline {section}{\numberline {4.2}Sequence Diagram}{12}{}%
-\contentsline {subsection}{\numberline {4.2.1}Key elements of Sequence Diagrams}{12}{}%
-\contentsline {subsection}{\numberline {4.2.2}Purpose of Sequence Diagrams}{13}{}%
-\contentsline {subsection}{\numberline {4.2.3}Key Entities and Components}{14}{}%
-\contentsline {subsection}{\numberline {4.2.4}Sequence of Interactions}{15}{}%
-\contentsline {section}{\numberline {4.3}Class Diagram}{16}{}%
-\contentsline {subsection}{\numberline {4.3.1}Key Elements of Class Diagrams}{16}{}%
-\contentsline {subsection}{\numberline {4.3.2}Class Descriptions}{17}{}%
-\contentsline {subsection}{\numberline {4.3.3}Summary of Associations}{19}{}%
-\contentsline {subsection}{\numberline {4.3.4}Common Relationships}{19}{}%
-\contentsline {subsection}{\numberline {4.3.5}Benefits of Using Class Diagrams}{20}{}%
-\contentsline {section}{\numberline {4.4}Use Case Diagram}{20}{}%
-\contentsline {subsection}{\numberline {4.4.1}Key Elements of Use Case Diagrams}{20}{}%
-\contentsline {subsection}{\numberline {4.4.2}Value of Use Case Diagrams}{21}{}%
-\contentsline {subsection}{\numberline {4.4.3}Actors}{22}{}%
-\contentsline {subsection}{\numberline {4.4.4}Use Cases}{23}{}%
-\contentsline {subsection}{\numberline {4.4.5}Relationships}{24}{}%
-\contentsline {chapter}{\numberline {5}Results and Discussions}{26}{}%
-\contentsline {section}{\numberline {5.1}Section 1 Heading}{26}{}%
-\contentsline {section}{\numberline {5.2}Section 2 Heading}{26}{}%
-\contentsline {subsection}{\numberline {5.2.1}Subsection Heading}{26}{}%
-\contentsline {chapter}{\numberline {6}Conclusions \& Future Scope}{27}{}%
-\contentsline {chapter}{References}{28}{}%
-\contentsline {chapter}{List of Publications}{29}{}%
-\contentsline {chapter}{Appendix A: Presentation}{30}{}%
-\contentsline {paragraph}{\ }{30}{}%
-\contentsline {chapter}{Appendix B: Vision, Mission, Programme Outcomes and Course Outcomes}{31}{}%
-\contentsline {paragraph}{\ }{31}{}%
-\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{34}{}%
-\contentsline {paragraph}{\ }{34}{}%
+\contentsline {section}{\numberline {3.1}Dataset}{7}{}%
+\contentsline {section}{\numberline {3.2}Preprocessing}{8}{}%
+\contentsline {section}{\numberline {3.3}Feature Extraction}{11}{}%
+\contentsline {subsection}{\numberline {3.3.1}Time-Based Features}{11}{}%
+\contentsline {subsection}{\numberline {3.3.2}Lagged Variables}{12}{}%
+\contentsline {subsubsection}{Lagged Sales Formula}{12}{}%
+\contentsline {subsubsection}{Rolling Mean Sales Formula}{12}{}%
+\contentsline {subsubsection}{Rolling Standard Deviation Formula}{13}{}%
+\contentsline {section}{\numberline {3.4}Demand Forecasting with Neural Prophet}{13}{}%
+\contentsline {subsection}{\numberline {3.4.1}Model Components and Workflow}{13}{}%
+\contentsline {subsection}{\numberline {3.4.2}Model Implementation Process}{14}{}%
+\contentsline {subsection}{\numberline {3.4.3}Benefits for Demand Forecasting}{15}{}%
+\contentsline {section}{\numberline {3.5}Order Aggregation using Genetic Algorithm}{15}{}%
+\contentsline {subsection}{\numberline {3.5.1}Genetic Algorithm for Order Aggregation}{16}{}%
+\contentsline {subsection}{\numberline {3.5.2}Optimization Constraints and Objectives}{16}{}%
+\contentsline {subsection}{\numberline {3.5.3}Benefits of Genetic Algorithm-Based Order Aggregation}{17}{}%
+\contentsline {section}{\numberline {3.6}Logistics Optimization with Green Routing}{18}{}%
+\contentsline {subsection}{\numberline {3.6.1}Path Flexibility}{18}{}%
+\contentsline {subsection}{\numberline {3.6.2}Service Time Window}{19}{}%
+\contentsline {subsection}{\numberline {3.6.3}Route Optimization Process}{19}{}%
+\contentsline {section}{\numberline {3.7}Model Evaluation and Optimization}{20}{}%
+\contentsline {subsection}{\numberline {3.7.1}Evaluation}{21}{}%
+\contentsline {subsection}{\numberline {3.7.2}Hyperparameter Tuning}{21}{}%
+\contentsline {subsection}{\numberline {3.7.3}Iterative Optimization}{22}{}%
+\contentsline {section}{\numberline {3.8}System Integration and Notifications}{23}{}%
+\contentsline {subsection}{\numberline {3.8.1}System Integration}{23}{}%
+\contentsline {subsection}{\numberline {3.8.2}Notifications}{24}{}%
+\contentsline {chapter}{\numberline {4}DESIGN AND MODELING}{26}{}%
+\contentsline {section}{\numberline {4.1}Activity Diagram}{26}{}%
+\contentsline {subsection}{\numberline {4.1.1}Key elements of Activity Diagrams}{26}{}%
+\contentsline {subsection}{\numberline {4.1.2}Key Entities and Components}{28}{}%
+\contentsline {section}{\numberline {4.2}Sequence Diagram}{30}{}%
+\contentsline {subsection}{\numberline {4.2.1}Key elements of Sequence Diagrams}{30}{}%
+\contentsline {subsection}{\numberline {4.2.2}Purpose of Sequence Diagrams}{31}{}%
+\contentsline {subsection}{\numberline {4.2.3}Key Entities and Components}{32}{}%
+\contentsline {subsection}{\numberline {4.2.4}Sequence of Interactions}{33}{}%
+\contentsline {section}{\numberline {4.3}Class Diagram}{34}{}%
+\contentsline {subsection}{\numberline {4.3.1}Key Elements of Class Diagrams}{34}{}%
+\contentsline {subsection}{\numberline {4.3.2}Class Descriptions}{35}{}%
+\contentsline {subsection}{\numberline {4.3.3}Summary of Associations}{37}{}%
+\contentsline {subsection}{\numberline {4.3.4}Common Relationships}{37}{}%
+\contentsline {subsection}{\numberline {4.3.5}Benefits of Using Class Diagrams}{38}{}%
+\contentsline {section}{\numberline {4.4}Use Case Diagram}{38}{}%
+\contentsline {subsection}{\numberline {4.4.1}Key Elements of Use Case Diagrams}{38}{}%
+\contentsline {subsection}{\numberline {4.4.2}Value of Use Case Diagrams}{39}{}%
+\contentsline {subsection}{\numberline {4.4.3}Actors}{40}{}%
+\contentsline {subsection}{\numberline {4.4.4}Use Cases}{41}{}%
+\contentsline {subsection}{\numberline {4.4.5}Relationships}{42}{}%
+\contentsline {chapter}{\numberline {5}Results and Discussions}{44}{}%
+\contentsline {section}{\numberline {5.1}Section 1 Heading}{44}{}%
+\contentsline {section}{\numberline {5.2}Section 2 Heading}{44}{}%
+\contentsline {subsection}{\numberline {5.2.1}Subsection Heading}{44}{}%
+\contentsline {chapter}{\numberline {6}Conclusions \& Future Scope}{45}{}%
+\contentsline {chapter}{References}{46}{}%
+\contentsline {chapter}{List of Publications}{47}{}%
+\contentsline {chapter}{Appendix A: Presentation}{48}{}%
+\contentsline {paragraph}{\ }{48}{}%
+\contentsline {chapter}{Appendix B: Vision, Mission, Programme Outcomes and Course Outcomes}{49}{}%
+\contentsline {paragraph}{\ }{49}{}%
+\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{52}{}%
+\contentsline {paragraph}{\ }{52}{}%
