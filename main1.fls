@@ -1,8 +1,8 @@
-PWD /Users/joepaulvilsan/Downloads/Project - Seminar Report - RSET - Version 1.0 - 2023
+PWD /Users/bharaths/Project/projectreport
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/joepaulvilsan/Downloads/Project - Seminar Report - RSET - Version 1.0 - 2023/main1.tex
+INPUT /Users/bharaths/Project/projectreport/main1.tex
 OUTPUT main1.log
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/report.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/report.cls
@@ -260,6 +260,26 @@ INPUT Chapters/chapter3.tex
 INPUT ./Chapters/chapter4.tex
 INPUT ./Chapters/chapter4.tex
 INPUT Chapters/chapter4.tex
+INPUT ./Figures/Activity diagram.jpeg
+INPUT ./Figures/Activity diagram.jpeg
+INPUT ./Figures/Activity diagram.jpeg
+INPUT ./Figures/Activity diagram.jpeg
+INPUT ./Figures/Activity diagram.jpeg
+INPUT ./Figures/Sequence Diagram.PNG
+INPUT ./Figures/Sequence Diagram.PNG
+INPUT ./Figures/Sequence Diagram.PNG
+INPUT ./Figures/Sequence Diagram.PNG
+INPUT ./Figures/Sequence Diagram.PNG
+INPUT ./Figures/Class Diagram.png
+INPUT ./Figures/Class Diagram.png
+INPUT ./Figures/Class Diagram.png
+INPUT ./Figures/Class Diagram.png
+INPUT ./Figures/Class Diagram.png
+INPUT ./Figures/Use case diagram.jpg
+INPUT ./Figures/Use case diagram.jpg
+INPUT ./Figures/Use case diagram.jpg
+INPUT ./Figures/Use case diagram.jpg
+INPUT ./Figures/Use case diagram.jpg
 INPUT ./Chapters/chapter5.tex
 INPUT ./Chapters/chapter5.tex
 INPUT Chapters/chapter5.tex
