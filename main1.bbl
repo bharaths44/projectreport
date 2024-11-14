@@ -20,9 +20,6 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{garg2019securing}
-H.~Garg and M.~Dave, ``Securing iot devices and securelyconnecting the dots using rest api and middleware,'' in \emph{2019 4th International Conference on Internet of Things: Smart Innovation and Usages (IoT-SIU)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2019, pp. 1--6.
-
 \bibitem{xu2023vitpose++}
 Y.~Xu, J.~Zhang, Q.~Zhang, and D.~Tao, ``Vitpose++: Vision transformer for generic body pose estimation,'' \emph{IEEE Transactions on Pattern Analysis and Machine Intelligence}, 2023.
 

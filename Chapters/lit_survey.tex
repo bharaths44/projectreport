@@ -1,48 +1,104 @@
 \chapter{Literature Survey}
 
-Chapter introduction goes here.
-\section{Section 1 Heading}
+X. Wang and L. Wang, in their study titled \textit{"Green Routing Optimization for Logistics Distribution with Path Flexibility and Service Time Window"}, presented at the 2021 15th International Conference on Service Systems and Service Management (ICSSSM) in Hangzhou, China, address optimizing logistics routes by focusing on minimizing environmental impact (especially CO\textsubscript{2} emissions) and allowing path flexibility based on real-time conditions. The study also considers service time windows to ensure timely deliveries.
 
+\textbf{Information and Methods}
+
+The study investigates two main factors: green routing, which minimizes environmental impact, and path flexibility, which allows choosing alternate routes based on real-time conditions. Additionally, service time windows are incorporated to ensure deliveries are made within specified time frames.
+
+\textbf{Optimization Model}
+
+The authors developed a multi-objective optimization model that considers:
+\begin{itemize}
+    \item \textbf{Green routing objectives}: Minimizing CO\textsubscript{2} emissions.
+    \item \textbf{Logistical objectives}: Minimizing delivery time, distance, and transportation costs.
+    \item \textbf{Service time windows}: Ensuring deliveries happen within pre-set time intervals.
+\end{itemize}
+
+An improved genetic algorithm (GA) is proposed to solve this optimization problem. The algorithm uses evolutionary principles (selection, crossover, and mutation) to iteratively generate and evolve solutions.
+
+\textbf{Model Inputs}
+\begin{itemize}
+    \item \textbf{Delivery points}: Locations for each delivery.
+    \item \textbf{Time windows}: Constraints on the time within which deliveries must occur.
+    \item \textbf{Vehicle capacities}: The size and limitations of vehicles.
+    \item \textbf{Road network data}: Information on available routes and traffic conditions.
+\end{itemize}
+
+\textbf{Data Preparation and Datasets}
+
+Data was sourced from real-world logistics companies and road network databases, containing information on delivery points, road conditions, traffic patterns, and environmental factors. Data preprocessing includes handling missing values, outliers, and incorrect time windows.
+
+\textbf{Results}
+
+The genetic algorithm generated optimized routes that minimized both CO\textsubscript{2} emissions and total delivery time, while allowing flexibility in route selection. The model also met service time windows, ensuring customer satisfaction.
+
+\textbf{Advantages}
+\begin{enumerate}
+    \item \textbf{Environmental Impact Reduction}: Green routing reduces carbon emissions, contributing to sustainable logistics operations.
+    \item \textbf{Flexibility in Routing}: Path flexibility allows adaptation to real-time traffic conditions, road closures, and weather disruptions.
+    \item \textbf{Timeliness of Delivery}: Meeting service time windows improves operational efficiency and customer satisfaction.
+    \item \textbf{Multi-Objective Optimization}: Optimizes cost, time, and environmental impact, providing a comprehensive solution for logistics.
+\end{enumerate}
+
+\textbf{Disadvantages}
+\begin{enumerate}
+    \item \textbf{Computational Complexity}: The genetic algorithm can be computationally intensive, especially for large networks.
+    \item \textbf{Dependency on Traffic and Road Data}: Optimization accuracy depends on reliable traffic and road data.
+    \item \textbf{Limited Scalability}: May struggle to scale for large logistics systems with many variables.
+\end{enumerate}
+
+A. Maroof, B. Ayvaz, and K. Naeem, in their study titled \textit{"Logistics Optimization Using Hybrid Genetic Algorithm (HGA): A Solution to the Vehicle Routing Problem With Time Windows (VRPTW)"} published in IEEE Access, vol. 12, pp. 100245-100255, 2024, address the Vehicle Routing Problem with Time Windows (VRPTW). This research minimizes transportation costs while respecting delivery time windows.
+
+\textbf{Hybrid Genetic Algorithm (HGA)}
+
+The authors propose a Hybrid Genetic Algorithm (HGA) that combines a traditional genetic algorithm with local search methods like 2-opt and swap heuristics to improve solution quality and convergence speed, helping avoid local optima and ensuring a global solution.
+
+\textbf{Optimization Goal}
+
+The goal is to find optimal routes for a fleet of vehicles that minimizes total travel distance while meeting the time constraints of each delivery point.
+
+\textbf{Algorithm Components}
+\begin{itemize}
+    \item \textbf{Genetic Algorithm (GA)}: Selection, crossover, and mutation to explore and exploit the solution space.
+    \item \textbf{Local Search (2-opt and Swap)}: Post-processing of GA solutions to optimize routes and remove inefficiencies.
+\end{itemize}
+
+\textbf{Data Preparation and Datasets}
+
+Similar to Wang and Wang’s study, the dataset includes vehicle capacities, service time windows, and road network data. Preprocessing ensures reasonable time windows and correct vehicle capacities.
+
+\textbf{Results}
+
+The HGA minimized total travel distance while meeting time windows and outperformed traditional genetic algorithms in terms of convergence speed and solution quality.
+
+\textbf{Advantages}
+\begin{enumerate}
+    \item \textbf{Improved Solution Quality}: Hybridization avoids local optima and improves solution quality.
+    \item \textbf{Handling Complex Constraints}: Effectively manages constraints like time windows and vehicle capacities.
+    \item \textbf{Computational Efficiency}: More efficient than basic GAs, suitable for large-scale problems.
+    \item \textbf{Adaptability}: Flexible for various VRPTW problems, including multiple depots and fleet sizes.
+\end{enumerate}
+
+\textbf{Disadvantages}
+\begin{enumerate}
+    \item \textbf{Local Optima Issues}: Despite improvements, careful tuning is required to avoid local optima.
+    \item \textbf{Complexity in Hybridization}: Balancing GA and local search adds complexity.
+    \item \textbf{Static Approach}: Does not account for real-time dynamic changes like traffic disruptions or sudden demand shifts.
+\end{enumerate}
+
+\textbf{Comparison and Integration}
+
+\begin{itemize}
+    \item \textbf{Green Routing} (Wang \& Wang, 2021): Emphasizes sustainability through green routing, reducing environmental impact, a valuable feature for eco-conscious platforms.
+    \item \textbf{Hybrid Genetic Algorithm} (Maroof et al., 2024): Ensures time-sensitive, cost-efficient deliveries, ideal for small-scale vendors requiring reliable logistics.
+\end{itemize}
+
+\textbf{Conclusion}
+
+Combining green routing (Wang \& Wang, 2021) and optimized delivery scheduling (Maroof et al., 2024) provides environmental sustainability and logistical efficiency, making it highly suitable for optimizing small-scale vendor logistics.
 Contents \cite{xu2023vitpose++}
 
 
 
 
-	
-\begin{figure}[htp]
-\centering
-\begin{subfigure}{0.4\textwidth}
-    \includegraphics[width=\textwidth]{Figures/fruit1.jpeg}
-    \caption{First subfigure.}
-    \label{fig:first}
-\end{subfigure}
-\hfill
-\begin{subfigure}{0.4\textwidth}
-    \includegraphics[width=\textwidth]{Figures/fruit2.jpeg}
-    \caption{Second subfigure.}
-    \label{fig:second}
-\end{subfigure}
-\hfill
-\begin{subfigure}{0.4\textwidth}
-    \includegraphics[width=\textwidth]{Figures/fruit3.jpeg}
-    \caption{Third subfigure.}
-    \label{fig:third}
-\end{subfigure}
-        
-\caption{Creating subfigures.}
-\label{fig:figures}
-\end{figure}
-
-\section{Section 2 Heading}
-
-Contents
-
-\subsection{Subsection Heading}
-
-Contents
-	
-	\section{Summary and Gaps Identified}
-	\paragraph\ 
-	This is the most important section of Chapter 2. This subsection has two parts (i) summary 	and (ii) gaps identified. Summary can be a tabular form mentioning the advantages/disadvantages associated with each title. The gaps identified can be a numbered list of around four or five points mentioning what is lacking in the current state of art.
-	
-	Chapter conclusion goes here.
