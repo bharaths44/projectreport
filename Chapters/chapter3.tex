@@ -19,7 +19,7 @@ Here's a structured chapter in the form of **System Architecture** with sections
 
     \item \textbf{Clarifies Data Flow:} The architecture clarifies the flow of data within the system, beginning with the acquisition of order and sales data. This data undergoes preprocessing and feature extraction, followed by demand forecasting with the Neural Prophet model. The forecast data then flows into the Order Aggregation module, which combines vendor orders to meet bulk purchase thresholds. Finally, optimized delivery routes are created through the Logistics Optimization module, using Green Routing techniques. This sequential data flow enhances system transparency and makes it easy to identify potential bottlenecks.
 
-    \item \textbf{Enables Collaborative Order Aggregation:} The architecture highlights how order aggregation enables small-scale vendors to achieve bulk discounts. By aggregating orders from multiple vendors, the platform ensures minimum order quantities (MOQs) are met, enabling vendors to access bulk discounts typically reserved for larger chains. This aspect of the system is crucial for enhancing the competitiveness of small vendors.
+    \item \textbf{Enables Collaborative Order Aggregation:} The architecture highlights how order aggregation enables small-scale vendors to achieve bulk discounts. By aggregating orders from multiple vendors, the platform ensures Minimum Order Quantities (MOQs) are met, enabling vendors to access bulk discounts typically reserved for larger chains. This aspect of the system is crucial for enhancing the competitiveness of small vendors.
 
     \item \textbf{Supports Logistics Optimization through Green Routing:} The architecture emphasizes the logistics optimization approach used in the platform. The Green Routing component incorporates path flexibility and service time windows to create efficient and environmentally friendly delivery routes. This optimization minimizes transportation costs and enhances delivery reliability for vendors, contributing to a streamlined and cost-effective supply chain.
 
@@ -60,454 +60,339 @@ Here's a structured chapter in the form of **System Architecture** with sections
 \textbf{Access:} This dataset is easily accessible, enabling collaborative studies on sales forecasting and providing a resource for testing and improving demand forecasting algorithms.
 
 
-\section{Preprocessing}
+\section{Preprocessing Steps}
 
-Data preprocessing is essential in preparing the dataset for accurate prediction. This involves handling missing values, scaling numerical data, creating time-based features, and engineering lagged variables. Each step in preprocessing enhances the model's performance by structuring meaningful inputs.
+To ensure the data is prepared for accurate demand forecasting and that the model interprets the features effectively, the following preprocessing steps are applied:
 
-\subsection*{Handling Missing Values}
+\subsection*{Tasks}
 
-In sales datasets, missing values often occur due to issues in data collection. Missing values are handled using various methods:
+\textbf{Handling Missing Values:} Missing data may exist in historical datasets due to reporting errors or system downtime. The Neural Prophet model employs a data imputation mechanism to avoid excessive data loss when working with incomplete data. Missing events are filled in with zeros, indicating their absence. For other real-valued variables, including the time series itself (when autoregression is enabled), the following imputation procedure is applied:
 
-\begin{itemize}
-    \item \textbf{Forward Fill}: Uses the last known value to fill missing entries.
-    \item \textbf{Backward Fill}: Uses the next known value to fill missing entries.
-    \item \textbf{Interpolation}: Estimates missing values based on surrounding data points.
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{First Step:} Missing values are approximated using bi-directional linear interpolation. The missing values are filled by interpolating between the last known value before and after the missing data. This process is applied to a maximum of 5 missing values in each direction.
+    \item \textbf{Second Step:} Remaining missing values are imputed using a centered rolling average. A window of 30 is used, and up to 20 consecutive missing values can be filled.
+    \item \textbf{Third Step:} If more than 30 consecutive missing values remain, these data points are dropped from the dataset.
+\end{enumerate}
 
-\subsection*{Scaling and Normalization}
+This imputation process ensures minimal loss of data while maintaining the integrity of the time series.
 
-To ensure that features are on the same scale, Min-Max scaling is applied to rescale values between 0 and 1.
+\textbf{Scaling and Normalization:} To improve model efficiency, numerical features, particularly sales data, are normalized. The Neural Prophet model offers various normalization options, with the default being the soft method. This approach scales the minimum value to 0.0 and the 95th quantile to 1.0, ensuring that the time series values are appropriately transformed for the model. 
 
-\begin{equation}
-    X_{\text{scaled}} = \frac{X - X_{\text{min}}}{X_{\text{max}} - X_{\text{min}}}
-\end{equation}
+The formula for soft normalization is as follows:
 
-where \( X \) is the original value, \( X_{\text{min}} \) is the minimum value, and \( X_{\text{max}} \) is the maximum value. This scaling process helps models like Neural Prophet to converge more efficiently.
+\[
+x' = \frac{x - \min(x)}{Q_{95} - \min(x)}
+\]
 
-\begin{table}[H]
-\centering
-\caption{Example of Min-Max Scaling}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Original Sales} & \textbf{Min Value} & \textbf{Max Value} & \textbf{Scaled Sales} \\ \hline
-50 & 0 & 100 & 0.5 \\ \hline
-30 & 0 & 100 & 0.3 \\ \hline
-\end{tabular}
-\end{table}
+where \( Q_{95} \) represents the 95th quantile of the time series values.
 
-\subsection*{Time-Based Feature Engineering}
+\textbf{Time-Based Feature Engineering:} To capture temporal and seasonal patterns in the data, key features like Day of the Week, Month, and a binary IsWeekend indicator are created. These features help the model understand weekly sales patterns, broader seasonal trends (e.g., holiday spikes), and the impact of weekends on sales. The IsWeekend feature is binary, set to 1 if the date is a Saturday or Sunday and 0 otherwise.
 
-Time-based features capture seasonal patterns and trends that are crucial for forecasting. Extracted features include:
+\textbf{Lagged Sales Features:} Since past sales are directly predictive of future demand, lagged sales features are created for the last 7 and 30 days to capture both short-term and longer-term patterns. Additionally, rolling statistics such as the rolling mean and rolling standard deviation over the past 30 days are computed. These features smooth out fluctuations and help the model capture trends more accurately. The rolling mean is calculated as:
 
-\begin{itemize}
-    \item \textbf{Day of the Week}: Helps capture day-specific sales trends.
-    \item \textbf{Week of the Year}: Highlights seasonal variations.
-    \item \textbf{Month}: Reflects monthly demand patterns.
-\end{itemize}
+\[
+\text{Rolling Mean}_{30} = \frac{1}{30} \sum_{i=t-30}^{t-1} \text{Sales}(i)
+\]
 
-\subsection*{Lagged Sales Features}
+and the rolling standard deviation as:
 
-Lagged variables incorporate past sales data, helping the model to learn patterns over time.
+\[
+\text{Rolling Std}_{30} = \sqrt{\frac{1}{30} \sum_{i=t-30}^{t-1} (\text{Sales}(i) - \text{Rolling Mean}_{30})^2}
+\]
 
-\subsubsection*{Lagged Sales Formula}
-\begin{equation}
-    \text{Lag}_{t-k} = \text{Sales}_{t-k}
-\end{equation}
 
-where \( k \) is the lag period, e.g., 7 days for a weekly lag.
+\subsection*{Output}
 
-\subsubsection*{Rolling Mean Sales Formula}
-\begin{equation}
-    \text{Rolling Mean}_t = \frac{1}{N} \sum_{i=t-N+1}^{t} \text{Sales}_i
-\end{equation}
-
-where \( N \) is the window size, such as 30 days.
-
-\subsubsection*{Rolling Standard Deviation Formula}
-\begin{equation}
-    \text{Rolling Std Dev}_t = \sqrt{\frac{1}{N} \sum_{i=t-N+1}^{t} (\text{Sales}_i - \text{Rolling Mean}_t)^2}
-\end{equation}
-
-These rolling features smooth fluctuations and highlight variability in sales.
-
-\begin{table}[H]
-\centering
-\caption{Examples of Lagged and Rolling Features}
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Date} & \textbf{Sales} & \textbf{7-Day Rolling Mean} \\ \hline
-2024-11-01 & 150 & 140 \\ \hline
-2024-11-02 & 160 & 145 \\ \hline
-\end{tabular}
-\end{table}
-
-\subsection*{Encoding Categorical Variables}
-
-Store and item IDs are encoded as numerical values. One-hot encoding is applied to create binary variables for each unique category.
-
-\begin{table}[H]
-\centering
-\caption{Example of One-Hot Encoding}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Store ID} & \textbf{Store\_1} & \textbf{Store\_2} & \textbf{Store\_3} \\ \hline
-1 & 1 & 0 & 0 \\ \hline
-2 & 0 & 1 & 0 \\ \hline
-\end{tabular}
-\end{table}
-
-\section*{Conclusion}
-
-This preprocessing approach ensures the data is clean, consistent, and enriched with meaningful features, laying a foundation for effective demand forecasting. The structured data allows the model to capture trends and seasonal effects, improving forecast accuracy.
+The result of these preprocessing steps is a clean, normalized dataset with imputed missing values and encoded categorical features. The dataset is now ready for model training, ensuring that the features are aligned and consistent, helping the model make accurate demand forecasts.
 
 \section{Feature Extraction}
 
+Feature extraction is a critical process in our Vendor Collaboration Platform as it transforms raw sales data into meaningful representations, enabling accurate demand forecasting and efficient operational management. By identifying and engineering relevant features from the dataset, we capture essential patterns, trends, and relationships that enhance the performance of predictive models.
 
-Feature extraction is a crucial step in analyzing and understanding data for demand forecasting, especially in a retail context. By extracting relevant features, we can uncover patterns in sales data that support more accurate predictions. This process aims to capture the key temporal characteristics in sales trends and seasonality, which play a critical role in demand planning and inventory management.
-
-Importance of Feature Extraction:
-\begin{itemize}
-    \item \textbf{Dimensionality Reduction}: Raw sales data, when augmented with time-based features, enables the model to focus on critical patterns without unnecessary complexity, reducing dimensionality and improving model performance.
-    \item \textbf{Relevance to Demand Patterns}: Relevant features are those that capture seasonal trends and fluctuations in demand. For example, features representing daily, weekly, and monthly patterns allow the model to recognize recurring trends.
-    \item \textbf{Improved Model Performance}: Extracting informative features enables models to generalize better to unseen data, ultimately increasing the effectiveness of demand forecasting and inventory optimization.
-\end{itemize}
+In the context of our dataset, which contains store-level and item-level sales information over time, feature extraction is designed to uncover temporal patterns, historical dependencies, and interactions between stores and items. The extracted features are categorized into two major types: time-based features and lagged variables, both of which are integral to understanding and predicting demand fluctuations.
 
 \subsection{Time-Based Features}
 
-Time-based features capture the cyclical nature of retail sales, such as daily, weekly, and monthly patterns, which are essential for forecasting future demand accurately.
+Time-based features play a crucial role in capturing cyclical and seasonal patterns inherent in sales data. By decomposing the date field into granular components, these features allow the model to understand how sales vary across different times of the week, month, and year. For instance, the day of the week feature represents weekdays as integers, enabling the model to differentiate between regular weekday and weekend shopping behaviors. Similarly, the month feature identifies seasonal effects that often influence demand, such as increased sales during holiday months or specific seasonal trends for particular items.
 
-\begin{itemize}
-    \item \textbf{Day of the Week}: This feature captures weekly sales trends and highlights days with higher or lower demand, useful for identifying daily sales patterns that may recur each week.
-    \item \textbf{Week of the Year}: A feature representing the week in the year, useful for capturing demand variations at different times of the year, especially if certain weeks have increased activity due to events or holidays.
-    \item \textbf{Month}: Monthly features are vital for capturing seasonal trends, especially in cases where sales volumes vary significantly by month (e.g., holiday seasons or back-to-school months).
-    \item \textbf{Quarter}: Dividing the year into quarters can capture broader seasonal effects and assist in longer-term planning and budgeting.
-\end{itemize}
+Another important time-based feature is the week of the year, which highlights demand patterns recurring annually, such as back-to-school shopping or end-of-year festive sales. Additionally, a binary is weekend feature isolates the typically higher weekend sales from weekday trends, ensuring that the model appropriately weighs these differences when forecasting.
 
-Adding these time-based features enriches the data with cyclical information, helping models capture patterns that align with specific times of the year.
+These features collectively form the temporal backbone of the forecasting model, allowing it to detect repeating cycles and shifts in demand driven by the calendar.
 
 \subsection{Lagged Variables}
 
-Lagged variables refer to features created by using past values of the target variable (sales) to inform current predictions. Lagged features provide context on recent sales history and are particularly useful for time series models that depend on trends and seasonality.
+Lagged variables focus on incorporating historical sales data to enhance the model’s ability to forecast future demand. These features represent the past performance of sales, which is often predictive of future trends. For example, a 1-day lag feature captures the sales volume from the previous day, providing immediate short-term context for the current demand. Similarly, a 7-day lag feature reflects weekly demand patterns by showing the sales from the same day of the prior week, which is especially useful for capturing weekly seasonality.
+
+To understand longer-term patterns, a 30-day lag feature is introduced, representing sales from one month earlier. This helps in identifying recurring monthly trends or evaluating the effectiveness of past promotions. In addition to specific lags, rolling statistical features such as the rolling average (7-day) and rolling standard deviation (7-day) are calculated. These features smooth short-term fluctuations and provide insights into the stability or variability of demand over a week.
+
+A cumulative sales feature further extends this approach by summing all sales up to the current date for a given store-item combination. This feature captures overall sales momentum and growth trends, offering a long-term perspective on performance.
+
+Lagged variables are particularly effective in making the model aware of historical dependencies, enabling it to account for demand inertia, recent trends, and periodic changes.
+
+
+The combination of time-based features and lagged variables provides a comprehensive representation of the dataset, balancing temporal patterns with historical sales behavior. These features enable the demand forecasting models to detect and learn from intricate relationships within the data, ensuring robust predictions and informed decision-making for vendors. Through this customized feature extraction approach, our platform empowers small-scale vendors with insights that drive collaborative efficiency and competitiveness.
+
+\section{Project Modules and Their Integration}
+
+Our Vendor Collaboration Platform comprises three core modules: Demand Forecasting, Order Aggregation, and Path Optimization. These modules work in harmony to streamline vendor operations, optimize costs, and enhance efficiency in the supply chain. By integrating these modules, the platform empowers vendors to achieve bulk order discounts, coordinate deliveries, and reduce logistics expenses, creating a collaborative ecosystem that benefits all participants.
+
+\subsection{Demand Forecasting Module}
+
+The Demand Forecasting Module lies at the heart of the platform, enabling vendors to predict future sales and order cycles. By analyzing historical sales data, the module leverages the Neural Prophet model to identify trends, seasonal patterns, and demand fluctuations. The predictions provide vendors with actionable insights into when and how much to order, ensuring they maintain optimal inventory levels while avoiding overstocking or stockouts.
+
+Additionally, this module facilitates order cycle prediction, which is critical for synchronizing vendor orders. When a vendor places an order with a supplier, the platform uses the demand forecasting output to identify similar demand cycles for other vendors. This allows the platform to notify these vendors about the opportunity to join the order, achieving the Minimum Order Quantity (MOQ) threshold required for bulk discounts. By doing so, the demand forecasting module not only supports individual vendors but also sets the foundation for collective collaboration.
+
+\subsection{Order Aggregation Module}
+
+The Order Aggregation Module builds on the insights provided by the demand forecasting module. Once multiple vendors agree to participate in a joint order, this module combines their requirements into a single bulk order. The process ensures that the MOQ thresholds are met, unlocking discounts from suppliers that would be unattainable for individual vendors.
+
+The aggregation process also categorizes and organizes the joint order to ensure that products are distributed efficiently. Each vendor's share of the bulk order is clearly delineated, and the aggregated data serves as input for the subsequent logistics operations.
+
+Notifications play a key role in this module: vendors are informed about the opportunity to join an order and, once confirmed, receive updates about the order status and expected delivery timelines. The module ensures transparency and coordination among vendors, simplifying the process of collective purchasing.
+
+\subsection{Path Optimization Module}
+
+The Path Optimization Module is responsible for ensuring efficient delivery of the aggregated orders. After the order is finalized and fulfilled by the supplier, this module uses Green Route Optimization algorithms to design an optimal delivery route.
+
+Since the joint order often involves multiple vendors located in different areas, the path optimization module focuses on clustering delivery locations and minimizing logistics costs. The Path Flexibility and Service Time Window feature ensures that deliveries are scheduled efficiently while adhering to time constraints.
+
+The module optimizes the route for a single vehicle tasked with delivering products to multiple vendors. Factors such as load capacity, distance between vendors, and delivery time windows are considered to achieve the most cost-effective and eco-friendly route. By reducing unnecessary travel and fuel consumption, this module contributes to both financial savings and environmental sustainability.
+
+\subsection{How the Modules Work Together}
+
+The three modules—demand forecasting, order aggregation, and path optimization—work together in a seamless, integrated manner to ensure efficient operations:
 
 \begin{itemize}
-    \item \textbf{Previous Day Sales}: This feature captures the sales level from the prior day, offering insights into day-to-day changes in demand, valuable for identifying short-term fluctuations.
-    \item \textbf{Weekly Lagged Sales (e.g., 7-Day Lag)}: A 7-day lag captures the sales from the same day in the previous week, making it useful for capturing weekly patterns and seasonality.
-    \item \textbf{Monthly Lagged Sales (e.g., 30-Day Lag)}: Using a 30-day lag, or a similar monthly lag, allows the model to consider monthly sales cycles and identify monthly sales trends.
+    \item \textbf{Demand Forecasting to Order Aggregation}: The demand forecasting module predicts when vendors are likely to need specific products. When a vendor places an order, the platform cross-references the forecast data to identify other vendors with overlapping demand cycles. Notifications are sent to these vendors, encouraging them to join the order and achieve bulk discounts.
+    \item \textbf{Order Aggregation to Path Optimization}: Once vendors confirm their participation, the order aggregation module compiles their requests into a single bulk order. The aggregated data, including vendor locations and product quantities, is passed to the path optimization module.
+    \item \textbf{Path Optimization for Delivery}: The path optimization module designs a delivery route to ensure that all vendors receive their products efficiently. The vehicle carrying the bulk order is routed through clustered vendor locations, minimizing travel distance and logistics costs.
 \end{itemize}
 
-By incorporating these lagged variables, the model is able to learn from recent sales patterns, improving its ability to detect trends and anticipate changes in demand.
 
-\subsubsection{Lagged Sales Formula}
 
-\begin{equation}
-    \text{Lag}_{t-k} = \text{Sales}_{t-k}
-\end{equation}
+The seamless integration of demand forecasting, order aggregation, and path optimization modules creates a powerful, collaborative platform that addresses the challenges faced by small-scale vendors. The demand forecasting module drives proactive order management, the order aggregation module facilitates cost-effective purchasing, and the path optimization module ensures efficient delivery. Together, these modules enable vendors to compete with large retail chains by reducing costs, improving operations, and fostering a cooperative ecosystem.
 
-where \( k \) is the lag period, e.g., 7 days for a weekly lag.
-
-\subsubsection{Rolling Mean Sales Formula}
-
-\begin{equation}
-    \text{Rolling Mean}_t = \frac{1}{N} \sum_{i=t-N+1}^{t} \text{Sales}_i
-\end{equation}
-
-where \( N \) is the window size, such as 30 days.
-
-\subsubsection{Rolling Standard Deviation Formula}
-
-\begin{equation}
-    \text{Rolling Std Dev}_t = \sqrt{\frac{1}{N} \sum_{i=t-N+1}^{t} (\text{Sales}_i - \text{Rolling Mean}_t)^2}
-\end{equation}
-
-These rolling features smooth fluctuations and highlight variability in sales.
-
-\begin{table}[H]
-\centering
-\caption{Examples of Lagged and Rolling Features}
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Date} & \textbf{Sales} & \textbf{7-Day Rolling Mean} \\ \hline
-2024-11-01 & 150 & 140 \\ \hline
-2024-11-02 & 160 & 145 \\ \hline
-\end{tabular}
-\end{table}
 
 
 
 \section{Demand Forecasting with Neural Prophet}
 
+In our Vendor Collaboration Platform, demand forecasting is essential for streamlining inventory management, optimizing order cycles, and enabling vendor collaboration. Using Neural Prophet, we forecast future sales for each store-item combination. This helps vendors make timely decisions about inventory and orders while facilitating joint purchasing to achieve bulk discounts. The model’s capability to handle trends and seasonality makes it ideal for predicting sales patterns critical to the platform’s success.
 
-Demand forecasting is a fundamental component of this platform, enabling vendors to make data-driven decisions about inventory management and order planning. For this project, we utilize the Neural Prophet model, an advanced time-series forecasting tool designed to handle complex seasonality, trend, and holiday effects, making it particularly suited for retail sales forecasting.
+\subsection{Inputs for Neural Prophet}
 
-Neural Prophet builds on the principles of Facebook's Prophet model but incorporates neural network architecture to improve predictive performance, especially when seasonal patterns and external factors significantly impact demand. By leveraging Neural Prophet, this platform provides vendors with accurate and timely insights into anticipated demand, helping them optimize inventory and align procurement strategies.
+The forecasting process begins with preparing the data. The key inputs used in our project include:
 
-\subsection{Model Components and Workflow}
-
-Neural Prophet decomposes sales data into key components—trend, seasonality, holidays, and regressors—that together account for the variations observed in demand. This decomposition enables the model to capture both recurring patterns and unique spikes associated with specific time intervals. The following components are configured in Neural Prophet to suit our forecasting requirements:
-
-\begin{itemize}
-    \item \textbf{Trend Component}: A piecewise linear trend with configurable changepoints enables the model to adapt to both gradual and sudden shifts in demand, capturing long-term growth or decline.
-    
-    \item \textbf{Seasonality}: Modeled using Fourier series, Neural Prophet supports daily, weekly, and yearly seasonality. For our retail platform, capturing weekly and monthly patterns is crucial for understanding cycles influenced by factors like weekends and holidays.
-    
-    \item \textbf{Holiday Effects}: Neural Prophet allows for the inclusion of known holiday effects, capturing demand spikes during these periods through the use of external regressors.
-    
-    \item \textbf{Lagged Variables and Regressors}: Additional regressors, such as lagged sales data, are incorporated to account for recent demand patterns, improving forecast accuracy.
-\end{itemize}
-
-\subsection{Model Implementation Process}
-
-The implementation of Neural Prophet for demand forecasting follows these steps:
-
-\begin{enumerate}
-    \item \textbf{Data Preparation}: Historical sales data is preprocessed and augmented with time-based features, such as day of the week and month, to capture demand cycles. Missing values are handled, and data is scaled for model efficiency.
-
-    \item \textbf{Feature Engineering}: Lagged variables are created to include recent sales trends. Holiday effects and custom seasonalities are also specified to incorporate relevant demand spikes.
-
-    \item \textbf{Model Training}: The preprocessed data, including lagged features and regressors, is input into Neural Prophet, which is then trained on past sales data. Hyperparameters, like the number of Fourier terms for seasonality, are optimized to achieve high accuracy.
-
-    \item \textbf{Forecast Generation}: The trained model generates forecasts for the specified time horizon, providing sales predictions for each store-item combination. These forecasts enable vendors to anticipate demand fluctuations.
-\end{enumerate}
-
-\subsection{Benefits for Demand Forecasting}
-
-Using Neural Prophet for demand forecasting provides several key benefits:
-
-\begin{itemize}
-    \item \textbf{Accuracy}: By decomposing sales data into trend, seasonality, and holiday effects, Neural Prophet achieves high accuracy. Incorporating lagged variables and external regressors further improves performance.
-
-    \item \textbf{Adaptability}: Neural Prophet’s flexible architecture ensures accurate forecasts even as demand patterns shift over time.
-
-    \item \textbf{Scalability}: Neural Prophet supports high-frequency data and large datasets, making it well-suited for our platform as it scales.
-\end{itemize}
-
-\begin{table}[H]
+\begin{table}[h!]
 \centering
-\caption{Example of Fourier Series Representation for Seasonality}
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{Fourier Term} & \textbf{Weekly Seasonality} & \textbf{Monthly Seasonality} \\ \hline
-\( \sin\left(\frac{2 \pi t}{7}\right) \) & 0.35 & -0.47 \\ \hline
-\( \cos\left(\frac{2 \pi t}{7}\right) \) & 0.67 & 0.52 \\ \hline
-\( \sin\left(\frac{2 \pi t}{30}\right) \) & -0.14 & 0.88 \\ \hline
-\end{tabular}
-\end{table}
-
-This Fourier series representation allows Neural Prophet to effectively model seasonality by capturing cyclical patterns with both weekly and monthly components, enhancing the model's adaptability to demand cycles.
-
-\section{Order Aggregation using Genetic Algorithm}
-
-
-Order aggregation is a crucial optimization process in this platform, designed to help small-scale vendors combine orders to meet minimum order quantities (MOQs) set by suppliers and leverage cost savings through bulk purchasing. The Genetic Algorithm (GA) is employed as the optimization technique for order aggregation due to its efficiency in exploring vast solution spaces and its adaptability to constraints like MOQ. By enabling vendors to combine orders, the platform fosters collaboration, reduces costs, and improves supply chain efficiency.
-
-\subsection{Genetic Algorithm for Order Aggregation}
-
-The Genetic Algorithm is an evolutionary optimization technique that mimics the principles of natural selection. For the order aggregation problem, it searches for the optimal way to combine orders from multiple vendors to achieve the best cost savings while ensuring each aggregated order meets the MOQ. The algorithm proceeds through several steps:
-
-\begin{enumerate}
-    \item \textbf{Population Initialization}: An initial population of possible order combinations is generated, with each individual representing a unique aggregation of orders from multiple vendors. Each solution or individual encodes which vendor orders are combined and the resulting total quantity.
-    
-    \item \textbf{Fitness Evaluation}: The fitness function assesses each individual’s ability to meet MOQs and maximize cost savings. Solutions that meet MOQs and achieve bulk purchasing discounts receive higher fitness scores.
-    
-    \item \textbf{Selection}: Based on fitness, individuals are selected to act as "parents" for the next generation, favoring solutions that better meet the cost-saving objectives and MOQ constraints.
-    
-    \item \textbf{Crossover}: Pairs of selected individuals undergo crossover to produce new "offspring" solutions. This exchange of order combinations allows for the exploration of new aggregation strategies by mixing elements of high-performing solutions.
-    
-    \item \textbf{Mutation}: To introduce diversity, mutation randomly alters parts of some solutions, creating new order combinations that may explore previously unexplored parts of the solution space.
-    
-    \item \textbf{Termination}: The algorithm iterates through generations until it converges on an optimal solution or meets a pre-set termination condition, such as a maximum number of generations or minimal improvement in fitness.
-\end{enumerate}
-
-\subsection{Optimization Constraints and Objectives}
-
-The GA is configured with specific objectives and constraints tailored to the order aggregation needs of the platform:
-
-\begin{itemize}
-    \item \textbf{Minimum Order Quantity (MOQ)}: Each combined order must satisfy the MOQ constraint to be eligible for supplier discounts. Solutions failing to meet MOQ are penalized in fitness scoring.
-    
-    \item \textbf{Cost Minimization}: The primary objective of the GA is to minimize the cost per unit for vendors by aggregating orders to achieve bulk discounts. Each fitness evaluation calculates the potential cost savings per solution, favoring combinations with the highest savings.
-    
-    \item \textbf{Order Compatibility}: Certain products or order combinations may be subject to compatibility constraints, ensuring only compatible products are aggregated.
-\end{itemize}
-
-\subsection{Benefits of Genetic Algorithm-Based Order Aggregation}
-
-Using the Genetic Algorithm for order aggregation brings several advantages to the platform:
-
-\begin{itemize}
-    \item \textbf{Scalability}: GA can efficiently process large numbers of vendors and orders, making it suitable for a platform that serves a dynamic vendor base.
-    
-    \item \textbf{Adaptability}: By accommodating various constraints, such as MOQ and product compatibility, the GA provides an adaptable solution for different order aggregation scenarios.
-    
-    \item \textbf{Cost Efficiency}: By maximizing the probability of achieving bulk purchasing discounts, the GA supports vendors in minimizing unit costs, directly benefiting their profit margins.
-\end{itemize}
-
-\begin{table}[H]
-\centering
-\caption{Example of Genetic Algorithm Parameters for Order Aggregation}
-\begin{tabular}{|c|c|}
+\textbf{Column Name} & \textbf{Description} & \textbf{Format} \\
 \hline
-\textbf{Parameter} & \textbf{Value} \\ \hline
-Population Size & 100 \\ \hline
-Crossover Rate & 0.8 \\ \hline
-Mutation Rate & 0.1 \\ \hline
-Number of Generations & 50 \\ \hline
-\end{tabular}
-\end{table}
-
-These parameters are tuned to balance the exploration of possible order combinations and the convergence to an optimal solution, ensuring that the GA efficiently identifies high-quality order aggregation strategies.
-
-\section{Logistics Optimization with Green Routing}
-
-The logistics optimization module in this system employs Green Routing techniques to minimize transportation costs and reduce environmental impact. This module is essential for supporting sustainable logistics practices while ensuring timely and cost-efficient delivery for vendors. The Green Routing optimization consists of two primary components: Path Flexibility and Service Time Window, which together allow the system to create optimal delivery routes that are both efficient and environmentally conscious.
-
-\subsection{Path Flexibility}
-
-Path Flexibility enables the routing algorithm to identify and select routes that minimize fuel consumption and emissions while also balancing cost efficiency. By incorporating alternative paths, the system can avoid congested areas, reduce travel time, and decrease carbon emissions. This component of Green Routing helps optimize logistics in the following ways:
-
-\begin{itemize}
-    \item \textbf{Emission Reduction}: The system prioritizes routes with lower fuel consumption, thereby reducing CO\textsubscript{2} emissions.
-    \item \textbf{Dynamic Traffic Adaptation}: Real-time traffic data is utilized to identify less congested routes, which can improve delivery time and reduce idle fuel consumption.
-    \item \textbf{Cost-Efficient Routing}: By choosing paths that reduce fuel use and travel distance, the system lowers transportation costs, benefiting both vendors and the environment.
-\end{itemize}
-
-\begin{equation}
-    \text{Fuel Cost} = \text{Distance} \times \text{Fuel Consumption Rate} \times \text{Fuel Price}
-\end{equation}
-
-where \( \text{Distance} \) is the total travel distance for a route, \( \text{Fuel Consumption Rate} \) represents fuel usage per unit distance, and \( \text{Fuel Price} \) is the current price of fuel. Minimizing this cost function through Path Flexibility allows the system to prioritize routes that save both fuel and expenses.
-
-\subsection{Service Time Window}
-
-Service Time Window refers to the allocated time frames for deliveries at each vendor location. By adhering to designated service windows, the system optimizes scheduling to ensure that all deliveries occur within specific time constraints, enhancing reliability and customer satisfaction. This component is beneficial for logistics in multiple ways:
-
-\begin{itemize}
-    \item \textbf{Optimized Delivery Schedule}: Ensuring deliveries are completed within set time windows reduces waiting times and helps vendors plan their inventory and sales operations more effectively.
-    \item \textbf{Resource Efficiency}: By aligning delivery routes with service windows, the system minimizes the likelihood of delays or failed deliveries, improving resource utilization.
-    \item \textbf{Customer Satisfaction}: Timely deliveries within specified windows improve vendor satisfaction and service reliability, enhancing overall platform reputation.
-\end{itemize}
-
-\begin{equation}
-    \text{Penalty Cost} = \begin{cases} 
-      0, & \text{if } \text{Arrival Time} \leq \text{Service End Time} \\
-      k \times (\text{Arrival Time} - \text{Service End Time}), & \text{if late}
-   \end{cases}
-\end{equation}
-
-where \( k \) is the penalty coefficient for late deliveries. This equation ensures that the optimization process considers any potential penalties for exceeding the designated time window, thereby prioritizing timely deliveries.
-
-\subsection{Route Optimization Process}
-
-The Green Routing optimization process combines Path Flexibility and Service Time Window to create the most efficient routes under given constraints. The process operates as follows:
-
-\begin{enumerate}
-    \item \textbf{Route Generation}: An initial set of possible routes is generated, each considering various factors such as distance, fuel consumption, and service windows.
-    
-    \item \textbf{Cost Evaluation}: Each route is evaluated based on its fuel cost, emission impact, and penalty cost for potential delays. Routes with lower total costs are prioritized.
-    
-    \item \textbf{Optimization}: Using algorithms that consider both path flexibility and time window constraints, the system iterates through routes to refine and select the optimal path for each delivery cycle.
-    
-    \item \textbf{Real-Time Adjustments}: As conditions change (e.g., traffic congestion), the system can dynamically adjust the selected route to maintain cost efficiency and minimize delays.
-\end{enumerate}
-
-\begin{table}[H]
-\centering
-\caption{Example of Route Evaluation Criteria}
-\begin{tabular}{|c|c|c|c|}
+\texttt{ds} & Date of sales & Datetime (\texttt{YYYY-MM-DD}) \\
 \hline
-\textbf{Route} & \textbf{Fuel Cost (\$)} & \textbf{CO\textsubscript{2} Emissions (kg)} & \textbf{Penalty Cost (\$)} \\ \hline
-Route A & 150 & 120 & 0 \\ \hline
-Route B & 135 & 115 & 15 \\ \hline
-Route C & 140 & 110 & 10 \\ \hline
+\texttt{y} & Sales value for the given date & Numeric \\
+\hline
 \end{tabular}
+\caption{Key Inputs for Neural Prophet}
 \end{table}
-The Logistics Optimization module’s Green Routing approach is integral to reducing environmental impact and operational costs in the platform. By combining Path Flexibility and Service Time Window, the system generates efficient, sustainable delivery routes that align with both vendor expectations and eco-friendly practices. This dual-component approach ensures that the platform remains competitive by providing vendors with reliable, timely, and cost-effective logistics solutions.
 
-\section{Model Evaluation and Optimization}
+The \texttt{ds} column represents the timeline for sales data, while \texttt{y} contains the actual number of items sold at a given store for a particular item. Both columns are preprocessed to ensure consistency. Missing sales values (\texttt{y}) are interpolated to maintain data continuity, and the \texttt{ds} column is checked for valid date formatting.
 
-Model Evaluation and Optimization are critical steps in ensuring that the demand forecasting model achieves high accuracy and generalizes well to new data. This section details the three main components of this process: Evaluation, Hyperparameter Tuning, and Iterative Optimization. Together, these steps help enhance model performance by systematically assessing accuracy, refining model parameters, and iteratively improving results.
+\subsection{Neural Prophet Structure}
 
-\subsection{Evaluation}
-
-Evaluation involves assessing the model's accuracy and performance on a validation dataset. This step is essential to verify that the model’s predictions align with actual demand patterns and to identify potential areas for improvement. Key evaluation metrics used in this project include Mean Absolute Error (MAE) and Root Mean Square Error (RMSE), which are calculated as follows:
+Neural Prophet decomposes the sales data into the following components to identify patterns:
+The NeuralProphet model consists of multiple modules, each contributing an additive component to the forecast. The forecasted value \( \hat{y}_t \) is the sum of the following components:
 
 \begin{equation}
-    \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
+\hat{y}_t = T(t) + S(t) + E(t) + F(t) + A(t) + L(t)
 \end{equation}
 
-\begin{equation}
-    \text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
-\end{equation}
+Where:
+\begin{itemize}
+  \item \( T(t) \) = Trend at time \( t \): This captures long-term growth or decline in the sales data.
+  \item \( S(t) \) = Seasonal effects at time \( t \): This models recurring patterns in sales, such as seasonal peaks.
+  \item \( E(t) \) = Event and holiday effects at time \( t \): This component adjusts for external events or holidays that affect demand.
+  \item \( F(t) \) = Regression effects for future-known exogenous variables at time \( t \): This accounts for external factors, such as planned promotions or events, that are known in advance.
+  \item \( A(t) \) = Auto-regression effects based on past observations at time \( t \): This models the relationship between past sales data and current demand.
+  \item \( L(t) \) = Regression effects for lagged observations of exogenous variables at time \( t \): This captures the delayed impact of external variables on sales.
+\end{itemize}
 
-where \( y_i \) represents the actual values, \( \hat{y}_i \) represents the predicted values, and \( n \) is the number of predictions. Lower values of MAE and RMSE indicate better model accuracy and less deviation between predicted and actual values.
+Each component is modeled independently, and their outputs are summed to generate the final forecast \( \hat{y}_t \). The NeuralProphet framework is flexible, allowing each of these components to be switched on or off depending on the data and requirements of the project.
 
-\begin{table}[H]
+\subsection{Outputs}
+
+The model generates forecasts over a predefined time horizon, typically ranging from 30 to 60 days based on vendor needs. The outputs include:
+
+\begin{itemize}
+    \item \textbf{Predicted Sales} (\texttt{yhat1}): Projected daily sales for the forecasted period.
+    \item \textbf{Smoothed Sales Trend} (\texttt{yhat1\_trend}): Rolling averages (e.g., 30-day mean) applied to predicted values to highlight trends and reduce noise.
+\end{itemize}
+
+\begin{table}[h!]
 \centering
-\caption{Evaluation Metrics for Forecasting Model}
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{Model} & \textbf{MAE} & \textbf{RMSE} \\ \hline
-Baseline Model & 12.5 & 15.3 \\ \hline
-Optimized Model & 10.2 & 12.8 \\ \hline
+\textbf{Date (ds)} & \textbf{Predicted Sales (yhat1)} & \textbf{Smoothed Sales (yhat1\_trend)} \\
+\hline
+2024-12-01 & 100 & 98 \\
+2024-12-02 & 105 & 99 \\
+2024-12-03 & 110 & 101 \\
+\hline
 \end{tabular}
+\caption{Example of Forecasted Sales and Smoothed Trend}
 \end{table}
 
-These metrics provide a clear understanding of the model's current accuracy, allowing us to assess the impact of further tuning and optimization.
+\subsection{Integration with Platform Workflow}
 
-\subsection{Hyperparameter Tuning}
-
-Hyperparameter tuning is the process of selecting the best model parameters to improve forecast accuracy. In this project, techniques such as Grid Search were employed to explore a range of hyperparameter combinations, with the objective of finding the optimal configuration for the model.
+The demand forecasting module integrates seamlessly with other parts of the platform, creating a cohesive system that enhances vendor operations:
 
 \begin{itemize}
-    \item \textbf{Grid Search}: This technique systematically tests predefined ranges of hyperparameters, such as learning rate, seasonal periods, and growth components, to identify the best-performing combination.
-    \item \textbf{Cross-Validation}: Each set of hyperparameters is evaluated through cross-validation, ensuring that the tuning process does not lead to overfitting on the training data.
+    \item \textbf{Inventory Management}: Forecasted sales help vendors prepare for upcoming demand, ensuring stock levels are optimized.
+    \item \textbf{Order Aggregation}: Predictions trigger notifications to vendors nearing their replenishment cycle. These notifications encourage vendors to place joint orders, maximizing cost savings.
+    \item \textbf{Logistics Optimization}: Predicted delivery schedules align with logistics planning, enabling route optimization and efficient load distribution.
 \end{itemize}
 
-The result of hyperparameter tuning is an optimized model with improved predictive power, as it balances complexity and accuracy.
+By integrating Neural Prophet’s forecasts into our platform, vendors can proactively manage inventory, coordinate joint purchases, and reduce costs. The model’s ability to deliver actionable insights ensures the platform’s operational efficiency and supports the growth of small-scale vendors.
 
-\begin{table}[H]
-\centering
-\caption{Hyperparameter Tuning Results}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Parameter} & \textbf{Range Tested} & \textbf{Optimal Value} \\ \hline
-Learning Rate & 0.001 - 0.1 & 0.01 \\ \hline
-Seasonal Period & 7, 14, 30 & 14 \\ \hline
-Growth Rate & Linear, Logistic & Logistic \\ \hline
-\end{tabular}
-\end{table}
+\section{Order Aggregation Using Genetic Algorithm}
 
-This table summarizes the hyperparameters tuned and the optimal values identified, which contribute to improved forecast accuracy.
+Order aggregation is a crucial module in our platform, enabling small-scale vendors to achieve bulk discounts by combining their orders with others. This process ensures that the Minimum Order Quantities (MOQ) required by suppliers are met, leading to cost savings and operational efficiency. The Genetic Algorithm (GA) is employed to optimize the selection of vendors for aggregation, ensuring that the combined order meets the MOQ while considering constraints like geographical proximity, order compatibility, and delivery logistics.
 
-\subsection{Iterative Optimization}
+\subsection{How the Process Works}
 
-The Iterative Optimization process enables continuous refinement of the model by re-evaluating and adjusting parameters based on performance metrics. This approach ensures that the model adapts to changes in data patterns and maximizes predictive accuracy over time. The steps involved in iterative optimization include:
+When a vendor initiates an order for a product from a supplier, the platform identifies other vendors who might need the same product. Notifications are sent to these vendors, inviting them to join the order. The challenge lies in selecting the optimal subset of vendors whose combined orders meet or exceed the MOQ while minimizing costs like logistics and delivery time.
+
+The Genetic Algorithm simulates the process of natural selection to arrive at the optimal solution. The steps include:
 
 \begin{enumerate}
-    \item \textbf{Feature Engineering Refinement}: Based on evaluation results, new features may be engineered or existing features modified to capture additional seasonal or trend components.
-    \item \textbf{Parameter Adjustment}: Hyperparameters may be re-tuned or adjusted as new data insights emerge, improving model generalization.
-    \item \textbf{Model Re-training}: The model is periodically re-trained with the updated parameters and features, which allows for adaptation to recent demand trends.
+    \item \textbf{Initialization}: A population of potential vendor groupings (chromosomes) is generated. Each chromosome represents a subset of vendors, encoded as binary strings, where `1` indicates inclusion and `0` exclusion from the group. For example:
+    
+    \[
+    \text{Chromosome } 1010: \text{Vendor 1 and Vendor 3 are included, while Vendor 2 and Vendor 4 are excluded.}
+    \]
+    
+    \item \textbf{Fitness Evaluation}: The fitness of each chromosome is calculated based on its ability to meet the MOQ and minimize associated costs. The fitness function \(F\) can be expressed as:
+    
+    \[
+    F = \text{Revenue from bulk discounts} - \left( \text{Logistics cost} + \text{Order deviation penalty} \right)
+    \]
+
+    \begin{itemize}
+        \item \textbf{Revenue from bulk discounts}: Rewards solutions that exceed the MOQ.
+        \item \textbf{Logistics cost}: Penalizes solutions with high transportation expenses.
+        \item \textbf{Order deviation penalty}: Accounts for significant mismatches in vendor order requirements.
+    \end{itemize}
+    
+    \item \textbf{Selection}: Chromosomes with higher fitness are selected for reproduction. Techniques like tournament selection or roulette wheel selection are used to ensure diversity while favoring fitter solutions.
+    
+    \item \textbf{Crossover}: Selected chromosomes undergo crossover, where segments of two parent chromosomes are swapped to produce offspring. This operation introduces new combinations of vendors and explores alternative aggregation solutions.
+    
+    \item \textbf{Mutation}: Random changes are introduced in some offspring to prevent premature convergence and explore less obvious solutions. For instance, flipping a bit in the chromosome (e.g., 1010 becomes 1110) can add or remove a vendor.
+    
+    \item \textbf{Termination}: The algorithm iterates through several generations, refining the population until an optimal or near-optimal solution is found. Termination occurs when a predefined number of generations is reached or when the fitness stabilizes.
 \end{enumerate}
 
-\begin{equation}
-    \text{Improvement Factor} = \frac{\text{Old RMSE} - \text{New RMSE}}{\text{Old RMSE}}
-\end{equation}
+\subsection{Output and Implementation}
 
-This formula calculates the improvement factor in RMSE as an indicator of optimization progress, helping to assess the effectiveness of each iteration.
+The output of the Genetic Algorithm is the optimal subset of vendors to participate in the aggregated order. This grouping ensures that:
 
-\begin{table}[H]
+\begin{itemize}
+    \item The MOQ is met, unlocking bulk discounts.
+    \item Costs are minimized by considering logistics and order alignment.
+\end{itemize}
+
+\begin{table}[h!]
 \centering
-\caption{Iterative Optimization Performance Over Time}
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{Iteration} & \textbf{MAE} & \textbf{RMSE} \\ \hline
-Initial Model & 12.5 & 15.3 \\ \hline
-After 1st Optimization & 11.2 & 13.9 \\ \hline
-After 2nd Optimization & 10.2 & 12.8 \\ \hline
+\textbf{Vendor} & \textbf{Order Quantity} & \textbf{Selected (1/0)} \\
+\hline
+Vendor A & 50 & 1 \\
+Vendor B & 30 & 1 \\
+Vendor C & 10 & 0 \\
+Vendor D & 20 & 1 \\
+\hline
 \end{tabular}
+\caption{Example of Vendor Selection in Order Aggregation}
 \end{table}
 
-The Evaluation and Optimization processes ensure that the forecasting model is continually enhanced to meet accuracy and reliability requirements. By implementing evaluation metrics, rigorous hyperparameter tuning, and iterative optimization, this project achieves a robust demand forecasting model capable of adapting to evolving data patterns and improving performance over time.
+In this example, Vendors A, B, and D are selected, contributing a total order of 100 units, meeting the MOQ.
+
+\subsection{Integration with the Platform}
+
+Once the optimal vendor subset is determined, the platform finalizes the bulk order and notifies all participating vendors. The order details are then passed to the logistics module for route optimization and delivery scheduling, ensuring seamless fulfillment. By leveraging the Genetic Algorithm, our platform provides an efficient, scalable, and automated solution for order aggregation, empowering vendors to compete effectively with larger retailers.
+
+\section{Logistics Using Green Route Optimization Algorithm}
+
+Logistics optimization is a key component of our platform, ensuring efficient delivery of aggregated orders to vendors while minimizing transportation costs and environmental impact. In our project, we employ the Green Route Optimization Algorithm, tailored to optimize the route for a single delivery vehicle. This algorithm determines the most efficient path to deliver products to different vendors included in an aggregated order, focusing on reducing fuel consumption, delivery time, and carbon emissions.
+
+\subsection{How Logistics Optimization Works}
+
+Once the order aggregation process is complete, the platform identifies the vendors participating in the bulk order and their respective delivery locations. The challenge is to determine the optimal route for a single delivery vehicle to service all vendors while adhering to constraints such as delivery time windows, vehicle capacity, and geographic proximity.
+
+The Green Route Optimization Algorithm is designed to achieve this by incorporating concepts of path flexibility and environmental considerations. Here's how it works:
+
+\textbf{Input Data:}  
+The algorithm takes the following inputs:
+\begin{itemize}
+    \item Vendor locations (latitude and longitude).
+    \item Delivery quantities for each vendor (ensuring vehicle capacity constraints are met).
+    \item Service time windows for each vendor (if applicable).
+    \item Vehicle starting point (typically the supplier's location).
+\end{itemize}
+
+\textbf{Route Representation:}  
+The delivery route is represented as a sequence of vendor locations, starting and ending at the supplier's location. For example:
+
+\[
+\text{Route: Supplier} \rightarrow \text{Vendor A} \rightarrow \text{Vendor B} \rightarrow \text{Vendor C} \rightarrow \text{Supplier}
+\]
+
+\textbf{Objective Function:}  
+The objective is to minimize the total distance traveled by the vehicle while considering additional factors like delivery priority and environmental impact. The optimization function is:
+
+\[
+\text{Minimize: } C = \sum_{i=1}^{n-1} d(p_i, p_{i+1}) + \alpha \cdot e(p_i, p_{i+1})
+\]
+
+Where:
+\begin{itemize}
+    \item \(d(p_i, p_{i+1})\): Distance between points \(p_i\) and \(p_{i+1}\).
+    \item \(e(p_i, p_{i+1})\): Emission cost for traveling between points \(p_i\) and \(p_{i+1}\).
+    \item \(\alpha\): Weighting factor for environmental impact.
+\end{itemize}
+
+\textbf{Optimization Process:}
+\begin{itemize}
+    \item The algorithm evaluates various route permutations using heuristic techniques like the Travelling Salesman Problem (TSP) approach combined with green routing principles.
+    \item It calculates the cost for each route and iteratively refines it to find the most efficient path.
+    \item Constraints like vehicle load capacity and vendor service time windows are enforced to ensure feasibility.
+\end{itemize}
+
+\textbf{Output:}  
+The algorithm provides the optimized delivery route, detailing the order in which vendors should be serviced. For example:
+
+\[
+\text{Optimized Route: Supplier} \rightarrow \text{Vendor D} \rightarrow \text{Vendor A} \rightarrow \text{Vendor C} \rightarrow \text{Supplier}
+\]
+
+\subsection{Why Green Route Optimization Algorithm is Used}
+
+The Green Route Optimization Algorithm is specifically chosen for our project because it aligns with the platform's goals of cost efficiency, environmental sustainability, and scalability. Key reasons for its selection include:
+
+\begin{itemize}
+    \item \textbf{Single Vehicle Focus:} Unlike fleet-based algorithms, it is optimized for scenarios where only one vehicle is used for deliveries, making it ideal for our project.
+    \item \textbf{Environmental Considerations:} By factoring in emission costs, the algorithm promotes eco-friendly logistics, reducing the carbon footprint of deliveries.
+    \item \textbf{Flexibility with Constraints:} It handles dynamic vendor locations, varying delivery quantities, and service time windows, ensuring practical applicability.
+    \item \textbf{Efficiency and Cost Savings:} By minimizing the total distance traveled, the algorithm reduces fuel consumption and operational costs.
+\end{itemize}
+
+\subsection{Integration with the Platform}
+
+After the aggregated order is finalized, the vendor delivery details are fed into the logistics module. The Green Route Optimization Algorithm computes the optimal delivery path and provides the route to the delivery driver. The platform ensures that real-time updates, such as traffic conditions or vendor availability changes, are seamlessly integrated into the routing process if necessary.
+
+This integration ensures timely and efficient delivery of products, enhancing vendor satisfaction while supporting the platform's commitment to sustainability and cost-effective operations.
 
 \section{System Integration and Notifications}
 
