@@ -2,10 +2,17 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces System Architecture of Vendor Collaboration Platform}}{15}{}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces System Architecture of Vendor Collaboration Platform}}{23}{}%
 \addvspace {10\p@ }
+<<<<<<< HEAD
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Activity Diagram}}{35}{}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Activity Diagram}}{40}{}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Class Diagram}}{43}{}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Use Case Diagram}}{48}{}%
+=======
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Activity Diagram}}{45}{}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Sequence Diagram}}{50}{}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Class Diagram}}{53}{}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Use Case Diagram}}{59}{}%
+>>>>>>> 23c12e930da8d39110cab2e2e64440c321763068
 \addvspace {10\p@ }
