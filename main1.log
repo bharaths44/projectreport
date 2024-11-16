@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.10)  11 NOV 2024 14:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.10)  16 NOV 2024 09:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/joepaulvilsan/Downloads/report/main1.tex
-(/Users/joepaulvilsan/Downloads/report/main1.tex
+**/Users/bharaths/Project/projectreport/main1.tex
+(/Users/bharaths/Project/projectreport/main1.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/report.cls
@@ -446,12 +446,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--45
  []
 
 
-Overfull \hbox (75.83408pt too wide) in alignment at lines 49--56
+Overfull \hbox (75.83408pt too wide) in alignment at lines 49--55
  [] [] [] 
  []
 
 
-Overfull \hbox (75.83408pt too wide) in alignment at lines 64--71
+Overfull \hbox (75.83408pt too wide) in alignment at lines 63--69
  [] [] [] 
  []
 
@@ -489,80 +489,85 @@ Chapter 1.
 [1
 
 
-] [2] [3] [4] [5{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [6] [7] [8] [9]) (./Chapters/lit_survey.tex [10]
+] [2] [3] [4] [5{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [6] [7] [8]) (./Chapters/lit_survey.tex [9]
 Chapter 2.
-[11
 
-] [12] [13]) (./Chapters/chapter3.tex [14]
+Overfull \hbox (29.29613pt too wide) in paragraph at lines 3--4
+\OT1/cmr/bx/n/12 [[]]Taylor S. J., Letham B. , "Fore-cast-ing at Scale". PeerJ 5 Preprints: e3190v2,2017 
+ []
+
+[10
+
+] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]) (./Chapters/chapter3.tex [22]
 Chapter 3.
-<Figures/system architecture.png, id=89, 720.6925pt x 498.86375pt>
-File: Figures/system architecture.png Graphic file (type png)
-<use Figures/system architecture.png>
-Package pdftex.def Info: Figures/system architecture.png  used on input line 10.
-(pdftex.def)             Requested size: 455.24411pt x 315.11554pt.
-[15
+<Figures/system_arch.png, id=114, 1090.0725pt x 437.635pt>
+File: Figures/system_arch.png Graphic file (type png)
+<use Figures/system_arch.png>
+Package pdftex.def Info: Figures/system_arch.png  used on input line 7.
+(pdftex.def)             Requested size: 455.24411pt x 182.7637pt.
+[23
 
- <./Figures/system architecture.png>] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28]
-Overfull \hbox (42.58865pt too wide) detected at line 395
+ <./Figures/system_arch.png (PNG copy)>] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36]
+Overfull \hbox (42.58865pt too wide) detected at line 392
 [][] \OT1/cmr/m/n/12 = []
  []
 
-[29] [30]
-Overfull \hbox (12.64653pt too wide) in paragraph at lines 463--464
+[37] [38]
+Overfull \hbox (12.64653pt too wide) in paragraph at lines 460--461
 []\OT1/cmr/bx/n/12 Cross-Validation\OT1/cmr/m/n/12 : Each set of hy-per-pa-ram-e-ters is eval-u-ated through cross-validation,
  []
 
-[31] [32] [33]
-Overfull \hbox (12.08728pt too wide) in paragraph at lines 541--548
+[39] [40] [41]
+Overfull \hbox (12.08728pt too wide) in paragraph at lines 538--545
  [][] 
  []
 
-[34]) (./Chapters/chapter4.tex [35]
+[42]) (./Chapters/chapter4.tex [43]
 Chapter 4.
-[36
+[44
 
 ]
-<Figures/Activity diagram.jpeg, id=168, 1310.8975pt x 1595.9625pt>
+<Figures/Activity diagram.jpeg, id=193, 1310.8975pt x 1595.9625pt>
 File: Figures/Activity diagram.jpeg Graphic file (type jpg)
 <use Figures/Activity diagram.jpeg>
 Package pdftex.def Info: Figures/Activity diagram.jpeg  used on input line 22.
 (pdftex.def)             Requested size: 409.71692pt x 498.81012pt.
- [37 <./Figures/Activity diagram.jpeg>] [38] [39] [40]
-<Figures/Sequence Diagram.PNG, id=183, 904.1278pt x 644.4075pt>
+ [45 <./Figures/Activity diagram.jpeg>] [46] [47] [48] [49]
+<Figures/Sequence Diagram.PNG, id=210, 904.1278pt x 644.4075pt>
 File: Figures/Sequence Diagram.PNG Graphic file (type png)
 <use Figures/Sequence Diagram.PNG>
-Package pdftex.def Info: Figures/Sequence Diagram.PNG  used on input line 106.
+Package pdftex.def Info: Figures/Sequence Diagram.PNG  used on input line 107.
 (pdftex.def)             Requested size: 455.24411pt x 324.46451pt.
- [41] [42 <./Figures/Sequence Diagram.PNG>] [43] [44]
-<Figures/Class Diagram.png, id=197, 966.4908pt x 747.0309pt>
+ [50 <./Figures/Sequence Diagram.PNG>] [51] [52]
+<Figures/Class Diagram.png, id=222, 966.4908pt x 747.0309pt>
 File: Figures/Class Diagram.png Graphic file (type png)
 <use Figures/Class Diagram.png>
-Package pdftex.def Info: Figures/Class Diagram.png  used on input line 155.
+Package pdftex.def Info: Figures/Class Diagram.png  used on input line 157.
 (pdftex.def)             Requested size: 455.24411pt x 351.86829pt.
- [45 <./Figures/Class Diagram.png>]
-Overfull \hbox (5.08167pt too wide) in paragraph at lines 178--179
+ [53 <./Figures/Class Diagram.png>] [54]
+Overfull \hbox (5.08167pt too wide) in paragraph at lines 181--182
 []\OT1/cmr/bx/n/12 LogisticsOptimization: \OT1/cmr/m/n/12 Op-ti-mizes de-liv-ery routes with meth-ods op-ti-mize-R-outes(),
  []
 
-[46] [47] [48] [49]
-<Figures/Use case diagram.jpg, id=215, 795.97375pt x 610.28pt>
+[55] [56] [57]
+<Figures/Use case diagram.jpg, id=240, 795.97375pt x 610.28pt>
 File: Figures/Use case diagram.jpg Graphic file (type jpg)
 <use Figures/Use case diagram.jpg>
-Package pdftex.def Info: Figures/Use case diagram.jpg  used on input line 249.
+Package pdftex.def Info: Figures/Use case diagram.jpg  used on input line 252.
 (pdftex.def)             Requested size: 455.24411pt x 349.03653pt.
- [50 <./Figures/Use case diagram.jpg>] [51] [52]) (./Chapters/chapter5.tex [53]
+ [58] [59 <./Figures/Use case diagram.jpg>] [60]) (./Chapters/chapter5.tex [61]
 Chapter 5.
-[54
+[62
 
-] [55]) [56] (./main1.bbl) (./Chapters/list_of_publications.tex [57
-
-
-]) (./Appendices/appendix_A.tex [58
-
-] [59
+] [63]) [64] (./main1.bbl [65
 
 
-]) (./Appendices/appendix_B.tex [60
+]) (./Chapters/list_of_publications.tex [66]) (./Appendices/appendix_A.tex [67
+
+] [68
+
+
+]) (./Appendices/appendix_B.tex [69
 
 
 ]
@@ -665,7 +670,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 48--62
 
  []
 
-[61
+[70
 
 
 ]
@@ -678,10 +683,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
-) (./Appendices/co_po_pso_mapping.tex [62] [63
+) (./Appendices/co_po_pso_mapping.tex [71] [72
 
 
-]) [64
+]) [73
 
 
 ] (./main1.aux)
@@ -691,18 +696,18 @@ L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 12454 strings out of 474116
- 241913 string characters out of 5743681
+ 12463 strings out of 474116
+ 242076 string characters out of 5743681
  1942187 words of memory out of 5000000
- 34625 multiletter control sequences out of 15000+600000
- 574659 words of font info for 100 fonts, out of 8000000 for 9000
+ 34634 multiletter control sequences out of 15000+600000
+ 574668 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,12n,93p,856b,419s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,12n,93p,1878b,421s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main1.pdf (74 pages, 1019875 bytes).
+Output written on main1.pdf (83 pages, 987213 bytes).
 PDF statistics:
- 332 PDF objects out of 1000 (max. 8388607)
- 213 compressed objects within 3 object streams
+ 359 PDF objects out of 1000 (max. 8388607)
+ 232 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
