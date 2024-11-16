@@ -1,8 +1,8 @@
-PWD /Users/bharaths/Project/projectreport
+PWD /Users/joepaulvilsan/Downloads/report
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/bharaths/Project/projectreport/main1.tex
+INPUT /Users/joepaulvilsan/Downloads/report/main1.tex
 OUTPUT main1.log
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/report.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/report.cls
