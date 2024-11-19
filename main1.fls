@@ -1,8 +1,8 @@
-PWD /Users/bharaths/Project/projectreport
+PWD /Users/joepaulvilsan/Downloads/report
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/bharaths/Project/projectreport/main1.tex
+INPUT /Users/joepaulvilsan/Downloads/report/main1.tex
 OUTPUT main1.log
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/report.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/report.cls
@@ -318,11 +318,11 @@ INPUT Chapters/lit_survey.tex
 INPUT ./Chapters/chapter3.tex
 INPUT ./Chapters/chapter3.tex
 INPUT Chapters/chapter3.tex
-INPUT ./Figures/system_arch.png
-INPUT ./Figures/system_arch.png
-INPUT ./Figures/system_arch.png
-INPUT ./Figures/system_arch.png
-INPUT ./Figures/system_arch.png
+INPUT ./Figures/system_archh.png
+INPUT ./Figures/system_archh.png
+INPUT ./Figures/system_archh.png
+INPUT ./Figures/system_archh.png
+INPUT ./Figures/system_archh.png
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT ./Chapters/chapter4.tex
