@@ -11,7 +11,7 @@
 \usepackage{float}           % for precise placement of figures and tables
 \usepackage{caption}         % for caption adjustments
 \usepackage{subcaption}      % for subfigures
-
+\usepackage{tcolorbox}       % for colored boxes
 % Mathematical symbols and environments
 \usepackage{amsmath}         % for math symbols and environments
 \usepackage{amssymb}         % for additional math symbols
@@ -86,93 +86,86 @@
 
 
 \begin{document}
-	\titlepage
-	\thispagestyle{empty}
+\titlepage
+\thispagestyle{empty}
 \input{Chapters/titlepage.tex}
-	
-	
 
-    
-	
+
+
+
+
 \renewcommand{\baselinestretch}{1.5}\normalsize
 \newpage
-	%\renewcommand\abstractname{ACKNOWLEDGEMENTS}
+%\renewcommand\abstractname{ACKNOWLEDGEMENTS}
 \input{Chapters/acknowledgements.tex}
-		
-		
+
+
 \newpage
- 
+
 \renewcommand{\baselinestretch}{1.5}\normalsize
-	
-\input{Chapters/abstract.tex}    
-		
-		%\end{spacing}
-	%\end{abstract}
-	
-	
-	\newpage
-	\normalsize{}
-	
-	%\pagenumbering{roman}
-	%\setcounter{page}{4}
-	%\begin{spacing}{}
-	\tableofcontents
-	%\end{spacing}
-	% \thispagestyle{empty}
-	\newpage
-	
-\input{Chapters/abbreviations.tex}
-    
+
+\input{Chapters/abstract.tex}
+
+%\end{spacing}
+%\end{abstract}
+
+
+\newpage
+\normalsize{}
+
+%\pagenumbering{roman}
+%\setcounter{page}{4}
+%\begin{spacing}{}
+\tableofcontents
+%\end{spacing}
+% \thispagestyle{empty}
 \newpage
 
-	\listoffigures
-	\addcontentsline{toc}{chapter}{List of Figures}
-	% \thispagestyle{empty}
-	\newpage
-	
+\input{Chapters/abbreviations.tex}
 
-   % \pagenumbering{roman}
-	%\setcounter{page}{9}
-	\listoftables
-	\addcontentsline{toc}{chapter}{List of Tables}
+\newpage
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+% \thispagestyle{empty}
+\newpage
+
+
+% \pagenumbering{roman}
+%\setcounter{page}{9}
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
 %	\addcontentsline{toc}{chapter}{List of Abbreviations}
 %	\listof{Abbreviations}
-	% \thispagestyle{empty}
-    \newpage
-    
+% \thispagestyle{empty}
+\newpage
 
-    
+
+
 \cleardoublepage
-	
+
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
 \input{Chapters/introduction.tex}
-\input{Chapters/lit_survey.tex}	
-\input{Chapters/chapter3.tex}	
-\input{Chapters/chapter4.tex}	
-\input{Chapters/chapter5.tex}	
+\input{Chapters/lit_survey.tex}
+\input{Chapters/chapter3.tex}
+\input{Chapters/chapter4.tex}
+\input{Chapters/chapter5.tex}
 
-	
+
 
 
 \clearpage
-\renewcommand{\bibname}{References} 
+\renewcommand{\bibname}{References}
 \addcontentsline{toc}{chapter}{References}
 \bibliographystyle{IEEEtran}
 \bibliography{references}
 %\input{references.tex}
-	
 
-\input{Chapters/list_of_publications.tex}
-	
-	
 \input{Appendices/appendix_A.tex}
 \input{Appendices/appendix_B.tex}
-	%\clearpage
-	
+\input{Appendices/appendix_C.tex}
+%\clearpage
 
-	
-\input{Appendices/co_po_pso_mapping.tex}
-	
 \end{document}

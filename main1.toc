@@ -25,7 +25,7 @@
 \contentsline {section}{\numberline {3.4}Project Modules and Their Integration}{30}{}%
 \contentsline {subsection}{\numberline {3.4.1}Demand Forecasting Module}{30}{}%
 \contentsline {subsection}{\numberline {3.4.2}Order Aggregation Module}{30}{}%
-\contentsline {subsection}{\numberline {3.4.3}Path Optimization Module}{31}{}%
+\contentsline {subsection}{\numberline {3.4.3}Path Optimisation Module}{31}{}%
 \contentsline {subsection}{\numberline {3.4.4}How the Modules Work Together}{31}{}%
 \contentsline {section}{\numberline {3.5}Demand Forecasting with Neural Prophet}{32}{}%
 \contentsline {subsection}{\numberline {3.5.1}Inputs for Neural Prophet}{32}{}%
@@ -35,10 +35,10 @@
 \contentsline {section}{\numberline {3.6}Order Aggregation Using Genetic Algorithm}{35}{}%
 \contentsline {subsection}{\numberline {3.6.1}How the Process Works}{35}{}%
 \contentsline {subsection}{\numberline {3.6.2}Output and Implementation}{36}{}%
-\contentsline {subsection}{\numberline {3.6.3}Integration with the Platform}{36}{}%
-\contentsline {section}{\numberline {3.7}Logistics Using Green Route Optimization Algorithm}{37}{}%
-\contentsline {subsection}{\numberline {3.7.1}How Logistics Optimization Works}{37}{}%
-\contentsline {subsection}{\numberline {3.7.2}Why Green Route Optimization Algorithm is Used}{39}{}%
+\contentsline {subsection}{\numberline {3.6.3}Integration with the Platform}{37}{}%
+\contentsline {section}{\numberline {3.7}Logistics Using Green Route Optimisation Algorithm}{37}{}%
+\contentsline {subsection}{\numberline {3.7.1}How Logistics Optimisation Works}{37}{}%
+\contentsline {subsection}{\numberline {3.7.2}Why Green Route Optimisation Algorithm is Used}{39}{}%
 \contentsline {subsection}{\numberline {3.7.3}Integration with the Platform}{39}{}%
 \contentsline {section}{\numberline {3.8}System Integration and Notifications}{39}{}%
 \contentsline {subsection}{\numberline {3.8.1}System Integration}{40}{}%
@@ -66,10 +66,9 @@
 \contentsline {subsection}{\numberline {4.4.5}Relationships}{59}{}%
 \contentsline {chapter}{\numberline {5}Conclusions \& Future Scope}{60}{}%
 \contentsline {chapter}{References}{63}{}%
-\contentsline {chapter}{List of Publications}{65}{}%
-\contentsline {chapter}{Appendix A: Presentation}{66}{}%
-\contentsline {paragraph}{\ }{66}{}%
-\contentsline {chapter}{Appendix B: Vision, Mission, Programme Outcomes and Course Outcomes}{67}{}%
-\contentsline {paragraph}{\ }{67}{}%
-\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{70}{}%
-\contentsline {paragraph}{\ }{70}{}%
+\contentsline {chapter}{Appendix A: Presentation}{65}{}%
+\contentsline {paragraph}{\ }{65}{}%
+\contentsline {chapter}{Appendix B: Vision, Mission, PO, PSO, and CO}{75}{}%
+\contentsline {paragraph}{\ }{75}{}%
+\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{78}{}%
+\contentsline {paragraph}{\ }{79}{}%
