@@ -5,20 +5,20 @@
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{Figures/system_arch.png}
-    \caption{System Architecture of Vendor Collaboration Platform}
+    \caption{System Architecture}
     \label{fig:architecture}
 \end{figure}
 
-\noindent Figure 3.1 illustrates the system architecture for a Vendor Collaboration Platform, designed to support small-scale vendors by facilitating bulk order discounts, demand forecasting, and logistics optimization. This architecture provides a clear overview of the platform’s components and how they work together to streamline the entire process from order initiation to optimized delivery. Here’s a breakdown of the key aspects and importance of this architecture:
+\noindent Figure 3.1 illustrates the system architecture for the ASTRO Platform, designed to support small-scale vendors by facilitating bulk order discounts, demand forecasting, and logistics optimisation. This architecture provides a clear overview of the platform’s components and how they work together to streamline the entire process from order initiation to optimized delivery. Here’s a breakdown of the key aspects and importance of this architecture:
 
 \begin{enumerate}
-    \item \textbf{High-Level Overview:} The architecture serves as a roadmap, showing the main stages of the platform’s workflow. From initial product viewing and order placement by vendors, through demand forecasting, order aggregation, and logistics optimization, this high-level overview provides all stakeholders—including vendors, suppliers, and platform administrators—with a clear understanding of the system’s core functionality.
+    \item \textbf{High-Level Overview:} The architecture serves as a roadmap, showing the main stages of the platform’s workflow. From initial product viewing and order placement by vendors, through demand forecasting, order aggregation, and logistics optimisation, this high-level overview provides all stakeholders—including vendors, suppliers, and platform administrators—with a clear understanding of the system’s core functionality.
 
-    \item \textbf{Clarifies Data Flow:} The architecture clarifies the flow of data within the system, beginning with the acquisition of order and sales data. This data undergoes preprocessing and feature extraction, followed by demand forecasting with the Neural Prophet model. The forecast data then flows into the Order Aggregation module, which combines vendor orders to meet bulk purchase thresholds. Finally, optimized delivery routes are created through the Logistics Optimization module, using Green Routing techniques. This sequential data flow enhances system transparency and makes it easy to identify potential bottlenecks.
+    \item \textbf{Clarifies Data Flow:} The architecture clarifies the flow of data within the system, beginning with the acquisition of order and sales data. This data undergoes preprocessing and feature extraction, followed by demand forecasting with the Neural Prophet model. The forecast data then flows into the Order Aggregation module, which combines vendor orders to meet bulk purchase thresholds. Finally, optimized delivery routes are created through the Logistics Optimisation module, using Green Routing techniques. This sequential data flow enhances system transparency and makes it easy to identify potential bottlenecks.
 
     \item \textbf{Enables Collaborative Order Aggregation:} The architecture highlights how order aggregation enables small-scale vendors to achieve bulk discounts. By aggregating orders from multiple vendors, the platform ensures Minimum Order Quantities (MOQs) are met, enabling vendors to access bulk discounts typically reserved for larger chains. This aspect of the system is crucial for enhancing the competitiveness of small vendors.
 
-    \item \textbf{Supports Logistics Optimization through Green Routing:} The architecture emphasizes the logistics optimization approach used in the platform. The Green Routing component incorporates path flexibility and service time windows to create efficient and environmentally friendly delivery routes. This optimization minimizes transportation costs and enhances delivery reliability for vendors, contributing to a streamlined and cost-effective supply chain.
+    \item \textbf{Supports Logistics Optimisation through Green Routing:} The architecture emphasizes the logistics optimisation approach used in the platform. The Green Routing component incorporates path flexibility and service time windows to create efficient and environmentally friendly delivery routes. This optimisation minimizes transportation costs and enhances delivery reliability for vendors, contributing to a streamlined and cost-effective supply chain.
 
     \item \textbf{Enables Real-Time Notifications and Updates:} The system architecture includes a notification mechanism that provides real-time updates to vendors on order status, inventory levels, and logistics. These notifications foster transparency, enabling vendors to make informed decisions about inventory and delivery schedules.
 
@@ -26,12 +26,12 @@
 
 \end{enumerate}
 
-\noindent Overall, the system architecture is crucial for understanding the Vendor Collaboration Platform. It provides a clear visual representation of the platform’s workflow, highlighting key features such as order aggregation, demand forecasting, logistics optimization, and real-time notifications. These components work together to enhance vendor competitiveness by offering cost-saving opportunities, efficient delivery solutions, and improved collaboration with suppliers.
+\noindent Overall, the system architecture is crucial for understanding the ASTRO Platform. It provides a clear visual representation of the platform’s workflow, highlighting key features such as order aggregation, demand forecasting, logistics optimisation, and real-time notifications. These components work together to enhance vendor competitiveness by offering cost-saving opportunities, efficient delivery solutions, and improved collaboration with suppliers.
 
 \section{Dataset}
 
 
-\textbf{Purpose:} This dataset supports research in sales forecasting, specifically at the item and store levels. The objective is to predict the next three months of sales for individual items at various store locations, applicable for demand forecasting, inventory management, and sales optimization.
+\textbf{Purpose:} This dataset supports research in sales forecasting, specifically at the item and store levels. The objective is to predict the next three months of sales for individual items at various store locations, applicable for demand forecasting, inventory management, and sales optimisation.
 
 \textbf{Data Collection:} This dataset was collected from multiple store locations, representing real-world sales data with variations in store performance and item demand. It provides diverse daily sales records for individual items across different stores, enabling demand pattern analysis.
 
@@ -73,12 +73,12 @@ To ensure the data is prepared for accurate demand forecasting and that the mode
 
 This imputation process ensures minimal loss of data while maintaining the integrity of the time series.
 
-\textbf{Scaling and Normalization:} To improve model efficiency, numerical features, particularly sales data, are normalized. The Neural Prophet model offers various normalization options, with the default being the soft method. This approach scales the minimum value to 0.0 and the 95th quantile to 1.0, ensuring that the time series values are appropriately transformed for the model. 
+\textbf{Scaling and Normalization:} To improve model efficiency, numerical features, particularly sales data, are normalized. The Neural Prophet model offers various normalization options, with the default being the soft method. This approach scales the minimum value to 0.0 and the 95th quantile to 1.0, ensuring that the time series values are appropriately transformed for the model.
 
 The formula for soft normalization is as follows:
 
 \[
-x' = \frac{x - \min(x)}{Q_{95} - \min(x)}
+    x' = \frac{x - \min(x)}{Q_{95} - \min(x)}
 \]
 
 where \( Q_{95} \) represents the 95th quantile of the time series values.
@@ -88,13 +88,13 @@ where \( Q_{95} \) represents the 95th quantile of the time series values.
 \textbf{Lagged Sales Features:} Since past sales are directly predictive of future demand, lagged sales features are created for the last 7 and 30 days to capture both short-term and longer-term patterns. Additionally, rolling statistics such as the rolling mean and rolling standard deviation over the past 30 days are computed. These features smooth out fluctuations and help the model capture trends more accurately. The rolling mean is calculated as:
 
 \[
-\text{Rolling Mean}_{30} = \frac{1}{30} \sum_{i=t-30}^{t-1} \text{Sales}(i)
+    \text{Rolling Mean}_{30} = \frac{1}{30} \sum_{i=t-30}^{t-1} \text{Sales}(i)
 \]
 
 and the rolling standard deviation as:
 
 \[
-\text{Rolling Std}_{30} = \sqrt{\frac{1}{30} \sum_{i=t-30}^{t-1} (\text{Sales}(i) - \text{Rolling Mean}_{30})^2}
+    \text{Rolling Std}_{30} = \sqrt{\frac{1}{30} \sum_{i=t-30}^{t-1} (\text{Sales}(i) - \text{Rolling Mean}_{30})^2}
 \]
 
 
@@ -104,9 +104,9 @@ The result of these preprocessing steps is a clean, normalized dataset with impu
 
 \section{Feature Extraction}
 
-Feature extraction is a critical process in our Vendor Collaboration Platform as it transforms raw sales data into meaningful representations, enabling accurate demand forecasting and efficient operational management. By identifying and engineering relevant features from the dataset, we capture essential patterns, trends, and relationships that enhance the performance of predictive models.
+Feature extraction is a critical process in the ASTRO platform as it transforms raw sales data into meaningful representations, enabling accurate demand forecasting and efficient operational management. By identifying and engineering relevant features from the dataset, we capture essential patterns, trends, and relationships that enhance the performance of predictive models.
 
-In the context of our dataset, which contains store-level and item-level sales information over time, feature extraction is designed to uncover temporal patterns, historical dependencies, and interactions between stores and items. The extracted features are categorized into two major types: time-based features and lagged variables, both of which are integral to understanding and predicting demand fluctuations.
+In the context of the dataset, which contains store-level and item-level sales information over time, feature extraction is designed to uncover temporal patterns, historical dependencies, and interactions between stores and items. The extracted features are categorized into two major types: time-based features and lagged variables, both of which are integral to understanding and predicting demand fluctuations.
 
 \subsection{Time-Based Features}
 
@@ -127,11 +127,11 @@ A cumulative sales feature further extends this approach by summing all sales up
 Lagged variables are particularly effective in making the model aware of historical dependencies, enabling it to account for demand inertia, recent trends, and periodic changes.
 
 
-The combination of time-based features and lagged variables provides a comprehensive representation of the dataset, balancing temporal patterns with historical sales behavior. These features enable the demand forecasting models to detect and learn from intricate relationships within the data, ensuring robust predictions and informed decision-making for vendors. Through this customized feature extraction approach, our platform empowers small-scale vendors with insights that drive collaborative efficiency and competitiveness.
+The combination of time-based features and lagged variables provides a comprehensive representation of the dataset, balancing temporal patterns with historical sales behavior. These features enable the demand forecasting models to detect and learn from intricate relationships within the data, ensuring robust predictions and informed decision-making for vendors. Through this customized feature extraction approach, the platform empowers small-scale vendors with insights that drive collaborative efficiency and competitiveness.
 
 \section{Project Modules and Their Integration}
 
-Our Vendor Collaboration Platform comprises three core modules: Demand Forecasting, Order Aggregation, and Path Optimization. These modules work in harmony to streamline vendor operations, optimize costs, and enhance efficiency in the supply chain. By integrating these modules, the platform empowers vendors to achieve bulk order discounts, coordinate deliveries, and reduce logistics expenses, creating a collaborative ecosystem that benefits all participants.
+ASTRO platform comprises three core modules: Demand Forecasting, Order Aggregation, and Path Optimisation. These modules work in harmony to streamline vendor operations, optimize costs, and enhance efficiency in the supply chain. By integrating these modules, the platform empowers vendors to achieve bulk order discounts, coordinate deliveries, and reduce logistics expenses, creating a collaborative ecosystem that benefits all participants.
 
 \subsection{Demand Forecasting Module}
 
@@ -147,11 +147,11 @@ The aggregation process also categorizes and organizes the joint order to ensure
 
 Notifications play a key role in this module: vendors are informed about the opportunity to join an order and, once confirmed, receive updates about the order status and expected delivery timelines. The module ensures transparency and coordination among vendors, simplifying the process of collective purchasing.
 
-\subsection{Path Optimization Module}
+\subsection{Path Optimisation Module}
 
-The Path Optimization Module is responsible for ensuring efficient delivery of the aggregated orders. After the order is finalized and fulfilled by the supplier, this module uses Green Route Optimization algorithms to design an optimal delivery route.
+The Path Optimisation Module is responsible for ensuring efficient delivery of the aggregated orders. After the order is finalized and fulfilled by the supplier, this module uses Green Route Optimisation algorithms to design an optimal delivery route.
 
-Since the joint order often involves multiple vendors located in different areas, the path optimization module focuses on clustering delivery locations and minimizing logistics costs. The Path Flexibility and Service Time Window feature ensures that deliveries are scheduled efficiently while adhering to time constraints.
+Since the joint order often involves multiple vendors located in different areas, the path optimisation module focuses on clustering delivery locations and minimizing logistics costs. The Path Flexibility and Service Time Window feature ensures that deliveries are scheduled efficiently while adhering to time constraints.
 
 The module optimizes the route for a single vehicle tasked with delivering products to multiple vendors. Factors such as load capacity, distance between vendors, and delivery time windows are considered to achieve the most cost-effective and eco-friendly route. By reducing unnecessary travel and fuel consumption, this module contributes to both financial savings and environmental sustainability.
 
@@ -161,37 +161,37 @@ The three modules—demand forecasting, order aggregation, and path optimization
 
 \begin{itemize}
     \item \textbf{Demand Forecasting to Order Aggregation}: The demand forecasting module predicts when vendors are likely to need specific products. When a vendor places an order, the platform cross-references the forecast data to identify other vendors with overlapping demand cycles. Notifications are sent to these vendors, encouraging them to join the order and achieve bulk discounts.
-    \item \textbf{Order Aggregation to Path Optimization}: Once vendors confirm their participation, the order aggregation module compiles their requests into a single bulk order. The aggregated data, including vendor locations and product quantities, is passed to the path optimization module.
-    \item \textbf{Path Optimization for Delivery}: The path optimization module designs a delivery route to ensure that all vendors receive their products efficiently. The vehicle carrying the bulk order is routed through clustered vendor locations, minimizing travel distance and logistics costs.
+    \item \textbf{Order Aggregation to Path Optimisation}: Once vendors confirm their participation, the order aggregation module compiles their requests into a single bulk order. The aggregated data, including vendor locations and product quantities, is passed to the path optimisation module.
+    \item \textbf{Path Optimisation for Delivery}: The path optimisation module designs a delivery route to ensure that all vendors receive their products efficiently. The vehicle carrying the bulk order is routed through clustered vendor locations, minimizing travel distance and logistics costs.
 \end{itemize}
 
 
 
-The seamless integration of demand forecasting, order aggregation, and path optimization modules creates a powerful, collaborative platform that addresses the challenges faced by small-scale vendors. The demand forecasting module drives proactive order management, the order aggregation module facilitates cost-effective purchasing, and the path optimization module ensures efficient delivery. Together, these modules enable vendors to compete with large retail chains by reducing costs, improving operations, and fostering a cooperative ecosystem.
+The seamless integration of demand forecasting, order aggregation, and path optimisation modules creates a powerful, collaborative platform that addresses the challenges faced by small-scale vendors. The demand forecasting module drives proactive order management, the order aggregation module facilitates cost-effective purchasing, and the path optimisation module ensures efficient delivery. Together, these modules enable vendors to compete with large retail chains by reducing costs, improving operations, and fostering a cooperative ecosystem.
 
 
 
 
 \section{Demand Forecasting with Neural Prophet}
 
-In our Vendor Collaboration Platform, demand forecasting is essential for streamlining inventory management, optimizing order cycles, and enabling vendor collaboration. Using Neural Prophet, we forecast future sales for each store-item combination. This helps vendors make timely decisions about inventory and orders while facilitating joint purchasing to achieve bulk discounts. The model’s capability to handle trends and seasonality makes it ideal for predicting sales patterns critical to the platform’s success.
+ASTRO platform, demand forecasting is essential for streamlining inventory management, optimizing order cycles, and enabling vendor collaboration. Using Neural Prophet, we forecast future sales for each store-item combination. This helps vendors make timely decisions about inventory and orders while facilitating joint purchasing to achieve bulk discounts. The model’s capability to handle trends and seasonality makes it ideal for predicting sales patterns critical to the platform’s success.
 
 \subsection{Inputs for Neural Prophet}
 
-The forecasting process begins with preparing the data. The key inputs used in our project include:
+The forecasting process begins with preparing the data. The key inputs used in the project include:
 
 \begin{table}[h!]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Column Name} & \textbf{Description} & \textbf{Format} \\
-\hline
-\texttt{ds} & Date of sales & Datetime (\texttt{YYYY-MM-DD}) \\
-\hline
-\texttt{y} & Sales value for the given date & Numeric \\
-\hline
-\end{tabular}
-\caption{Key Inputs for Neural Prophet}
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Column Name} & \textbf{Description}           & \textbf{Format}                \\
+        \hline
+        \texttt{ds}          & Date of sales                  & Datetime (\texttt{YYYY-MM-DD}) \\
+        \hline
+        \texttt{y}           & Sales value for the given date & Numeric                        \\
+        \hline
+    \end{tabular}
+    \caption{Key Inputs for Neural Prophet}
 \end{table}
 
 The \texttt{ds} column represents the timeline for sales data, while \texttt{y} contains the actual number of items sold at a given store for a particular item. Both columns are preprocessed to ensure consistency. Missing sales values (\texttt{y}) are interpolated to maintain data continuity, and the \texttt{ds} column is checked for valid date formatting.
@@ -202,17 +202,17 @@ Neural Prophet decomposes the sales data into the following components to identi
 The NeuralProphet model consists of multiple modules, each contributing an additive component to the forecast. The forecasted value \( \hat{y}_t \) is the sum of the following components:
 
 \begin{equation}
-\hat{y}_t = T(t) + S(t) + E(t) + F(t) + A(t) + L(t)
+    \hat{y}_t = T(t) + S(t) + E(t) + F(t) + A(t) + L(t)
 \end{equation}
 
 Where:
 \begin{itemize}
-  \item \( T(t) \) = Trend at time \( t \): This captures long-term growth or decline in the sales data.
-  \item \( S(t) \) = Seasonal effects at time \( t \): This models recurring patterns in sales, such as seasonal peaks.
-  \item \( E(t) \) = Event and holiday effects at time \( t \): This component adjusts for external events or holidays that affect demand.
-  \item \( F(t) \) = Regression effects for future-known exogenous variables at time \( t \): This accounts for external factors, such as planned promotions or events, that are known in advance.
-  \item \( A(t) \) = Auto-regression effects based on past observations at time \( t \): This models the relationship between past sales data and current demand.
-  \item \( L(t) \) = Regression effects for lagged observations of exogenous variables at time \( t \): This captures the delayed impact of external variables on sales.
+    \item \( T(t) \) = Trend at time \( t \): This captures long-term growth or decline in the sales data.
+    \item \( S(t) \) = Seasonal effects at time \( t \): This models recurring patterns in sales, such as seasonal peaks.
+    \item \( E(t) \) = Event and holiday effects at time \( t \): This component adjusts for external events or holidays that affect demand.
+    \item \( F(t) \) = Regression effects for future-known exogenous variables at time \( t \): This accounts for external factors, such as planned promotions or events, that are known in advance.
+    \item \( A(t) \) = Auto-regression effects based on past observations at time \( t \): This models the relationship between past sales data and current demand.
+    \item \( L(t) \) = Regression effects for lagged observations of exogenous variables at time \( t \): This captures the delayed impact of external variables on sales.
 \end{itemize}
 
 Each component is modeled independently, and their outputs are summed to generate the final forecast \( \hat{y}_t \). The NeuralProphet framework is flexible, allowing each of these components to be switched on or off depending on the data and requirements of the project.
@@ -227,17 +227,17 @@ The model generates forecasts over a predefined time horizon, typically ranging 
 \end{itemize}
 
 \begin{table}[h!]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Date (ds)} & \textbf{Predicted Sales (yhat1)} & \textbf{Smoothed Sales (yhat1\_trend)} \\
-\hline
-2024-12-01 & 100 & 98 \\
-2024-12-02 & 105 & 99 \\
-2024-12-03 & 110 & 101 \\
-\hline
-\end{tabular}
-\caption{Example of Forecasted Sales and Smoothed Trend}
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Date (ds)} & \textbf{Predicted Sales (yhat1)} & \textbf{Smoothed Sales (yhat1\_trend)} \\
+        \hline
+        2024-12-01         & 100                              & 98                                     \\
+        2024-12-02         & 105                              & 99                                     \\
+        2024-12-03         & 110                              & 101                                    \\
+        \hline
+    \end{tabular}
+    \caption{Example of Forecasted Sales and Smoothed Trend}
 \end{table}
 
 \subsection{Integration with Platform Workflow}
@@ -247,14 +247,14 @@ The demand forecasting module integrates seamlessly with other parts of the plat
 \begin{itemize}
     \item \textbf{Inventory Management}: Forecasted sales help vendors prepare for upcoming demand, ensuring stock levels are optimized.
     \item \textbf{Order Aggregation}: Predictions trigger notifications to vendors nearing their replenishment cycle. These notifications encourage vendors to place joint orders, maximizing cost savings.
-    \item \textbf{Logistics Optimization}: Predicted delivery schedules align with logistics planning, enabling route optimization and efficient load distribution.
+    \item \textbf{Logistics Optimisation}: Predicted delivery schedules align with logistics planning, enabling route optimisation and efficient load distribution.
 \end{itemize}
 
-By integrating Neural Prophet’s forecasts into our platform, vendors can proactively manage inventory, coordinate joint purchases, and reduce costs. The model’s ability to deliver actionable insights ensures the platform’s operational efficiency and supports the growth of small-scale vendors.
+By integrating Neural Prophet’s forecasts into the platform, vendors can proactively manage inventory, coordinate joint purchases, and reduce costs. The model’s ability to deliver actionable insights ensures the platform’s operational efficiency and supports the growth of small-scale vendors.
 
 \section{Order Aggregation Using Genetic Algorithm}
 
-Order aggregation is a crucial module in our platform, enabling small-scale vendors to achieve bulk discounts by combining their orders with others. This process ensures that the Minimum Order Quantities (MOQ) required by suppliers are met, leading to cost savings and operational efficiency. The Genetic Algorithm (GA) is employed to optimize the selection of vendors for aggregation, ensuring that the combined order meets the MOQ while considering constraints like geographical proximity, order compatibility, and delivery logistics.
+Order aggregation is a crucial module in the platform, enabling small-scale vendors to achieve bulk discounts by combining their orders with others. This process ensures that the Minimum Order Quantities (MOQ) required by suppliers are met, leading to cost savings and operational efficiency. The Genetic Algorithm (GA) is employed to optimize the selection of vendors for aggregation, ensuring that the combined order meets the MOQ while considering constraints like geographical proximity, order compatibility, and delivery logistics.
 
 \subsection{How the Process Works}
 
@@ -264,29 +264,29 @@ The Genetic Algorithm simulates the process of natural selection to arrive at th
 
 \begin{enumerate}
     \item \textbf{Initialization}: A population of potential vendor groupings (chromosomes) is generated. Each chromosome represents a subset of vendors, encoded as binary strings, where `1` indicates inclusion and `0` exclusion from the group. For example:
-    
-    \[
-    \text{Chromosome } 1010: \text{Vendor 1 and Vendor 3 are included, while Vendor 2 and Vendor 4 are excluded.}
-    \]
-    
+          \[
+              \text{Chromosome } 1010: \begin{array}{l}
+                  \text{Vendor 1 and Vendor 3 are included,} \\
+                  \text{while Vendor 2 and Vendor 4 are excluded.}
+              \end{array}
+          \]
     \item \textbf{Fitness Evaluation}: The fitness of each chromosome is calculated based on its ability to meet the MOQ and minimize associated costs. The fitness function \(F\) can be expressed as:
-    
-    \[
-    F = \text{Revenue from bulk discounts} - \left( \text{Logistics cost} + \text{Order deviation penalty} \right)
-    \]
+          \[
+              F = \text{Revenue from bulk discounts} - \left( \text{Logistics cost} + \text{Order deviation penalty} \right)
+          \]
 
-    \begin{itemize}
-        \item \textbf{Revenue from bulk discounts}: Rewards solutions that exceed the MOQ.
-        \item \textbf{Logistics cost}: Penalizes solutions with high transportation expenses.
-        \item \textbf{Order deviation penalty}: Accounts for significant mismatches in vendor order requirements.
-    \end{itemize}
-    
+          \begin{itemize}
+              \item \textbf{Revenue from bulk discounts}: Rewards solutions that exceed the MOQ.
+              \item \textbf{Logistics cost}: Penalizes solutions with high transportation expenses.
+              \item \textbf{Order deviation penalty}: Accounts for significant mismatches in vendor order requirements.
+          \end{itemize}
+
     \item \textbf{Selection}: Chromosomes with higher fitness are selected for reproduction. Techniques like tournament selection or roulette wheel selection are used to ensure diversity while favoring fitter solutions.
-    
+
     \item \textbf{Crossover}: Selected chromosomes undergo crossover, where segments of two parent chromosomes are swapped to produce offspring. This operation introduces new combinations of vendors and explores alternative aggregation solutions.
-    
+
     \item \textbf{Mutation}: Random changes are introduced in some offspring to prevent premature convergence and explore less obvious solutions. For instance, flipping a bit in the chromosome (e.g., 1010 becomes 1110) can add or remove a vendor.
-    
+
     \item \textbf{Termination}: The algorithm iterates through several generations, refining the population until an optimal or near-optimal solution is found. Termination occurs when a predefined number of generations is reached or when the fitness stabilizes.
 \end{enumerate}
 
@@ -300,37 +300,37 @@ The output of the Genetic Algorithm is the optimal subset of vendors to particip
 \end{itemize}
 
 \begin{table}[h!]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Vendor} & \textbf{Order Quantity} & \textbf{Selected (1/0)} \\
-\hline
-Vendor A & 50 & 1 \\
-Vendor B & 30 & 1 \\
-Vendor C & 10 & 0 \\
-Vendor D & 20 & 1 \\
-\hline
-\end{tabular}
-\caption{Example of Vendor Selection in Order Aggregation}
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Vendor} & \textbf{Order Quantity} & \textbf{Selected (1/0)} \\
+        \hline
+        Vendor A        & 50                      & 1                       \\
+        Vendor B        & 30                      & 1                       \\
+        Vendor C        & 10                      & 0                       \\
+        Vendor D        & 20                      & 1                       \\
+        \hline
+    \end{tabular}
+    \caption{Example of Vendor Selection in Order Aggregation}
 \end{table}
 
 In this example, Vendors A, B, and D are selected, contributing a total order of 100 units, meeting the MOQ.
 
 \subsection{Integration with the Platform}
 
-Once the optimal vendor subset is determined, the platform finalizes the bulk order and notifies all participating vendors. The order details are then passed to the logistics module for route optimization and delivery scheduling, ensuring seamless fulfillment. By leveraging the Genetic Algorithm, our platform provides an efficient, scalable, and automated solution for order aggregation, empowering vendors to compete effectively with larger retailers.
+Once the optimal vendor subset is determined, the platform finalizes the bulk order and notifies all participating vendors. The order details are then passed to the logistics module for route optimisation and delivery scheduling, ensuring seamless fulfillment. By leveraging the Genetic Algorithm, the platform provides an efficient, scalable, and automated solution for order aggregation, empowering vendors to compete effectively with larger retailers.
 
-\section{Logistics Using Green Route Optimization Algorithm}
+\section{Logistics Using Green Route Optimisation Algorithm}
 
-Logistics optimization is a key component of our platform, ensuring efficient delivery of aggregated orders to vendors while minimizing transportation costs and environmental impact. In our project, we employ the Green Route Optimization Algorithm, tailored to optimize the route for a single delivery vehicle. This algorithm determines the most efficient path to deliver products to different vendors included in an aggregated order, focusing on reducing fuel consumption, delivery time, and carbon emissions.
+Logistics optimisation is a key component of platform, ensuring efficient delivery of aggregated orders to vendors while minimizing transportation costs and environmental impact. In the project, we employ the Green Route Optimisation Algorithm, tailored to optimize the route for a single delivery vehicle. This algorithm determines the most efficient path to deliver products to different vendors included in an aggregated order, focusing on reducing fuel consumption, delivery time, and carbon emissions.
 
-\subsection{How Logistics Optimization Works}
+\subsection{How Logistics Optimisation Works}
 
 Once the order aggregation process is complete, the platform identifies the vendors participating in the bulk order and their respective delivery locations. The challenge is to determine the optimal route for a single delivery vehicle to service all vendors while adhering to constraints such as delivery time windows, vehicle capacity, and geographic proximity.
 
-The Green Route Optimization Algorithm is designed to achieve this by incorporating concepts of path flexibility and environmental considerations. Here's how it works:
+The Green Route Optimisation Algorithm is designed to achieve this by incorporating concepts of path flexibility and environmental considerations. Here's how it works:
 
-\textbf{Input Data:}  
+\textbf{Input Data:}
 The algorithm takes the following inputs:
 \begin{itemize}
     \item Vendor locations (latitude and longitude).
@@ -339,18 +339,18 @@ The algorithm takes the following inputs:
     \item Vehicle starting point (typically the supplier's location).
 \end{itemize}
 
-\textbf{Route Representation:}  
+\textbf{Route Representation:}
 The delivery route is represented as a sequence of vendor locations, starting and ending at the supplier's location. For example:
 
 \[
-\text{Route: Supplier} \rightarrow \text{Vendor A} \rightarrow \text{Vendor B} \rightarrow \text{Vendor C} \rightarrow \text{Supplier}
+    \text{Route: Supplier} \rightarrow \text{Vendor A} \rightarrow \text{Vendor B} \rightarrow \text{Vendor C} \rightarrow \text{Supplier}
 \]
 
-\textbf{Objective Function:}  
-The objective is to minimize the total distance traveled by the vehicle while considering additional factors like delivery priority and environmental impact. The optimization function is:
+\textbf{Objective Function:}
+The objective is to minimize the total distance traveled by the vehicle while considering additional factors like delivery priority and environmental impact. The optimisation function is:
 
 \[
-\text{Minimize: } C = \sum_{i=1}^{n-1} d(p_i, p_{i+1}) + \alpha \cdot e(p_i, p_{i+1})
+    \text{Minimize: } C = \sum_{i=1}^{n-1} d(p_i, p_{i+1}) + \alpha \cdot e(p_i, p_{i+1})
 \]
 
 Where:
@@ -360,26 +360,26 @@ Where:
     \item \(\alpha\): Weighting factor for environmental impact.
 \end{itemize}
 
-\textbf{Optimization Process:}
+\textbf{Optimisation Process:}
 \begin{itemize}
     \item The algorithm evaluates various route permutations using heuristic techniques like the Travelling Salesman Problem (TSP) approach combined with green routing principles.
     \item It calculates the cost for each route and iteratively refines it to find the most efficient path.
     \item Constraints like vehicle load capacity and vendor service time windows are enforced to ensure feasibility.
 \end{itemize}
 
-\textbf{Output:}  
+\textbf{Output:}
 The algorithm provides the optimized delivery route, detailing the order in which vendors should be serviced. For example:
 
 \[
-\text{Optimized Route: Supplier} \rightarrow \text{Vendor D} \rightarrow \text{Vendor A} \rightarrow \text{Vendor C} \rightarrow \text{Supplier}
+    \text{Optimized Route: Supplier} \rightarrow \text{Vendor D} \rightarrow \text{Vendor A} \rightarrow \text{Vendor C} \rightarrow \text{Supplier}
 \]
 
-\subsection{Why Green Route Optimization Algorithm is Used}
+\subsection{Why Green Route Optimisation Algorithm is Used}
 
-The Green Route Optimization Algorithm is specifically chosen for our project because it aligns with the platform's goals of cost efficiency, environmental sustainability, and scalability. Key reasons for its selection include:
+The Green Route Optimisation Algorithm is specifically chosen for the project because it aligns with the platform's goals of cost efficiency, environmental sustainability, and scalability. Key reasons for its selection include:
 
 \begin{itemize}
-    \item \textbf{Single Vehicle Focus:} Unlike fleet-based algorithms, it is optimized for scenarios where only one vehicle is used for deliveries, making it ideal for our project.
+    \item \textbf{Single Vehicle Focus:} Unlike fleet-based algorithms, it is optimized for scenarios where only one vehicle is used for deliveries, making it ideal for the project.
     \item \textbf{Environmental Considerations:} By factoring in emission costs, the algorithm promotes eco-friendly logistics, reducing the carbon footprint of deliveries.
     \item \textbf{Flexibility with Constraints:} It handles dynamic vendor locations, varying delivery quantities, and service time windows, ensuring practical applicability.
     \item \textbf{Efficiency and Cost Savings:} By minimizing the total distance traveled, the algorithm reduces fuel consumption and operational costs.
@@ -387,7 +387,7 @@ The Green Route Optimization Algorithm is specifically chosen for our project be
 
 \subsection{Integration with the Platform}
 
-After the aggregated order is finalized, the vendor delivery details are fed into the logistics module. The Green Route Optimization Algorithm computes the optimal delivery path and provides the route to the delivery driver. The platform ensures that real-time updates, such as traffic conditions or vendor availability changes, are seamlessly integrated into the routing process if necessary.
+After the aggregated order is finalized, the vendor delivery details are fed into the logistics module. The Green Route Optimisation Algorithm computes the optimal delivery path and provides the route to the delivery driver. The platform ensures that real-time updates, such as traffic conditions or vendor availability changes, are seamlessly integrated into the routing process if necessary.
 
 This integration ensures timely and efficient delivery of products, enhancing vendor satisfaction while supporting the platform's commitment to sustainability and cost-effective operations.
 
@@ -397,7 +397,7 @@ The System Integration and Notifications module unifies all components in the pl
 
 \subsection{System Integration}
 
-System integration connects each component in the platform, enabling a smooth exchange of information necessary for coordinated operations. This integration links the demand forecasting, order aggregation, and logistics optimization modules, ensuring that all components work in harmony. Key integration processes include:
+System integration connects each component in the platform, enabling a smooth exchange of information necessary for coordinated operations. This integration links the demand forecasting, order aggregation, and logistics optimisation modules, ensuring that all components work in harmony. Key integration processes include:
 
 \begin{itemize}
     \item \textbf{Data Pipeline Management}: The platform manages a centralized data pipeline, which allows information such as sales forecasts, order details, and logistics schedules to flow seamlessly. Data from the forecasting model directly informs order aggregation, which in turn updates logistics routing.
@@ -418,15 +418,15 @@ The Notifications feature is integral to user engagement, keeping vendors update
 Notifications are configured to reach users through multiple channels, such as in-app alerts, emails, and SMS, allowing vendors to remain updated even when away from the platform.
 
 \begin{table}[H]
-\centering
-\caption{Notification Types and Triggers}
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Notification Type} & \textbf{Trigger Event} & \textbf{Delivery Channel} \\ \hline
-Order Status Update & Order Confirmation, Shipment Dispatch & In-App, Email \\ \hline
-Inventory Level Alert & Low Stock Threshold Reached & In-App, SMS \\ \hline
-Delivery Schedule & Route Finalized, Estimated Delivery Time & In-App, Email \\ \hline
-\end{tabular}
+    \centering
+    \caption{Notification Types and Triggers}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Notification Type} & \textbf{Trigger Event}                   & \textbf{Delivery Channel} \\ \hline
+        Order Status Update        & Order Confirmation, Shipment Dispatch    & In-App, Email             \\ \hline
+        Inventory Level Alert      & Low Stock Threshold Reached              & In-App, SMS               \\ \hline
+        Delivery Schedule          & Route Finalized, Estimated Delivery Time & In-App, Email             \\ \hline
+    \end{tabular}
 \end{table}
 
 

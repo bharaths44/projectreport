@@ -34,7 +34,7 @@ An activity diagram is a type of UML (Unified Modeling Language) diagram that vi
               \item \textbf{Add Minimum Order Quantity:} Suppliers set a minimum order quantity for each product, preventing inefficient processing of very small orders.
               \item \textbf{View Orders Placed by Vendors:} Suppliers can view pending orders from vendors, preparing them for order fulfillment.
               \item \textbf{Confirm Vendor Orders:} Suppliers review and confirm vendor orders, moving them to the fulfillment phase.
-              \item \textbf{Route Optimization for Delivery:} The supplier optimizes delivery routes to reduce logistics costs and ensure timely product delivery.
+              \item \textbf{Route Optimisation for Delivery:} The supplier optimizes delivery routes to reduce logistics costs and ensure timely product delivery.
           \end{enumerate}
 
     \item \textbf{Vendor Activities}
@@ -77,7 +77,7 @@ Here’s how activity diagrams can be specifically helpful in this context:
     \item Enhanced Clarity of Process Flow: The diagram visually represents the process, making it easier for stakeholders to understand each role's responsibilities and interactions. By defining the steps each role follows, the diagram ensures that all parties (Suppliers, Vendors, and Admins) understand their tasks and when each task needs to be completed.
     \item Identification of Key Decision Points: The activity diagram highlights critical decision points, such as the quantity check for minimum orders. This helps in identifying points where conditional logic and alternative flows come into play, ensuring that the system can handle various scenarios efficiently. For example, if the order quantity is insufficient, the system automatically checks for joint orders, thus streamlining the process without manual intervention.
     \item Improved Coordination Between Roles: By detailing the interactions between suppliers, vendors, and admins, the diagram promotes better coordination. Vendors can initiate joint orders when quantities are low, and suppliers can confirm orders and optimize delivery routes accordingly. This collaboration ensures that orders are fulfilled more efficiently and that each role's activities are synchronized.
-    \item Guidance for System Design and Development: For developers, the activity diagram serves as a blueprint for creating system modules. Each activity can be mapped to specific features in the system, like order confirmation, joint order aggregation, route optimization, and demand forecasting using the Neural Prophet model. This structured approach helps in modular and organized system development, making the codebase easier to manage and maintain.
+    \item Guidance for System Design and Development: For developers, the activity diagram serves as a blueprint for creating system modules. Each activity can be mapped to specific features in the system, like order confirmation, joint order aggregation, route optimisation, and demand forecasting using the Neural Prophet model. This structured approach helps in modular and organized system development, making the codebase easier to manage and maintain.
 \end{itemize}
 \section{Sequence Diagram}
 
@@ -108,7 +108,7 @@ A sequence diagram is a type of UML (Unified Modeling Language) diagram that ill
     \caption{Sequence Diagram}
     \label{fig:sequence-diagram}
 \end{figure}
-\noindent Figure 4.2 illustrates the sequence of interactions between the key entities and components of the ASTRO Platform. This diagram provides a step-by-step view of how the system processes an order from initiation to delivery. It shows the flow of messages and the order in which they are exchanged, highlighting the interactions between the Supplier, Vendor, Admin, Order Aggregation System (OAS), Neural Prophet Model, and Logistics Optimization.
+\noindent Figure 4.2 illustrates the sequence of interactions between the key entities and components of the ASTRO Platform. This diagram provides a step-by-step view of how the system processes an order from initiation to delivery. It shows the flow of messages and the order in which they are exchanged, highlighting the interactions between the Supplier, Vendor, Admin, Order Aggregation System (OAS), Neural Prophet Model, and Logistics Optimisation.
 \subsection{Key Entities and Components}
 \begin{itemize}
     \item \textbf{Supplier:} Manages product inventory and fulfills confirmed orders.
@@ -116,7 +116,7 @@ A sequence diagram is a type of UML (Unified Modeling Language) diagram that ill
     \item \textbf{Admin:} Monitors the overall process, analyzes model performance, and reviews logistics planning.
     \item \textbf{Order Aggregation System (OAS):} Core system component that manages the flow of order requests, checks conditions, and coordinates with other components.
     \item \textbf{Neural Prophet Model:} A demand forecasting model that helps in predicting demand and evaluating whether joint orders would be beneficial.
-    \item \textbf{Logistics Optimization:} Component responsible for optimizing delivery routes and managing the final logistics.
+    \item \textbf{Logistics Optimisation:} Component responsible for optimizing delivery routes and managing the final logistics.
 \end{itemize}
 \subsection{Sequence of Interactions}
 
@@ -138,7 +138,7 @@ A sequence diagram is a type of UML (Unified Modeling Language) diagram that ill
                     \end{enumerate}
           \end{itemize}
     \item \textbf{Order Processing and Final Confirmation:} For both joint and individual orders, the system notifies vendors of the final confirmation, bill, and delivery date.
-    \item \textbf{Optimize Routes for Delivery:} The Logistics Optimization component optimizes delivery routes based on the confirmed orders, minimizing delivery time and cost by consolidating deliveries where possible.
+    \item \textbf{Optimize Routes for Delivery:} The Logistics Optimisation component optimizes delivery routes based on the confirmed orders, minimizing delivery time and cost by consolidating deliveries where possible.
     \item \textbf{Admin Activities:} The Admin monitors system processes and performance. Admin also reviews and analyzes the accuracy of Neural Prophet Model forecasts and evaluates system functionality, using insights to make improvements to the process.
 \end{enumerate}
 \section{Class Diagram}
