@@ -155,7 +155,7 @@ Since the joint order often involves multiple vendors located in different areas
 
 The module optimizes the route for a single vehicle tasked with delivering products to multiple vendors. Factors such as load capacity, distance between vendors, and delivery time windows are considered to achieve the most cost-effective and eco-friendly route. By reducing unnecessary travel and fuel consumption, this module contributes to both financial savings and environmental sustainability.
 
-\subsection{How the Modules Work Together}
+\subsection{Integration of Modules}
 
 The three modules—demand forecasting, order aggregation, and path optimization—work together in a seamless, integrated manner to ensure efficient operations:
 
@@ -256,7 +256,7 @@ By integrating Neural Prophet’s forecasts into the platform, vendors can proac
 
 Order aggregation is a crucial module in the platform, enabling small-scale vendors to achieve bulk discounts by combining their orders with others. This process ensures that the Minimum Order Quantities (MOQ) required by suppliers are met, leading to cost savings and operational efficiency. The Genetic Algorithm (GA) is employed to optimize the selection of vendors for aggregation, ensuring that the combined order meets the MOQ while considering constraints like geographical proximity, order compatibility, and delivery logistics.
 
-\subsection{How the Process Works}
+\subsection{Process Workflow}
 
 When a vendor initiates an order for a product from a supplier, the platform identifies other vendors who might need the same product. Notifications are sent to these vendors, inviting them to join the order. The challenge lies in selecting the optimal subset of vendors whose combined orders meet or exceed the MOQ while minimizing costs like logistics and delivery time.
 
@@ -324,7 +324,7 @@ Once the optimal vendor subset is determined, the platform finalizes the bulk or
 
 Logistics optimisation is a key component of platform, ensuring efficient delivery of aggregated orders to vendors while minimizing transportation costs and environmental impact. In the project, we employ the Green Route Optimisation Algorithm, tailored to optimize the route for a single delivery vehicle. This algorithm determines the most efficient path to deliver products to different vendors included in an aggregated order, focusing on reducing fuel consumption, delivery time, and carbon emissions.
 
-\subsection{How Logistics Optimisation Works}
+\subsection{Mechanics of Logistics Optimisation}
 
 Once the order aggregation process is complete, the platform identifies the vendors participating in the bulk order and their respective delivery locations. The challenge is to determine the optimal route for a single delivery vehicle to service all vendors while adhering to constraints such as delivery time windows, vehicle capacity, and geographic proximity.
 
@@ -374,7 +374,7 @@ The algorithm provides the optimized delivery route, detailing the order in whic
     \text{Optimized Route: Supplier} \rightarrow \text{Vendor D} \rightarrow \text{Vendor A} \rightarrow \text{Vendor C} \rightarrow \text{Supplier}
 \]
 
-\subsection{Why Green Route Optimisation Algorithm is Used}
+\subsection{Advantages of Using Green Route Optimization Algorithms}
 
 The Green Route Optimisation Algorithm is specifically chosen for the project because it aligns with the platform's goals of cost efficiency, environmental sustainability, and scalability. Key reasons for its selection include:
 
