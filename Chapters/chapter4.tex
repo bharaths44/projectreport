@@ -1,11 +1,11 @@
-\chapter{DESIGN AND MODELING}
+\chapter{DESIGN AND MODELLING}
 
-Design and modeling are essential phases in the software development lifecycle, playing a
-crucial role in the creation of effective and wellstructured systems. These phases involve
+Design and modelling are essential phases in the software development lifecycle, playing a
+crucial role in the creation of effective and well-structured systems. These phases involve
 the conceptualization, planning, and representation of a software solution before its actual
 implementation.
 \section{Activity Diagram}
-An activity diagram is a type of UML (Unified Modeling Language) diagram that visually represents the flow of activities in a system or business process. It is commonly used in software development to illustrate the dynamic aspects of a system and describe how different activities or tasks interact with each other. Activity diagrams are particularly useful for modeling the workflow within a system and for understanding the sequence of actions that take place.
+An activity diagram is a type of UML (Unified Modelling Language) diagram that visually represents the flow of activities in a system or business process. It is commonly used in software development to illustrate the dynamic aspects of a system and describe how different activities or tasks interact with each other. Activity diagrams are particularly useful for modelling the workflow within a system and for understanding the sequence of actions that take place.
 
 \subsection{Key elements of Activity Diagrams}
 \begin{itemize}
@@ -30,17 +30,17 @@ An activity diagram is a type of UML (Unified Modeling Language) diagram that vi
     \item \textbf{Supplier Activities}
           \begin{enumerate}
               \item \textbf{Login to System:} The supplier logs into the system to access functionalities for managing products and tracking orders.
-              \item \textbf{Manage Products (Add/Update Items):} Suppliers add or update product listings to ensure the catalog is up-to-date and accurate.
+              \item \textbf{Manage Products (Add/Update Items):} Suppliers add or update product listings to ensure the catalogue is up-to-date and accurate.
               \item \textbf{Add Minimum Order Quantity:} Suppliers set a minimum order quantity for each product, preventing inefficient processing of very small orders.
-              \item \textbf{View Orders Placed by Vendors:} Suppliers can view pending orders from vendors, preparing them for order fulfillment.
-              \item \textbf{Confirm Vendor Orders:} Suppliers review and confirm vendor orders, moving them to the fulfillment phase.
+              \item \textbf{View Orders Placed by Vendors:} Suppliers can view pending orders from vendors, preparing them for order fulfilment.
+              \item \textbf{Confirm Vendor Orders:} Suppliers review and confirm vendor orders, moving them to the fulfilment phase.
               \item \textbf{Route Optimisation for Delivery:} The supplier optimizes delivery routes to reduce logistics costs and ensure timely product delivery.
           \end{enumerate}
 
     \item \textbf{Vendor Activities}
           \begin{enumerate}
-              \item \textbf{Log into System:} Vendors start by logging into the system to access the product catalog and ordering functionalities.
-              \item \textbf{Select Vendor and Choose Items from Catalog:} Vendors select suppliers to order from, browsing the catalog to choose items.
+              \item \textbf{Log into System:} Vendors start by logging into the system to access the product catalogue and ordering functionalities.
+              \item \textbf{Select Vendor and Choose Items from Catalogue:} Vendors select suppliers to order from, browsing the catalogue to choose items.
               \item \textbf{Enter Quantity:} Vendors input desired quantities for each item, triggering a check against the minimum order quantity.
               \item \textbf{Quantity Check (Yes/No):}
                     \begin{itemize}
@@ -64,9 +64,9 @@ An activity diagram is a type of UML (Unified Modeling Language) diagram that vi
 
     \item \textbf{Admin Activities}
           \begin{enumerate}
-              \item \textbf{Log into System:} The admin logs into the system to monitor and analyze overall processes.
+              \item \textbf{Log into System:} The admin logs into the system to monitor and analyse overall processes.
               \item \textbf{Monitor Number of Orders:} Admin tracks order volumes, gaining insights into demand trends and operational load.
-              \item \textbf{Analyze Prophet Models:} Admin reviews the performance of demand forecasting models, such as Neural Prophet, to ensure accurate predictions and make adjustments if necessary.
+              \item \textbf{Analyse Prophet Models:} Admin reviews the performance of demand forecasting models, such as Neural Prophet, to ensure accurate predictions and make adjustments if necessary.
               \item \textbf{View System's Overall Process:} Admin has a top-down view of system activities to ensure smooth operations and identify areas for improvement.
           \end{enumerate}
 \end{enumerate}
@@ -81,7 +81,7 @@ Here’s how activity diagrams can be specifically helpful in this context:
 \end{itemize}
 \section{Sequence Diagram}
 
-A sequence diagram is a type of UML (Unified Modeling Language) diagram that illustrates the interactions between different components or actors in a system over time. It presents a chronological sequence of messages or actions between the various entities, providing a visual representation of the dynamic behavior of the system.
+A sequence diagram is a type of UML (Unified Modelling Language) diagram that illustrates the interactions between different components or actors in a system over time. It presents a chronological sequence of messages or actions between the various entities, providing a visual representation of the dynamic behaviour of the system.
 \subsection{Key elements of Sequence Diagrams}
 
 \begin{itemize}
@@ -94,7 +94,7 @@ A sequence diagram is a type of UML (Unified Modeling Language) diagram that ill
 \end{itemize}
 \subsection{Purpose of Sequence Diagrams}
 \begin{itemize}
-    \item {Understanding System Behavior:} Sequence diagrams help in understanding how different components or actors in a system interact with each other over time, depicting the flow of control and communication.
+    \item {Understanding System Behaviour:} Sequence diagrams help in understanding how different components or actors in a system interact with each other over time, depicting the flow of control and communication.
     \item {Communication:} They serve as a communication tool among stakeholders, including developers, designers, and project managers, by offering a clear and visual representation of system interactions.
     \item {Design and Analysis:} Sequence diagrams aid in the design and analysis phases of software development, helping to identify potential issues in the system’s logic or communication flow.
     \item {Visualizing the Workflow:} It provides a clear and concise overview of the different steps involved in the Alzheimer’s disease detection process.
@@ -111,9 +111,9 @@ A sequence diagram is a type of UML (Unified Modeling Language) diagram that ill
 \noindent Figure 4.2 illustrates the sequence of interactions between the key entities and components of the ASTRO Platform. This diagram provides a step-by-step view of how the system processes an order from initiation to delivery. It shows the flow of messages and the order in which they are exchanged, highlighting the interactions between the Supplier, Vendor, Admin, Order Aggregation System (OAS), Neural Prophet Model, and Logistics Optimisation.
 \subsection{Key Entities and Components}
 \begin{itemize}
-    \item \textbf{Supplier:} Manages product inventory and fulfills confirmed orders.
+    \item \textbf{Supplier:} Manages product inventory and fulfils confirmed orders.
     \item \textbf{Vendor:} Places orders for products based on the demand forecast and minimum order requirements.
-    \item \textbf{Admin:} Monitors the overall process, analyzes model performance, and reviews logistics planning.
+    \item \textbf{Admin:} Monitors the overall process, analyses model performance, and reviews logistics planning.
     \item \textbf{Order Aggregation System (OAS):} Core system component that manages the flow of order requests, checks conditions, and coordinates with other components.
     \item \textbf{Neural Prophet Model:} A demand forecasting model that helps in predicting demand and evaluating whether joint orders would be beneficial.
     \item \textbf{Logistics Optimisation:} Component responsible for optimizing delivery routes and managing the final logistics.
@@ -121,8 +121,8 @@ A sequence diagram is a type of UML (Unified Modeling Language) diagram that ill
 \subsection{Sequence of Interactions}
 
 \begin{enumerate}
-    \item \textbf{Login to System:} The Vendor initiates the sequence by logging into the system to access the product catalog, choose items, and place orders.
-    \item \textbf{Select Supplier and Choose Items from Catalog:} The Vendor selects a supplier and items from the catalog, specifying the order quantity.
+    \item \textbf{Login to System:} The Vendor initiates the sequence by logging into the system to access the product catalogue, choose items, and place orders.
+    \item \textbf{Select Supplier and Choose Items from Catalogue:} The Vendor selects a supplier and items from the catalogue, specifying the order quantity.
     \item \textbf{Order Quantity Check:} The Order Aggregation System (OAS) checks whether the order quantity meets the minimum order requirement.
           \begin{itemize}
               \item \textbf{If Order Quantity Meets Minimum Requirement:} The order is processed as a standard, individual order. The vendor confirms the order, and it proceeds to the delivery logistics phase.
@@ -139,7 +139,7 @@ A sequence diagram is a type of UML (Unified Modeling Language) diagram that ill
           \end{itemize}
     \item \textbf{Order Processing and Final Confirmation:} For both joint and individual orders, the system notifies vendors of the final confirmation, bill, and delivery date.
     \item \textbf{Optimize Routes for Delivery:} The Logistics Optimisation component optimizes delivery routes based on the confirmed orders, minimizing delivery time and cost by consolidating deliveries where possible.
-    \item \textbf{Admin Activities:} The Admin monitors system processes and performance. Admin also reviews and analyzes the accuracy of Neural Prophet Model forecasts and evaluates system functionality, using insights to make improvements to the process.
+    \item \textbf{Admin Activities:} The Admin monitors system processes and performance. Admin also reviews and analyses the accuracy of Neural Prophet Model forecasts and evaluates system functionality, using insights to make improvements to the process.
 \end{enumerate}
 \section{Class Diagram}
 
@@ -218,7 +218,7 @@ Where You Might Encounter Them
     \item \textbf{Documentation:} They are often included in technical documentation to provide a clear overview of the system’s structure.
 \end{itemize}
 \section{Use Case Diagram}
-In the Unified Modeling Language (UML), a Use Case Diagram is a sort of behavioral diagram that depicts the interactions between various actors (users or external systems) and a system that is being studied. It offers a high-level perspective on how different entities use the features or functionalities of a system. A use case diagram’s main objective is to represent and illustrate the various ways users engage with a system and the results they receive.
+In the Unified Modelling Language (UML), a Use Case Diagram is a sort of behavioural diagram that depicts the interactions between various actors (users or external systems) and a system that is being studied. It offers a high-level perspective on how different entities use the features or functionalities of a system. A use case diagram’s main objective is to represent and illustrate the various ways users engage with a system and the results they receive.
 \subsection{Key Elements of Use Case Diagrams}
 
 \begin{itemize}
@@ -230,9 +230,9 @@ In the Unified Modeling Language (UML), a Use Case Diagram is a sort of behavior
 
     \item \textbf{Association:} Associations are shown as lines joining actors to use cases. These lines show that an actor participates in or communicates with a certain use case. Associations serve as a channel of communication between the use case and the actor.
 
-    \item \textbf{Include Relationship:} An include relationship shows that one use case incorporates the functionality of another use case. It is represented by a dashed arrow. It suggests that the behavior of the base use case includes the added use case.
+    \item \textbf{Include Relationship:} An include relationship shows that one use case incorporates the functionality of another use case. It is represented by a dashed arrow. It suggests that the behaviour of the base use case includes the added use case.
 
-    \item \textbf{Extend Relationship:} An extended connection shows that, under certain circumstances, one use case can extend the behavior of another use case. It is represented by a dashed arrow with an open arrowhead. It suggests that the expanding use case is called upon under particular circumstances and is optional.
+    \item \textbf{Extend Relationship:} An extended connection shows that, under certain circumstances, one use case can extend the behaviour of another use case. It is represented by a dashed arrow with an open arrowhead. It suggests that the expanding use case is called upon under particular circumstances and is optional.
 
 \end{itemize}
 Some use cases might not include interactions with a particular actor; instead, they might represent system-wide operations or processes. We call these use cases for the system.
@@ -301,7 +301,7 @@ Use Case Diagrams are valuable tools for:
 
     \item \textbf{Order Tracking:}
           \begin{itemize}
-              \item Both Suppliers and Vendors can track the status of their orders through the system, giving them visibility into order fulfillment stages.
+              \item Both Suppliers and Vendors can track the status of their orders through the system, giving them visibility into order fulfilment stages.
           \end{itemize}
 
     \item \textbf{Update Inventory:}
@@ -334,6 +334,6 @@ Use Case Diagrams are valuable tools for:
 
 
     \item \textbf{System Boundary:}
-          The shaded box labeled ASTRO represents the system boundary, meaning all the use cases within this box are functionalities provided by the ASTRO system.
+          The shaded box labelled ASTRO represents the system boundary, meaning all the use cases within this box are functionalities provided by the ASTRO system.
 
 \end{itemize}
