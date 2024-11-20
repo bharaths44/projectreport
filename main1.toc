@@ -1,9 +1,9 @@
 \acswitchoff 
 \contentsline {chapter}{Acknowledgment}{i}{}%
-\contentsline {paragraph}{\ }{i}{}%
-\contentsline {paragraph}{\ }{i}{}%
-\contentsline {paragraph}{\ }{i}{}%
-\contentsline {paragraph}{\ }{i}{}%
+\contentsline {paragraph}{}{i}{}%
+\contentsline {paragraph}{}{i}{}%
+\contentsline {paragraph}{}{i}{}%
+\contentsline {paragraph}{}{i}{}%
 \contentsline {chapter}{Abstract}{ii}{}%
 \contentsline {paragraph}{}{ii}{}%
 \contentsline {chapter}{List of Abbreviations}{vi}{}%
@@ -26,19 +26,19 @@
 \contentsline {subsection}{\numberline {3.4.1}Demand Forecasting Module}{30}{}%
 \contentsline {subsection}{\numberline {3.4.2}Order Aggregation Module}{30}{}%
 \contentsline {subsection}{\numberline {3.4.3}Path Optimisation Module}{31}{}%
-\contentsline {subsection}{\numberline {3.4.4}How the Modules Work Together}{31}{}%
+\contentsline {subsection}{\numberline {3.4.4}Integration of Modules}{31}{}%
 \contentsline {section}{\numberline {3.5}Demand Forecasting with Neural Prophet}{32}{}%
 \contentsline {subsection}{\numberline {3.5.1}Inputs for Neural Prophet}{32}{}%
 \contentsline {subsection}{\numberline {3.5.2}Neural Prophet Structure}{33}{}%
 \contentsline {subsection}{\numberline {3.5.3}Outputs}{34}{}%
 \contentsline {subsection}{\numberline {3.5.4}Integration with Platform Workflow}{34}{}%
 \contentsline {section}{\numberline {3.6}Order Aggregation Using Genetic Algorithm}{35}{}%
-\contentsline {subsection}{\numberline {3.6.1}How the Process Works}{35}{}%
+\contentsline {subsection}{\numberline {3.6.1}Process Workflow}{35}{}%
 \contentsline {subsection}{\numberline {3.6.2}Output and Implementation}{36}{}%
 \contentsline {subsection}{\numberline {3.6.3}Integration with the Platform}{37}{}%
 \contentsline {section}{\numberline {3.7}Logistics Using Green Route Optimisation Algorithm}{37}{}%
-\contentsline {subsection}{\numberline {3.7.1}How Logistics Optimisation Works}{37}{}%
-\contentsline {subsection}{\numberline {3.7.2}Why Green Route Optimisation Algorithm is Used}{39}{}%
+\contentsline {subsection}{\numberline {3.7.1}Mechanics of Logistics Optimisation}{37}{}%
+\contentsline {subsection}{\numberline {3.7.2}Advantages of Using Green Route Optimization Algorithms}{39}{}%
 \contentsline {subsection}{\numberline {3.7.3}Integration with the Platform}{39}{}%
 \contentsline {section}{\numberline {3.8}System Integration and Notifications}{39}{}%
 \contentsline {subsection}{\numberline {3.8.1}System Integration}{40}{}%
