@@ -52,7 +52,7 @@
 
 \textbf{Usage in Research:} This dataset supports the development and validation of time series forecasting models. It allows researchers to explore seasonality, trends, and external influences on sales. Models like Neural Prophet or ARIMA can be applied, along with machine learning techniques for enhanced forecasting accuracy.
 
-\textbf{Challenges and Opportunities:} Although the dataset lacks explicit holiday or store event information, researchers may incorporate external data to improve forecasts. This provides an opportunity to explore techniques that account for seasonality and trend modeling, such as Fourier series for seasonality or external regressors.
+\textbf{Challenges and Opportunities:} Although the dataset lacks explicit holiday or store event information, researchers may incorporate external data to improve forecasts. This provides an opportunity to explore techniques that account for seasonality and trend modelling, such as Fourier series for seasonality or external regressors.
 
 \textbf{Access:} This dataset is easily accessible, enabling collaborative studies on sales forecasting and providing a resource for testing and improving demand forecasting algorithms.
 
@@ -110,7 +110,7 @@ In the context of the dataset, which contains store-level and item-level sales i
 
 \subsection{Time-Based Features}
 
-Time-based features play a crucial role in capturing cyclical and seasonal patterns inherent in sales data. By decomposing the date field into granular components, these features allow the model to understand how sales vary across different times of the week, month, and year. For instance, the day of the week feature represents weekdays as integers, enabling the model to differentiate between regular weekday and weekend shopping behaviors. Similarly, the month feature identifies seasonal effects that often influence demand, such as increased sales during holiday months or specific seasonal trends for particular items.
+Time-based features play a crucial role in capturing cyclical and seasonal patterns inherent in sales data. By decomposing the date field into granular components, these features allow the model to understand how sales vary across different times of the week, month, and year. For instance, the day of the week feature represents weekdays as integers, enabling the model to differentiate between regular weekday and weekend shopping behaviours. Similarly, the month feature identifies seasonal effects that often influence demand, such as increased sales during holiday months or specific seasonal trends for particular items.
 
 Another important time-based feature is the week of the year, which highlights demand patterns recurring annually, such as back-to-school shopping or end-of-year festive sales. Additionally, a binary is weekend feature isolates the typically higher weekend sales from weekday trends, ensuring that the model appropriately weighs these differences when forecasting.
 
@@ -127,7 +127,7 @@ A cumulative sales feature further extends this approach by summing all sales up
 Lagged variables are particularly effective in making the model aware of historical dependencies, enabling it to account for demand inertia, recent trends, and periodic changes.
 
 
-The combination of time-based features and lagged variables provides a comprehensive representation of the dataset, balancing temporal patterns with historical sales behavior. These features enable the demand forecasting models to detect and learn from intricate relationships within the data, ensuring robust predictions and informed decision-making for vendors. Through this customized feature extraction approach, the platform empowers small-scale vendors with insights that drive collaborative efficiency and competitiveness.
+The combination of time-based features and lagged variables provides a comprehensive representation of the dataset, balancing temporal patterns with historical sales behaviour. These features enable the demand forecasting models to detect and learn from intricate relationships within the data, ensuring robust predictions and informed decision-making for vendors. Through this customized feature extraction approach, the platform empowers small-scale vendors with insights that drive collaborative efficiency and competitiveness.
 
 \section{Project Modules and Their Integration}
 
@@ -135,7 +135,7 @@ ASTRO platform comprises three core modules: Demand Forecasting, Order Aggregati
 
 \subsection{Demand Forecasting Module}
 
-The Demand Forecasting Module lies at the heart of the platform, enabling vendors to predict future sales and order cycles. By analyzing historical sales data, the module leverages the Neural Prophet model to identify trends, seasonal patterns, and demand fluctuations. The predictions provide vendors with actionable insights into when and how much to order, ensuring they maintain optimal inventory levels while avoiding overstocking or stockouts.
+The Demand Forecasting Module lies at the heart of the platform, enabling vendors to predict future sales and order cycles. By analysing historical sales data, the module leverages the Neural Prophet model to identify trends, seasonal patterns, and demand fluctuations. The predictions provide vendors with actionable insights into when and how much to order, ensuring they maintain optimal inventory levels while avoiding overstocking or stockouts.
 
 Additionally, this module facilitates order cycle prediction, which is critical for synchronizing vendor orders. When a vendor places an order with a supplier, the platform uses the demand forecasting output to identify similar demand cycles for other vendors. This allows the platform to notify these vendors about the opportunity to join the order, achieving the Minimum Order Quantity (MOQ) threshold required for bulk discounts. By doing so, the demand forecasting module not only supports individual vendors but also sets the foundation for collective collaboration.
 
@@ -281,7 +281,7 @@ The Genetic Algorithm simulates the process of natural selection to arrive at th
               \item \textbf{Order deviation penalty}: Accounts for significant mismatches in vendor order requirements.
           \end{itemize}
 
-    \item \textbf{Selection}: Chromosomes with higher fitness are selected for reproduction. Techniques like tournament selection or roulette wheel selection are used to ensure diversity while favoring fitter solutions.
+    \item \textbf{Selection}: Chromosomes with higher fitness are selected for reproduction. Techniques like tournament selection or roulette wheel selection are used to ensure diversity while favouring fitter solutions.
 
     \item \textbf{Crossover}: Selected chromosomes undergo crossover, where segments of two parent chromosomes are swapped to produce offspring. This operation introduces new combinations of vendors and explores alternative aggregation solutions.
 
@@ -318,7 +318,7 @@ In this example, Vendors A, B, and D are selected, contributing a total order of
 
 \subsection{Integration with the Platform}
 
-Once the optimal vendor subset is determined, the platform finalizes the bulk order and notifies all participating vendors. The order details are then passed to the logistics module for route optimisation and delivery scheduling, ensuring seamless fulfillment. By leveraging the Genetic Algorithm, the platform provides an efficient, scalable, and automated solution for order aggregation, empowering vendors to compete effectively with larger retailers.
+Once the optimal vendor subset is determined, the platform finalizes the bulk order and notifies all participating vendors. The order details are then passed to the logistics module for route optimisation and delivery scheduling, ensuring seamless fulfilment. By leveraging the Genetic Algorithm, the platform provides an efficient, scalable, and automated solution for order aggregation, empowering vendors to compete effectively with larger retailers.
 
 \section{Logistics Using Green Route Optimisation Algorithm}
 
@@ -347,7 +347,7 @@ The delivery route is represented as a sequence of vendor locations, starting an
 \]
 
 \textbf{Objective Function:}
-The objective is to minimize the total distance traveled by the vehicle while considering additional factors like delivery priority and environmental impact. The optimisation function is:
+The objective is to minimize the total distance travelled by the vehicle while considering additional factors like delivery priority and environmental impact. The optimisation function is:
 
 \[
     \text{Minimize: } C = \sum_{i=1}^{n-1} d(p_i, p_{i+1}) + \alpha \cdot e(p_i, p_{i+1})
@@ -356,7 +356,7 @@ The objective is to minimize the total distance traveled by the vehicle while co
 Where:
 \begin{itemize}
     \item \(d(p_i, p_{i+1})\): Distance between points \(p_i\) and \(p_{i+1}\).
-    \item \(e(p_i, p_{i+1})\): Emission cost for traveling between points \(p_i\) and \(p_{i+1}\).
+    \item \(e(p_i, p_{i+1})\): Emission cost for travelling between points \(p_i\) and \(p_{i+1}\).
     \item \(\alpha\): Weighting factor for environmental impact.
 \end{itemize}
 
@@ -382,7 +382,7 @@ The Green Route Optimisation Algorithm is specifically chosen for the project be
     \item \textbf{Single Vehicle Focus:} Unlike fleet-based algorithms, it is optimized for scenarios where only one vehicle is used for deliveries, making it ideal for the project.
     \item \textbf{Environmental Considerations:} By factoring in emission costs, the algorithm promotes eco-friendly logistics, reducing the carbon footprint of deliveries.
     \item \textbf{Flexibility with Constraints:} It handles dynamic vendor locations, varying delivery quantities, and service time windows, ensuring practical applicability.
-    \item \textbf{Efficiency and Cost Savings:} By minimizing the total distance traveled, the algorithm reduces fuel consumption and operational costs.
+    \item \textbf{Efficiency and Cost Savings:} By minimizing the total distance travelled, the algorithm reduces fuel consumption and operational costs.
 \end{itemize}
 
 \subsection{Integration with the Platform}

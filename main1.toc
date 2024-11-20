@@ -43,7 +43,7 @@
 \contentsline {section}{\numberline {3.8}System Integration and Notifications}{39}{}%
 \contentsline {subsection}{\numberline {3.8.1}System Integration}{40}{}%
 \contentsline {subsection}{\numberline {3.8.2}Notifications}{40}{}%
-\contentsline {chapter}{\numberline {4}DESIGN AND MODELING}{42}{}%
+\contentsline {chapter}{\numberline {4}DESIGN AND MODELLING}{42}{}%
 \contentsline {section}{\numberline {4.1}Activity Diagram}{42}{}%
 \contentsline {subsection}{\numberline {4.1.1}Key elements of Activity Diagrams}{42}{}%
 \contentsline {subsection}{\numberline {4.1.2}Key Entities and Components}{44}{}%
