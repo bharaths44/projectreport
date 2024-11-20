@@ -1,9 +1,9 @@
 \acswitchoff 
 \contentsline {chapter}{Acknowledgment}{i}{}%
-\contentsline {paragraph}{\ }{i}{}%
-\contentsline {paragraph}{\ }{i}{}%
-\contentsline {paragraph}{\ }{i}{}%
-\contentsline {paragraph}{\ }{i}{}%
+\contentsline {paragraph}{}{i}{}%
+\contentsline {paragraph}{}{i}{}%
+\contentsline {paragraph}{}{i}{}%
+\contentsline {paragraph}{}{i}{}%
 \contentsline {chapter}{Abstract}{ii}{}%
 \contentsline {paragraph}{}{ii}{}%
 \contentsline {chapter}{List of Abbreviations}{vi}{}%
