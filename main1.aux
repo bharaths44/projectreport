@@ -42,69 +42,69 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces System Architecture}}{23}{}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:architecture}{{3.1}{23}{Relevance}{}{}}
+\newlabel{fig:architecture}{{3.1}{23}{Relevance}{figure.3.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Dataset}{25}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Preprocessing Steps}{26}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Feature Extraction}{28}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Time-Based Features}{28}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Lagged Variables}{29}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Project Modules and Their Integration}{30}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Demand Forecasting Module}{30}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Order Aggregation Module}{30}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Path Optimisation Module}{31}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Order Aggregation Module}{30}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Route Optimisation Module}{30}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Demand Forecasting Module}{31}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.4}Integration of Modules}{31}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Demand Forecasting with Neural Prophet}{32}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Inputs for Neural Prophet}{32}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Key Inputs for Neural Prophet}}{32}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Neural Prophet Structure}{33}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}Outputs}{34}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Example of Forecasted Sales and Smoothed Trend}}{34}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.4}Integration with Platform Workflow}{34}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.6}Order Aggregation Using Genetic Algorithm}{35}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Process Workflow}{35}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.2}Output and Implementation}{36}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Example of Vendor Selection in Order Aggregation}}{36}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.3}Integration with the Platform}{37}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.7}Logistics Using Green Route Optimisation Algorithm}{37}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.1}Mechanics of Logistics Optimisation}{37}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.2}Advantages of Using Green Route Optimization Algorithms}{39}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.3}Integration with the Platform}{39}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.8}System Integration and Notifications}{39}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.1}System Integration}{40}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.2}Notifications}{40}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces Notification Types and Triggers}}{41}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}DESIGN AND MODELLING}{42}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Order Aggregation Using Hybrid DBSCAN with Genetic Algorithm}{32}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Vendor Clustering Module and Order Aggregation Module}{32}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Parameter Selection with Genetic Algorithm}{33}{}\protected@file@percent }
+\newlabel{eq:fitness}{{3.1}{33}{Parameter Selection with Genetic Algorithm}{equation.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}DBSCAN Algorithm for Clustering Orders}{34}{}\protected@file@percent }
+\newlabel{eq:moq}{{3.2}{34}{DBSCAN Algorithm for Clustering Orders}{equation.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.4}Output and Implementation}{34}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Example of Vendor Clustering in Order Aggregation}}{35}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.5}Integration with the Platform}{35}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Logistics Using Environment Adaptive Genetic Algorithm (EAGA)}{35}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Mechanics of Logistics Optimisation}{36}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.2}Advantages of Using EAGA for Route Optimization}{39}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.3}Integration with the Platform}{39}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Demand Forecasting with Neural Prophet}{40}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.1}Inputs for Neural Prophet}{40}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Key Inputs for Neural Prophet}}{40}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.2}Neural Prophet Structure}{41}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.3}Outputs}{41}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Example of Forecasted Sales and Smoothed Trend}}{42}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.4}Integration with Platform Workflow}{42}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}DESIGN AND MODELLING}{43}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Activity Diagram}{42}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Key elements of Activity Diagrams}{42}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Activity Diagram}}{43}{}\protected@file@percent }
-\newlabel{fig:activity-diagram}{{4.1}{43}{Key elements of Activity Diagrams}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Key Entities and Components}{44}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Sequence Diagram}{46}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Key elements of Sequence Diagrams}{47}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Purpose of Sequence Diagrams}{47}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Sequence Diagram}}{48}{}\protected@file@percent }
-\newlabel{fig:sequence-diagram}{{4.2}{48}{Purpose of Sequence Diagrams}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Key Entities and Components}{48}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Sequence of Interactions}{49}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Class Diagram}{50}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Key Elements of Class Diagrams}{51}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Class Diagram}}{51}{}\protected@file@percent }
-\newlabel{fig:class-diagram}{{4.3}{51}{Key Elements of Class Diagrams}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Class Descriptions}{52}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Summary of Associations}{53}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Common Relationships}{54}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Benefits of Using Class Diagrams}{54}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Use Case Diagram}{55}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Key Elements of Use Case Diagrams}{55}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Value of Use Case Diagrams}{56}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Use Case Diagram}}{57}{}\protected@file@percent }
-\newlabel{fig:use-case-diagram}{{4.4}{57}{Value of Use Case Diagrams}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Actors}{57}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Use Cases}{58}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.5}Relationships}{59}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusions \& Future Scope}{60}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Activity Diagram}{43}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Key elements of Activity Diagrams}{43}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Activity Diagram}}{44}{}\protected@file@percent }
+\newlabel{fig:activity-diagram}{{4.1}{44}{Key elements of Activity Diagrams}{figure.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Key Entities and Components}{45}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Sequence Diagram}{47}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Key elements of Sequence Diagrams}{48}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Purpose of Sequence Diagrams}{48}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Sequence Diagram}}{49}{}\protected@file@percent }
+\newlabel{fig:sequence-diagram}{{4.2}{49}{Purpose of Sequence Diagrams}{figure.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Key Entities and Components}{49}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Sequence of Interactions}{50}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Class Diagram}{51}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Key Elements of Class Diagrams}{52}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Class Diagram}}{52}{}\protected@file@percent }
+\newlabel{fig:class-diagram}{{4.3}{52}{Key Elements of Class Diagrams}{figure.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Class Descriptions}{53}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Summary of Associations}{54}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Common Relationships}{55}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Benefits of Using Class Diagrams}{55}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Use Case Diagram}{56}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Key Elements of Use Case Diagrams}{56}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Value of Use Case Diagrams}{57}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Use Case Diagram}}{58}{}\protected@file@percent }
+\newlabel{fig:use-case-diagram}{{4.4}{58}{Value of Use Case Diagrams}{figure.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Actors}{58}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Use Cases}{59}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.5}Relationships}{60}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusions \& Future Scope}{61}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibstyle{IEEEtran}
@@ -116,15 +116,15 @@
 \bibcite{triebe2021neuralprophet}{5}
 \bibcite{siham2022genetic}{6}
 \bibcite{seifbarghy2022coordination}{7}
-\@writefile{toc}{\contentsline {chapter}{References}{63}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{References}{64}{}\protected@file@percent }
 \bibcite{zhou2023whalealgorithm}{8}
 \bibcite{mamoun2024pharmaceutical}{9}
 \bibcite{maroof2024hybridgenetic}{10}
-\@writefile{toc}{\contentsline {chapter}{Appendix A: Presentation}{65}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{\ }{65}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{Appendix B: Vision, Mission, PO, PSO, and CO}{75}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{\ }{75}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{78}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{\ }{79}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Appendix A: Presentation}{66}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\ }{66}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Appendix B: Vision, Mission, PO, PSO, and CO}{76}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\ }{76}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{79}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\ }{80}{}\protected@file@percent }
 \ACRO{total-barriers}{1}
-\gdef \@abspage@last{90}
+\gdef \@abspage@last{91}

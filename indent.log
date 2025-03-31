@@ -1,14 +1,14 @@
-INFO:  latexindent version 3.23.6, 2024-01-17, a script to indent .tex files
-       latexindent lives here: /usr/local/texlive/2024/texmf-dist/scripts/latexindent/
-       Wed Nov 20 13:30:09 2024
-       Filename: /Users/bharaths/Project/projectreport/Chapters/__latexindent_temp_acknowledgements.tex
+INFO:  latexindent version 3.24.4, 2024-07-18, a script to indent .tex files
+       latexindent lives here: /usr/local/texlive/2025/texmf-dist/scripts/latexindent/
+       Mon Mar 31 11:19:06 2025
+       Filename: /Users/bharaths/Project/projectreport/Chapters/__latexindent_temp_introduction.tex
 INFO:  Processing switches:
        -y|--yaml: YAML settings specified via command line
        -c|--cruft: cruft directory
-INFO:  Directory for backup files and /Users/bharaths/Project/projectreport//indent.log:
+INFO:  Directory for backup files and log file /Users/bharaths/Project/projectreport/indent.log:
        /Users/bharaths/Project/projectreport/
 INFO:  YAML settings read: defaultSettings.yaml
-       Reading defaultSettings.yaml from /usr/local/texlive/2024/texmf-dist/scripts/latexindent/defaultSettings.yaml
+       Reading defaultSettings.yaml from /usr/local/texlive/2025/texmf-dist/scripts/latexindent/defaultSettings.yaml
 INFO:  YAML reading settings
        Home directory is /Users/bharaths
        latexindent.pl didn't find indentconfig.yaml or .indentconfig.yaml

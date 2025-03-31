@@ -23,52 +23,51 @@
 \contentsline {subsection}{\numberline {3.3.1}Time-Based Features}{28}{}%
 \contentsline {subsection}{\numberline {3.3.2}Lagged Variables}{29}{}%
 \contentsline {section}{\numberline {3.4}Project Modules and Their Integration}{30}{}%
-\contentsline {subsection}{\numberline {3.4.1}Demand Forecasting Module}{30}{}%
-\contentsline {subsection}{\numberline {3.4.2}Order Aggregation Module}{30}{}%
-\contentsline {subsection}{\numberline {3.4.3}Path Optimisation Module}{31}{}%
+\contentsline {subsection}{\numberline {3.4.1}Order Aggregation Module}{30}{}%
+\contentsline {subsection}{\numberline {3.4.2}Route Optimisation Module}{30}{}%
+\contentsline {subsection}{\numberline {3.4.3}Demand Forecasting Module}{31}{}%
 \contentsline {subsection}{\numberline {3.4.4}Integration of Modules}{31}{}%
-\contentsline {section}{\numberline {3.5}Demand Forecasting with Neural Prophet}{32}{}%
-\contentsline {subsection}{\numberline {3.5.1}Inputs for Neural Prophet}{32}{}%
-\contentsline {subsection}{\numberline {3.5.2}Neural Prophet Structure}{33}{}%
-\contentsline {subsection}{\numberline {3.5.3}Outputs}{34}{}%
-\contentsline {subsection}{\numberline {3.5.4}Integration with Platform Workflow}{34}{}%
-\contentsline {section}{\numberline {3.6}Order Aggregation Using Genetic Algorithm}{35}{}%
-\contentsline {subsection}{\numberline {3.6.1}Process Workflow}{35}{}%
-\contentsline {subsection}{\numberline {3.6.2}Output and Implementation}{36}{}%
-\contentsline {subsection}{\numberline {3.6.3}Integration with the Platform}{37}{}%
-\contentsline {section}{\numberline {3.7}Logistics Using Green Route Optimisation Algorithm}{37}{}%
-\contentsline {subsection}{\numberline {3.7.1}Mechanics of Logistics Optimisation}{37}{}%
-\contentsline {subsection}{\numberline {3.7.2}Advantages of Using Green Route Optimization Algorithms}{39}{}%
-\contentsline {subsection}{\numberline {3.7.3}Integration with the Platform}{39}{}%
-\contentsline {section}{\numberline {3.8}System Integration and Notifications}{39}{}%
-\contentsline {subsection}{\numberline {3.8.1}System Integration}{40}{}%
-\contentsline {subsection}{\numberline {3.8.2}Notifications}{40}{}%
-\contentsline {chapter}{\numberline {4}DESIGN AND MODELLING}{42}{}%
-\contentsline {section}{\numberline {4.1}Activity Diagram}{42}{}%
-\contentsline {subsection}{\numberline {4.1.1}Key elements of Activity Diagrams}{42}{}%
-\contentsline {subsection}{\numberline {4.1.2}Key Entities and Components}{44}{}%
-\contentsline {section}{\numberline {4.2}Sequence Diagram}{46}{}%
-\contentsline {subsection}{\numberline {4.2.1}Key elements of Sequence Diagrams}{47}{}%
-\contentsline {subsection}{\numberline {4.2.2}Purpose of Sequence Diagrams}{47}{}%
-\contentsline {subsection}{\numberline {4.2.3}Key Entities and Components}{48}{}%
-\contentsline {subsection}{\numberline {4.2.4}Sequence of Interactions}{49}{}%
-\contentsline {section}{\numberline {4.3}Class Diagram}{50}{}%
-\contentsline {subsection}{\numberline {4.3.1}Key Elements of Class Diagrams}{51}{}%
-\contentsline {subsection}{\numberline {4.3.2}Class Descriptions}{52}{}%
-\contentsline {subsection}{\numberline {4.3.3}Summary of Associations}{53}{}%
-\contentsline {subsection}{\numberline {4.3.4}Common Relationships}{54}{}%
-\contentsline {subsection}{\numberline {4.3.5}Benefits of Using Class Diagrams}{54}{}%
-\contentsline {section}{\numberline {4.4}Use Case Diagram}{55}{}%
-\contentsline {subsection}{\numberline {4.4.1}Key Elements of Use Case Diagrams}{55}{}%
-\contentsline {subsection}{\numberline {4.4.2}Value of Use Case Diagrams}{56}{}%
-\contentsline {subsection}{\numberline {4.4.3}Actors}{57}{}%
-\contentsline {subsection}{\numberline {4.4.4}Use Cases}{58}{}%
-\contentsline {subsection}{\numberline {4.4.5}Relationships}{59}{}%
-\contentsline {chapter}{\numberline {5}Conclusions \& Future Scope}{60}{}%
-\contentsline {chapter}{References}{63}{}%
-\contentsline {chapter}{Appendix A: Presentation}{65}{}%
-\contentsline {paragraph}{\ }{65}{}%
-\contentsline {chapter}{Appendix B: Vision, Mission, PO, PSO, and CO}{75}{}%
-\contentsline {paragraph}{\ }{75}{}%
-\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{78}{}%
-\contentsline {paragraph}{\ }{79}{}%
+\contentsline {section}{\numberline {3.5}Order Aggregation Using Hybrid DBSCAN with Genetic Algorithm}{32}{}%
+\contentsline {subsection}{\numberline {3.5.1}Vendor Clustering Module and Order Aggregation Module}{32}{}%
+\contentsline {subsection}{\numberline {3.5.2}Parameter Selection with Genetic Algorithm}{33}{}%
+\contentsline {subsection}{\numberline {3.5.3}DBSCAN Algorithm for Clustering Orders}{34}{}%
+\contentsline {subsection}{\numberline {3.5.4}Output and Implementation}{34}{}%
+\contentsline {subsection}{\numberline {3.5.5}Integration with the Platform}{35}{}%
+\contentsline {section}{\numberline {3.6}Logistics Using Environment Adaptive Genetic Algorithm (EAGA)}{35}{}%
+\contentsline {subsection}{\numberline {3.6.1}Mechanics of Logistics Optimisation}{36}{}%
+\contentsline {subsection}{\numberline {3.6.2}Advantages of Using EAGA for Route Optimization}{39}{}%
+\contentsline {subsection}{\numberline {3.6.3}Integration with the Platform}{39}{}%
+\contentsline {section}{\numberline {3.7}Demand Forecasting with Neural Prophet}{40}{}%
+\contentsline {subsection}{\numberline {3.7.1}Inputs for Neural Prophet}{40}{}%
+\contentsline {subsection}{\numberline {3.7.2}Neural Prophet Structure}{41}{}%
+\contentsline {subsection}{\numberline {3.7.3}Outputs}{41}{}%
+\contentsline {subsection}{\numberline {3.7.4}Integration with Platform Workflow}{42}{}%
+\contentsline {chapter}{\numberline {4}DESIGN AND MODELLING}{43}{}%
+\contentsline {section}{\numberline {4.1}Activity Diagram}{43}{}%
+\contentsline {subsection}{\numberline {4.1.1}Key elements of Activity Diagrams}{43}{}%
+\contentsline {subsection}{\numberline {4.1.2}Key Entities and Components}{45}{}%
+\contentsline {section}{\numberline {4.2}Sequence Diagram}{47}{}%
+\contentsline {subsection}{\numberline {4.2.1}Key elements of Sequence Diagrams}{48}{}%
+\contentsline {subsection}{\numberline {4.2.2}Purpose of Sequence Diagrams}{48}{}%
+\contentsline {subsection}{\numberline {4.2.3}Key Entities and Components}{49}{}%
+\contentsline {subsection}{\numberline {4.2.4}Sequence of Interactions}{50}{}%
+\contentsline {section}{\numberline {4.3}Class Diagram}{51}{}%
+\contentsline {subsection}{\numberline {4.3.1}Key Elements of Class Diagrams}{52}{}%
+\contentsline {subsection}{\numberline {4.3.2}Class Descriptions}{53}{}%
+\contentsline {subsection}{\numberline {4.3.3}Summary of Associations}{54}{}%
+\contentsline {subsection}{\numberline {4.3.4}Common Relationships}{55}{}%
+\contentsline {subsection}{\numberline {4.3.5}Benefits of Using Class Diagrams}{55}{}%
+\contentsline {section}{\numberline {4.4}Use Case Diagram}{56}{}%
+\contentsline {subsection}{\numberline {4.4.1}Key Elements of Use Case Diagrams}{56}{}%
+\contentsline {subsection}{\numberline {4.4.2}Value of Use Case Diagrams}{57}{}%
+\contentsline {subsection}{\numberline {4.4.3}Actors}{58}{}%
+\contentsline {subsection}{\numberline {4.4.4}Use Cases}{59}{}%
+\contentsline {subsection}{\numberline {4.4.5}Relationships}{60}{}%
+\contentsline {chapter}{\numberline {5}Conclusions \& Future Scope}{61}{}%
+\contentsline {chapter}{References}{64}{}%
+\contentsline {chapter}{Appendix A: Presentation}{66}{}%
+\contentsline {paragraph}{\ }{66}{}%
+\contentsline {chapter}{Appendix B: Vision, Mission, PO, PSO, and CO}{76}{}%
+\contentsline {paragraph}{\ }{76}{}%
+\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{79}{}%
+\contentsline {paragraph}{\ }{80}{}%
