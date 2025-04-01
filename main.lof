@@ -1,0 +1,10 @@
+\acswitchoff 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces System Architecture}}{10}{}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces NeuralProphet Demand Forecasting}}{37}{}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces NeuralProphet Long-term Trend Analysis}}{37}{}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces NeuralProphet Weekly Seasonality Analysis}}{38}{}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces NeuralProphet Yearly Seasonality Analysis}}{38}{}%

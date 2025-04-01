@@ -1,4 +1,3 @@
-
 %% RSET Project / Seminar LaTex Template Version 1.0 - November 2023
 
 \documentclass[12pt,a4paper,titlepage]{report}
@@ -15,12 +14,13 @@
 % Mathematical symbols and environments
 \usepackage{amsmath}         % for math symbols and environments
 \usepackage{amssymb}         % for additional math symbols
-
+\usepackage[T1]{fontenc}  % Better font encoding for special characters
+\usepackage{textcomp}     % Provides additional text symbols
 % Fonts and symbols
 \usepackage{latexsym}        % LASY symbols
 \usepackage{eufrak}          % for Fraktur fonts
 \usepackage{type1cm}         % scalable fonts
-
+\usepackage{textcomp}
 % Other useful packages
 \usepackage{longtable}       % for tables that span multiple pages
 \usepackage{listings}        % for code listings
@@ -29,7 +29,39 @@
 \usepackage{url}             % for handling URLs
 \usepackage{acro}            % for acronyms
 \usepackage{titlesec}        % for section title formatting
+\usepackage{listings}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\pgfplotsset{compat=1.18} 
+\usepackage{pgfplotstable}
+\lstdefinelanguage{YAML}{
+  keywords={true,false,null,y,n},
+  keywordstyle=\color{blue}\bfseries,
+  basicstyle=\ttfamily\small,
+  sensitive=false,
+  comment=[l]{\#},
+  commentstyle=\color{green}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+\usepackage{color}
 
+\definecolor{dartblue}{RGB}{0,0,255}
+\definecolor{dartgreen}{RGB}{0,128,0}
+\definecolor{dartred}{RGB}{255,0,0}
+
+\lstdefinelanguage{Dart}{
+  keywords={abstract, as, assert, async, await, break, case, catch, class, const, continue, default, deferred, do, dynamic, else, enum, export, extends, factory, false, final, finally, for, get, if, implements, import, in, is, library, new, null, operator, part, rethrow, return, set, static, super, switch, sync, this, throw, true, try, typedef, var, void, while, with, yield},
+  keywordstyle=\color{dartblue}\bfseries,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  commentstyle=\color{dartgreen}\ttfamily,
+  stringstyle=\color{dartred}\ttfamily,
+  identifierstyle=\color{black},
+}
 % Formatting
 \captionsetup{justification=centering}  % Centering captions
 
@@ -148,19 +180,19 @@
 \setcounter{page}{1}
 
 \input{Chapters/introduction.tex}
-\input{Chapters/lit_survey.tex}
+
 \input{Chapters/sys_arch.tex}
-\input{Chapters/design.tex}
+\input{Chapters/implementation.tex}
 \input{Chapters/conclusion.tex}
 
 
 
 
-\clearpage
-\renewcommand{\bibname}{References}
-\addcontentsline{toc}{chapter}{References}
-\bibliographystyle{IEEEtran}
-\bibliography{references}
+% \clearpage
+% \renewcommand{\bibname}{References}
+% \addcontentsline{toc}{chapter}{References}
+% \bibliographystyle{IEEEtran}
+% \bibliography{references}
 %\input{references.tex}
 
 \input{Appendices/appendix_A.tex}

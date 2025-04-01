@@ -1,29 +1,214 @@
-\chapter{Conclusions \& Future Scope}
+\chapter{Conclusions}
 
-The ASTRO platform represents a comprehensive solution designed to empower small-scale vendors by addressing their core operational challenges. By facilitating collaborative purchasing, optimizing logistics, and offering data-driven financial services, ASTRO significantly enhances the competitive edge of small vendors, enabling them to compete more effectively with large retail chains. The platform’s multifaceted approach not only reduces operational costs and improves efficiency but also provides vendors with the financial resources and data insights necessary for informed decision-making and strategic growth.
+The ASTRO platform represents a comprehensive solution designed to empower small-scale vendors by addressing their core operational challenges. By facilitating collaborative purchasing, optimizing logistics, and offering data-driven financial services, ASTRO significantly enhances the competitive edge of small vendors, enabling them to compete more effectively with large retail chains. The platform's multifaceted approach not only reduces operational costs and improves efficiency but also provides vendors with the financial resources and data insights necessary for informed decision-making and strategic growth.
 
 Through collaborative purchasing, ASTRO enables vendors to achieve bulk pricing discounts, thereby reducing the cost of goods sold and increasing profitability. The logistics optimisation feature streamlines delivery routes, minimizing transportation costs and ensuring timely deliveries, which enhances customer satisfaction and operational reliability. Additionally, the integration of data-driven financial services addresses the critical issue of limited access to capital, providing vendors with tailored credit assessments and loan options based on their transaction data. This financial support is instrumental in facilitating business expansion, inventory management, and investment in technology.
 
-ASTRO’s real-time demand forecasting tool equips vendors with the ability to anticipate market demand accurately, optimizing inventory levels and reducing the risk of overstocking or stockouts. This predictive capability not only enhances operational efficiency but also ensures that vendors can meet customer needs promptly and effectively. The platform’s user-friendly interface ensures accessibility and ease of use, allowing vendors with varying levels of technical expertise to leverage its features effectively.
+ASTRO's real-time demand forecasting tool equips vendors with the ability to anticipate market demand accurately, optimizing inventory levels and reducing the risk of overstocking or stockouts. This predictive capability not only enhances operational efficiency but also ensures that vendors can meet customer needs promptly and effectively. The platform's user-friendly interface ensures accessibility and ease of use, allowing vendors with varying levels of technical expertise to leverage its features effectively.
 
 Overall, ASTRO fosters economic resilience and sustainability within local communities by empowering small-scale vendors to thrive in a competitive marketplace. By addressing the challenges of limited purchasing power, inefficient logistics, restricted financial access, and lack of data-driven decision-making, ASTRO contributes to the long-term success and stability of small vendors, promoting a more diverse and robust local economy.
+
+\par Our implementation demonstrates significant improvements in supply chain efficiency and cost reduction through order aggregation and route optimization. The advanced forecasting capabilities powered by NeuralProphet provide vendors with unprecedented insights into future demand patterns, as evidenced by our comprehensive analysis results.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=\columnwidth,
+                height=6cm,
+                xlabel={Time Period},
+                ylabel={Order Quantity},
+                legend pos=north west,
+                grid=both,
+                date coordinates in=x,
+                xticklabel={\year},
+                xticklabel style={rotate=45, anchor=north east},
+                xtick distance=365,
+                date ZERO=2023-01-01,  % Reference start date
+                ymajorgrids=true,
+                xmajorgrids=true,
+                legend style={font=\footnotesize},
+                legend cell align={left},
+            ]
+
+            % Actual data from training dataset
+            \addplot[
+                blue,
+                thick,
+                smooth
+            ]
+            table[
+                    x=ds,
+                    y=y,
+                    col sep=comma
+                ] {Figures/np_train_data.csv};
+            \addlegendentry{Orders}
+
+            % Forecasted data
+            \addplot[
+                red,
+                thick,
+                smooth
+            ]
+            table[
+                    x=ds,
+                    y=yhat1,
+                    col sep=comma
+                ] {Figures/forecast.csv};
+            \addlegendentry{Forecast}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{NeuralProphet Demand Forecasting}
+    \label{fig:forecast}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=\columnwidth,
+                height=6cm,
+                xlabel={Year},
+                ylabel={Order Quantity},
+                legend pos=north west,
+                grid=both,
+                date coordinates in=x,
+                xtick={2018-01-01, 2019-01-01, 2020-01-01, 2021-01-01, 2022-01-01, 2023-01-01, 2024-01-01,2025-01-01},
+                xticklabels={2018, 2019, 2020, 2021, 2022, 2023, 2024,2025},
+                xticklabel style={rotate=45, anchor=north east},
+                date ZERO=2018-01-01,
+                ymajorgrids=true,
+                xmajorgrids=true,
+                legend style={font=\footnotesize},
+                legend cell align={left},
+            ]
+
+            % Actual data from training dataset
+            \addplot[
+                blue,
+                thick,
+            ]
+            table[
+                    x=ds,
+                    y=trend,
+                    col sep=comma
+                ] {Figures/forecast_whole.csv};
+            \addplot[
+                red,
+                thick,
+            ]
+            table[
+                    x=ds,
+                    y=trend,
+                    col sep=comma
+                ] {Figures/forecast.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{NeuralProphet Long-term Trend Analysis}
+    \label{fig:trend}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=\columnwidth,
+                height=6cm,
+                xlabel={Day of Week},
+                ylabel={Seasonal Effect},
+                legend pos=north west,
+                grid=both,
+                ytick={-30,-20,-10,0,10,20,30},              % Specify exact tick positions
+                yticklabels={-30,-20,-10,0,10,20,30},
+                xtick={0,1,2,3,4,5,6,7},
+                xticklabels={Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday},
+                xticklabel style={rotate=45, anchor=north east},
+                ymajorgrids=true,
+                xmajorgrids=true,
+                legend style={font=\footnotesize},
+                legend cell align={left},
+            ]
+
+            % Actual data from training dataset - only first 7 entries with smooth curve
+            \addplot[
+                blue,
+                thick,
+                smooth,
+                tension=0.4, % Add some tension for a smoother curve
+            ]
+            table[
+                    x expr=\coordindex, % Use index as x-coordinate instead of date
+                    y=season_weekly,
+                    col sep=comma,
+                    restrict expr to domain={\coordindex}{0:7}
+                ] {Figures/forecast.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{NeuralProphet Weekly Seasonality Analysis}
+    \label{fig:weekly-seasonality}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=\columnwidth,
+                height=6cm,
+                xlabel={Month},
+                ylabel={Seasonal Effect},
+                legend pos=north west,
+                grid=both,
+                date coordinates in=x,
+                ytick={-60,-40,-20,0,20,40,60},              % Specify exact tick positions
+                yticklabels={-60,-40,-20,0,20,40,60},
+                xticklabel={\month}, % Show just month number
+                xtick distance=91.5,  % Approximately monthly ticks
+                date ZERO=2023-01-01,
+                xtick={2023-01-01,2023-03-01,2023-05-01,2023-07-01,2023-09-01,2023-11-01,2024-01-01}, % Explicit tick positions
+                xticklabels={Jan,Mar,May,Jul,Sep,Nov,Jan}, % Month labels
+                xticklabel style={rotate=45, anchor=north east},
+                ymajorgrids=true,
+                xmajorgrids=true,
+                legend style={font=\footnotesize},
+                legend cell align={left},
+            ]
+
+            % Actual data from training dataset
+            \addplot[
+                blue,
+                thick,
+                smooth,
+                tension=0.4
+            ]
+            table[
+                    x=ds,
+                    y=season_yearly,
+                    col sep=comma
+                ] {Figures/forecast.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{NeuralProphet Yearly Seasonality Analysis}
+    \label{fig:yearly-seasonality}
+\end{figure}
+\par Fig.~\ref{fig:forecast} illustrates NeuralProphet's ability to predict future order quantities based on historical data, providing vendors with reliable projections for inventory planning. Supporting this predictive capability, Fig.~\ref{fig:trend} reveals the underlying long-term growth trajectory that informs strategic business decisions and expansion planning. Further enhancing these insights, Fig.~\ref{fig:weekly-seasonality} and Fig.~\ref{fig:yearly-seasonality} demonstrate how our model accurately captures both weekly variations and annual seasonal patterns in vendor ordering behavior. This comprehensive forecasting capability is crucial for vendors and suppliers to anticipate demand fluctuations, optimize inventory management, and plan logistics operations efficiently throughout the year.
+
+\par The results of our implementation validate the core thesis that technology-driven collaboration can substantially improve the competitive position of small-scale vendors in today's market. By combining advanced machine learning techniques with practical business solutions, ASTRO demonstrates that sophisticated technologies can be made accessible and valuable to small businesses that traditionally lack access to such tools. The platform's ability to decompose complex demand patterns into interpretable components—trend, weekly cycles, and annual seasonality—empowers vendors with actionable intelligence previously available only to large retail corporations with dedicated analytics teams.
+
+\par In summary, ASTRO represents a significant advancement in supply chain technology for small-scale vendors. The platform not only addresses immediate operational challenges through order aggregation and route optimization but also provides the strategic forecasting capabilities necessary for long-term business planning and growth. As demonstrated by our analysis, the integration of these capabilities creates a powerful ecosystem that transforms isolated vendors into a coordinated network capable of achieving economies of scale while maintaining the flexibility and community connection that makes small businesses unique.
 
 While ASTRO has made significant strides in empowering small-scale vendors, there are numerous opportunities for future enhancements and expansions to further augment its impact and effectiveness. The following areas outline potential future developments:
 
 \begin{enumerate}
     \item \textbf{Advanced Forecasting and Predictive Analytics}: Integrate more sophisticated machine learning algorithms to enhance the accuracy and granularity of demand forecasting, allowing vendors to anticipate market trends more accurately and optimize inventory management.
     \item \textbf{AI-Enhanced Credit Assessment}: Develop AI-driven credit scoring models that utilize a broader range of data points, including transaction history and purchasing patterns, to provide personalized and accurate financial services.
-    \item \textbf{Integration with Broader Supply Chains}: Establish partnerships with larger suppliers and logistics providers to expand ASTRO’s logistics optimisation features, enabling vendors to access a wider range of products at competitive prices.
+    \item \textbf{Integration with Broader Supply Chains}: Establish partnerships with larger suppliers and logistics providers to expand ASTRO's logistics optimisation features, enabling vendors to access a wider range of products at competitive prices.
     \item \textbf{Sustainability Initiatives}: Incorporate environmentally sustainable practices, such as carbon footprint tracking and eco-friendly route planning, to align vendors with growing consumer demand for eco-friendly products.
     \item \textbf{Customizable Vendor Portals and Data Insights}: Develop customizable dashboards for tailored analytics based on vendor-specific needs, enabling strategic business decisions.
     \item \textbf{Expansion of Financial Services}: Introduce more financial products, such as insurance and investment options, to provide vendors with comprehensive financial support.
     \item \textbf{Enhanced Collaboration Features}: Implement tools for communication and resource sharing among vendors, fostering a sense of community and mutual support.
-    \item \textbf{Mobile Application Development}: Develop a dedicated mobile application for on-the-go access to ASTRO’s features, enhancing accessibility and user engagement.
-    \item \textbf{Localization and Customization}: Adapt ASTRO to different regions’ specific needs and regulatory requirements, ensuring relevance across diverse contexts.
-    \item \textbf{Integration with E-Commerce Platforms}: Integrate ASTRO with popular e-commerce platforms to enable seamless online ordering and sales management, expanding vendors’ market reach.
-    \item \textbf{User Training and Support Programs}: Provide training programs to help vendors maximize ASTRO’s benefits, enhancing adoption and success.
+
+    \item \textbf{Localization and Customization}: Adapt ASTRO to different regions' specific needs and regulatory requirements, ensuring relevance across diverse contexts.
+    \item \textbf{Integration with E-Commerce Platforms}: Integrate ASTRO with popular e-commerce platforms to enable seamless online ordering and sales management, expanding vendors' market reach.
+    \item \textbf{User Training and Support Programs}: Provide training programs to help vendors maximize ASTRO's benefits, enhancing adoption and success.
     \item \textbf{Data Privacy and Security Enhancements}: Implement advanced measures for data protection, building user trust and ensuring data confidentiality.
-    \item \textbf{Feedback and Continuous Improvement Mechanism}: Establish a feedback system to gather user input and improve ASTRO’s features and functionalities over time.
-    \item \textbf{Scalability and Performance Optimisation}: Ensure the platform’s scalability and performance can handle increased users and data as ASTRO grows.
-    \item \textbf{Exploration of New Markets and Industries}: Expand ASTRO’s framework to apply to other markets and industries beyond small-scale vendors, opening new avenues for growth and impact.
+    \item \textbf{Feedback and Continuous Improvement Mechanism}: Establish a feedback system to gather user input and improve ASTRO's features and functionalities over time.
+    \item \textbf{Scalability and Performance Optimisation}: Ensure the platform's scalability and performance can handle increased users and data as ASTRO grows.
+    \item \textbf{Exploration of New Markets and Industries}: Expand ASTRO's framework to apply to other markets and industries beyond small-scale vendors, opening new avenues for growth and impact.
 \end{enumerate}
