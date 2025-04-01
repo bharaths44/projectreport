@@ -1,14 +1,47 @@
-\chapter{Conclusions}
+\chapter{Conclusion}
+The ASTRO platform is a comprehensive solution designed to empower small-scale vendors by addressing their core operational challenges. By facilitating collaborative purchasing, optimizing logistics, and offering data-driven financial services, ASTRO significantly enhances the competitive edge of small vendors, enabling them to compete more effectively with large retail chains. Its multifaceted approach not only reduces operational costs and improves efficiency but also equips vendors with financial resources and data-driven insights essential for informed decision making and strategic growth.
 
-The ASTRO platform represents a comprehensive solution designed to empower small-scale vendors by addressing their core operational challenges. By facilitating collaborative purchasing, optimizing logistics, and offering data-driven financial services, ASTRO significantly enhances the competitive edge of small vendors, enabling them to compete more effectively with large retail chains. The platform's multifaceted approach not only reduces operational costs and improves efficiency but also provides vendors with the financial resources and data insights necessary for informed decision-making and strategic growth.
+Through collaborative purchasing, ASTRO enables vendors to access bulk pricing discounts, reducing the cost of goods sold and increasing profitability. The platform’s logistics optimization feature streamlines delivery routes, minimizing transportation costs and ensuring timely deliveries. This not only enhances operational reliability but also improves customer satisfaction. Additionally, ASTRO integrates data driven financial services to address the critical challenge of limited access to capital. By leveraging transaction data, the platform offers tailored credit assessments and loan options, empowering vendors to expand their businesses, manage inventory effectively, and invest in technology.
 
-Through collaborative purchasing, ASTRO enables vendors to achieve bulk pricing discounts, thereby reducing the cost of goods sold and increasing profitability. The logistics optimisation feature streamlines delivery routes, minimizing transportation costs and ensuring timely deliveries, which enhances customer satisfaction and operational reliability. Additionally, the integration of data-driven financial services addresses the critical issue of limited access to capital, providing vendors with tailored credit assessments and loan options based on their transaction data. This financial support is instrumental in facilitating business expansion, inventory management, and investment in technology.
+A key component of ASTRO is its real-time demand forecasting tool, powered by NeuralProphet. This predictive capability enables vendors to anticipate market demand with high accuracy, optimizing inventory levels and reducing the risks of overstocking or stockouts. By ensuring vendors can meet customer needs promptly and efficiently, ASTRO enhances overall operational efficiency. The platform is also designed with a user-friendly interface, making its features accessible to vendors with varying levels of technical expertise.
 
-ASTRO's real-time demand forecasting tool equips vendors with the ability to anticipate market demand accurately, optimizing inventory levels and reducing the risk of overstocking or stockouts. This predictive capability not only enhances operational efficiency but also ensures that vendors can meet customer needs promptly and effectively. The platform's user-friendly interface ensures accessibility and ease of use, allowing vendors with varying levels of technical expertise to leverage its features effectively.
+Overall, ASTRO fosters economic resilience and sustainability within local communities by empowering small-scale vendors to thrive in a competitive marketplace. By addressing critical challenges such as limited purchasing power, inefficient logistics, restricted financial access, and a lack of data driven decision making, ASTRO contributes to the long term success and stability of small vendors. In doing so, it promotes a more diverse and robust local economy.
 
-Overall, ASTRO fosters economic resilience and sustainability within local communities by empowering small-scale vendors to thrive in a competitive marketplace. By addressing the challenges of limited purchasing power, inefficient logistics, restricted financial access, and lack of data-driven decision-making, ASTRO contributes to the long-term success and stability of small vendors, promoting a more diverse and robust local economy.
+Our implementation demonstrates significant improvements in supply chain efficiency and cost reduction through order aggregation and route optimization. The advanced forecasting capabilities powered by NeuralProphet provide vendors with unprecedented insights into future demand patterns, as evidenced by our comprehensive analysis results.
 
-\par Our implementation demonstrates significant improvements in supply chain efficiency and cost reduction through order aggregation and route optimization. The advanced forecasting capabilities powered by NeuralProphet provide vendors with unprecedented insights into future demand patterns, as evidenced by our comprehensive analysis results.
+To evaluate the effectiveness of the proposed collaborative ordering and shared delivery model, we analyzed route optimization performance across 50 vendors, comparing traditional individual delivery routes against our collaborative approach. In the 50-vendor scenario presented in Table~\ref{tab:cost-comparison}, our system processed five staggered orders of varying sizes, analyzing both traditional and collaborative routing methods. The traditional approach required five separate delivery routes, often with significant overlap. In contrast, our collaborative model consolidated these into a single optimized route, yielding substantial savings in distance, cost, and fuel consumption.
+\begin{itemize}
+    \item {Scenario:} 50 vendors requiring deliveries from a central supplier
+    \item {Traditional approach:} Individual routes planned for each vendor or small group
+    \item {Collaborative approach:} Single optimized route serving all vendors
+    \item {Distance analyzed:} Regional delivery network covering approximately 7,000 km
+\end{itemize}
+
+\subsubsection{Cost Comparison Analysis}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Cost Comparison: Traditional vs. Collaborative Route Optimization}
+    \label{tab:cost-comparison}
+    \begin{tabular}{lrrr}
+        \toprule
+        \textbf{Metric}  & \textbf{Trad. Approach} & \textbf{Collab. Approach} & \textbf{Savings} \\
+        \midrule
+        Distance (km)    & 35,606                  & 6,993                     & 28,613 (80.4\%)  \\
+        Route Cost (Rs.) & 36,929                  & 7,255                     & 29,675 (80.4\%)  \\
+        Fuel (L)         & 1,811                   & 357                       & 1,454 (80.3\%)   \\
+        Fuel Cost (Rs.)  & 171,135                 & 33,770                    & 137,366 (80.3\%) \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\paragraph{Traditional Delivery Approach} In the conventional model, vendors receive deliveries through separate routes or small grouped deliveries, resulting in significant route overlap and inefficiency. This approach required a total travel distance of 35,606.06 km with associated route costs of Rs. 36,929.20. The excessive distance resulted in high fuel consumption (1,811.34 L) and fuel costs (Rs. 171,135.40).
+
+\paragraph{Collaborative Delivery Approach} With our platform, deliveries are consolidated into a single optimized route serving all vendors. Our Environmental-Adaptive Genetic Algorithm (EAGA) produced a route of just 6,993.30 km with total costs of Rs. 7,254.56. This dramatically reduced fuel consumption to 357.43 L with corresponding fuel costs of Rs. 33,769.57.
+
+\paragraph{Impact Assessment} As shown in Table~\ref{tab:cost-comparison}, the collaborative delivery model demonstrates an 80.4\% reduction in total distance traveled and route costs, with fuel savings of 80.3\%. These substantial efficiencies are achieved through intelligent route optimization that eliminates redundant travel paths. The model provides small-scale vendors with logistics cost advantages traditionally reserved for large enterprises, enabling them to compete more effectively while maintaining their operational independence.
+
+\par The results of our implementation validate the core thesis that technology-driven collaboration can substantially improve the competitive position of small-scale vendors in today's market. By combining advanced machine learning techniques with practical business solutions, ASTRO demonstrates that sophisticated technologies can be made accessible and valuable to small businesses that traditionally lack access to such tools. The platform's ability to decompose complex demand patterns into interpretable components—trend, weekly cycles, and annual seasonality—empowers vendors with actionable intelligence previously available only to large retail corporations with dedicated analytics teams.
 
 \begin{figure}[htbp]
     \centering
@@ -189,26 +222,4 @@ Overall, ASTRO fosters economic resilience and sustainability within local commu
 \end{figure}
 \par Fig.~\ref{fig:forecast} illustrates NeuralProphet's ability to predict future order quantities based on historical data, providing vendors with reliable projections for inventory planning. Supporting this predictive capability, Fig.~\ref{fig:trend} reveals the underlying long-term growth trajectory that informs strategic business decisions and expansion planning. Further enhancing these insights, Fig.~\ref{fig:weekly-seasonality} and Fig.~\ref{fig:yearly-seasonality} demonstrate how our model accurately captures both weekly variations and annual seasonal patterns in vendor ordering behavior. This comprehensive forecasting capability is crucial for vendors and suppliers to anticipate demand fluctuations, optimize inventory management, and plan logistics operations efficiently throughout the year.
 
-\par The results of our implementation validate the core thesis that technology-driven collaboration can substantially improve the competitive position of small-scale vendors in today's market. By combining advanced machine learning techniques with practical business solutions, ASTRO demonstrates that sophisticated technologies can be made accessible and valuable to small businesses that traditionally lack access to such tools. The platform's ability to decompose complex demand patterns into interpretable components—trend, weekly cycles, and annual seasonality—empowers vendors with actionable intelligence previously available only to large retail corporations with dedicated analytics teams.
-
-\par In summary, ASTRO represents a significant advancement in supply chain technology for small-scale vendors. The platform not only addresses immediate operational challenges through order aggregation and route optimization but also provides the strategic forecasting capabilities necessary for long-term business planning and growth. As demonstrated by our analysis, the integration of these capabilities creates a powerful ecosystem that transforms isolated vendors into a coordinated network capable of achieving economies of scale while maintaining the flexibility and community connection that makes small businesses unique.
-
-While ASTRO has made significant strides in empowering small-scale vendors, there are numerous opportunities for future enhancements and expansions to further augment its impact and effectiveness. The following areas outline potential future developments:
-
-\begin{enumerate}
-    \item \textbf{Advanced Forecasting and Predictive Analytics}: Integrate more sophisticated machine learning algorithms to enhance the accuracy and granularity of demand forecasting, allowing vendors to anticipate market trends more accurately and optimize inventory management.
-    \item \textbf{AI-Enhanced Credit Assessment}: Develop AI-driven credit scoring models that utilize a broader range of data points, including transaction history and purchasing patterns, to provide personalized and accurate financial services.
-    \item \textbf{Integration with Broader Supply Chains}: Establish partnerships with larger suppliers and logistics providers to expand ASTRO's logistics optimisation features, enabling vendors to access a wider range of products at competitive prices.
-    \item \textbf{Sustainability Initiatives}: Incorporate environmentally sustainable practices, such as carbon footprint tracking and eco-friendly route planning, to align vendors with growing consumer demand for eco-friendly products.
-    \item \textbf{Customizable Vendor Portals and Data Insights}: Develop customizable dashboards for tailored analytics based on vendor-specific needs, enabling strategic business decisions.
-    \item \textbf{Expansion of Financial Services}: Introduce more financial products, such as insurance and investment options, to provide vendors with comprehensive financial support.
-    \item \textbf{Enhanced Collaboration Features}: Implement tools for communication and resource sharing among vendors, fostering a sense of community and mutual support.
-
-    \item \textbf{Localization and Customization}: Adapt ASTRO to different regions' specific needs and regulatory requirements, ensuring relevance across diverse contexts.
-    \item \textbf{Integration with E-Commerce Platforms}: Integrate ASTRO with popular e-commerce platforms to enable seamless online ordering and sales management, expanding vendors' market reach.
-    \item \textbf{User Training and Support Programs}: Provide training programs to help vendors maximize ASTRO's benefits, enhancing adoption and success.
-    \item \textbf{Data Privacy and Security Enhancements}: Implement advanced measures for data protection, building user trust and ensuring data confidentiality.
-    \item \textbf{Feedback and Continuous Improvement Mechanism}: Establish a feedback system to gather user input and improve ASTRO's features and functionalities over time.
-    \item \textbf{Scalability and Performance Optimisation}: Ensure the platform's scalability and performance can handle increased users and data as ASTRO grows.
-    \item \textbf{Exploration of New Markets and Industries}: Expand ASTRO's framework to apply to other markets and industries beyond small-scale vendors, opening new avenues for growth and impact.
-\end{enumerate}
+\par The results of our implementation validate the core thesis that technology-driven collaboration can substantially improve the competitive position of small-scale vendors in today's market. By combining advanced machine learning techniques with practical business solutions, ASTRO demonstrates that sophisticated technologies can be made accessible and valuable to small businesses that traditionally lack access to such tools. The platform's ability to decompose complex demand patterns into interpretable components—trend, weekly cycles, and annual seasonality empowers vendors with actionable intelligence previously available only to large retail corporations with dedicated analytics teams.

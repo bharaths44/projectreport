@@ -47,20 +47,22 @@
 \contentsline {subsection}{\numberline {3.2.2}Database Schema}{31}{}%
 \contentsline {subsection}{\numberline {3.2.3}API Endpoints}{31}{}%
 \contentsline {section}{\numberline {3.3}Frontend Implementation}{32}{}%
-\contentsline {subsection}{\numberline {3.3.1}Flutter Application}{32}{}%
+\contentsline {subsection}{\numberline {3.3.1}React and TypeScript Application}{32}{}%
 \contentsline {subsection}{\numberline {3.3.2}Application Architecture}{33}{}%
 \contentsline {subsection}{\numberline {3.3.3}Key UI Components}{33}{}%
-\contentsline {section}{\numberline {3.4}Integration and Communication}{33}{}%
-\contentsline {subsection}{\numberline {3.4.1}API Integration}{33}{}%
-\contentsline {subsection}{\numberline {3.4.2}Real-time Notifications}{33}{}%
-\contentsline {section}{\numberline {3.5}Security Implementation}{34}{}%
-\contentsline {subsection}{\numberline {3.5.1}Authentication and Authorization}{34}{}%
-\contentsline {subsection}{\numberline {3.5.2}Data Encryption}{34}{}%
-\contentsline {section}{\numberline {3.6}Summary}{34}{}%
-\contentsline {chapter}{\numberline {4}Conclusions}{36}{}%
-\contentsline {chapter}{Appendix A: Presentation}{41}{}%
-\contentsline {paragraph}{\ }{41}{}%
-\contentsline {chapter}{Appendix B: Vision, Mission, PO, PSO, and CO}{51}{}%
-\contentsline {paragraph}{\ }{51}{}%
-\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{54}{}%
-\contentsline {paragraph}{\ }{55}{}%
+\contentsline {section}{\numberline {3.4}Integration and Communication}{34}{}%
+\contentsline {subsection}{\numberline {3.4.1}API Integration}{34}{}%
+\contentsline {subsection}{\numberline {3.4.2}Real-time Notifications}{34}{}%
+\contentsline {section}{\numberline {3.5}Security Implementation}{35}{}%
+\contentsline {subsection}{\numberline {3.5.1}Authentication and Authorization}{35}{}%
+\contentsline {subsection}{\numberline {3.5.2}Data Encryption}{35}{}%
+\contentsline {section}{\numberline {3.6}Summary}{36}{}%
+\contentsline {chapter}{\numberline {4}Conclusion}{37}{}%
+\contentsline {subsubsection}{Cost Comparison Analysis}{38}{}%
+\contentsline {paragraph}{Traditional Delivery Approach}{39}{}%
+\contentsline {paragraph}{Collaborative Delivery Approach}{39}{}%
+\contentsline {paragraph}{Impact Assessment}{39}{}%
+\contentsline {chapter}{Appendix B: Vision, Mission, PO, PSO, and CO}{42}{}%
+\contentsline {paragraph}{\ }{43}{}%
+\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{46}{}%
+\contentsline {paragraph}{\ }{47}{}%

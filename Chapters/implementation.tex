@@ -79,20 +79,29 @@ Each endpoint is implemented with appropriate request validation, error handling
 
 \section{Frontend Implementation}
 
-\subsection{Flutter Application}
+\subsection{React and TypeScript Application}
 
-The frontend client application is implemented using Flutter, Google's UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. Key advantages of using Flutter include:
+The frontend client application is implemented using React with TypeScript and Tailwind CSS, providing a robust and modern web development stack. Key advantages of using this technology combination include:
 
 \begin{itemize}
-    \item \textbf{Cross-Platform Development}: Single codebase for both Android and iOS apps
-    \item \textbf{Consistent UI}: Pixel-perfect rendering across platforms
-    \item \textbf{Performance}: Near-native performance with hot reload for rapid development
-    \item \textbf{Rich Widget Library}: Comprehensive set of Material Design and Cupertino widgets
+    \item \textbf{Type Safety}: TypeScript adds static typing to JavaScript, enabling early error detection and improved developer experience
+    \item \textbf{Component-Based Architecture}: React's modular component system promotes reusability and maintainable code
+    \item \textbf{Utility-First CSS}: Tailwind's approach allows for rapid UI development without leaving HTML
+    \item \textbf{Responsive Design}: Tailwind's responsive utilities make building adaptive interfaces straightforward
+    \item \textbf{Performance Optimizations}: React's virtual DOM and Tailwind's PurgeCSS integration ensure efficient applications
 \end{itemize}
 
 \subsection{Application Architecture}
 
-The Flutter application follows the BLoC (Business Logic Component) architecture pattern for state management, providing a clean separation between presentation and business logic:
+The React application follows a modern architecture pattern leveraging React hooks and context for state management:
+
+\begin{itemize}
+    \item \textbf{Custom Hooks}: Encapsulating business logic and state management
+    \item \textbf{Context API}: For global state management and theme configuration
+    \item \textbf{TypeScript Interfaces}: Strict typing of props, state, and API responses
+    \item \textbf{Component Composition}: Building complex UIs from simpler, reusable components
+    \item \textbf{Tailwind Configuration}: Extended theme with custom colors and component classes
+\end{itemize}
 
 \subsection{Key UI Components}
 
@@ -102,7 +111,7 @@ The application includes several key screens and components:
     \item \textbf{Dashboard}: Provides an overview of key metrics and recent activities
     \item \textbf{Inventory Management}: Allows vendors to track their inventory levels
     \item \textbf{Order Creation}: Interface for creating new orders
-    \item \textbf{Forecast Visualization}: Displays demand forecasts with interactive charts
+    \item \textbf{Forecast Visualization}: Displays demand forecasts with interactive charts using Recharts
     \item \textbf{Cluster Notification}: Alerts vendors about potential order aggregation opportunities
     \item \textbf{Order Tracking}: Real-time tracking of order status and delivery
 \end{enumerate}
@@ -111,12 +120,29 @@ The application includes several key screens and components:
 
 \subsection{API Integration}
 
-The Flutter application communicates with the FastAPI backend through RESTful API calls, implemented using the Dio HTTP client:
+The React application communicates with the FastAPI backend through RESTful API calls, implemented using Axios with React Query:
+
+\begin{itemize}
+    \item \textbf{React Query}: For data fetching, caching, and synchronization
+    \item \textbf{Axios Interceptors}: Handling authentication and request/response formatting
+    \item \textbf{TypeScript Types}: Ensuring type safety in API requests and responses
+    \item \textbf{Custom Hooks}: Wrapping API calls in reusable React hooks for component consumption
+\end{itemize}
 
 \subsection{Real-time Notifications}
 
-The system implements real-time notifications using WebSockets to alert vendors about relevant events:
+The system implements real-time notifications using Firebase Cloud Messaging (FCM) to deliver timely alerts to vendors:
 
+\begin{itemize}
+    \item \textbf{Firebase Cloud Messaging}: Cross-platform notification delivery with support for both foreground and background messaging
+    \item \textbf{React Firebase Hooks}: Integration with React application state to handle incoming messages
+    \item \textbf{Notification Permission Management}: Streamlined handling of browser notification permissions
+    \item \textbf{Tailwind Notification Components}: Customized UI elements for displaying in-app notifications with consistent styling
+    \item \textbf{Service Worker Registration}: Background notification delivery even when the application is closed
+    \item \textbf{Topic-based Subscriptions}: Allowing vendors to subscribe to relevant notification categories (orders, inventory alerts, etc.)
+\end{itemize}
+
+The FCM implementation ensures reliable delivery of critical notifications across devices, with customizable delivery options for different notification priorities. For high-priority notifications, the system leverages FCM's capability to wake devices, ensuring time-sensitive information reaches vendors immediately.
 \section{Security Implementation}
 \subsection{Authentication and Authorization}
 
@@ -147,6 +173,6 @@ Sensitive data is encrypted both at rest and in transit:
 
 \section{Summary}
 
-The implementation of the ASTRO platform leverages modern technologies and architecture patterns to deliver a robust, scalable, and performant solution. By utilizing FastAPI for the backend and Flutter for the frontend, the system achieves a balance between development efficiency and runtime performance. The modular design ensures that each component—demand forecasting, order aggregation, and logistics optimization can evolve independently while maintaining integration with the broader system.
+The implementation of the ASTRO platform leverages modern technologies and architecture patterns to deliver a robust, scalable, and performant solution. By utilizing FastAPI for the backend and Flutter for the frontend, the system achieves a balance between development efficiency and runtime performance. The modular design ensures that each component order aggregation, logistics optimization and demand forecasting can evolve independently while maintaining integration with the broader system.
 
 The implementation demonstrates how complex algorithms and advanced machine learning techniques can be effectively deployed in a production environment, providing tangible benefits to vendors through improved demand forecasting, efficient order aggregation, and optimized logistics.
