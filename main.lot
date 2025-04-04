@@ -1,9 +1,13 @@
 \acswitchoff 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Example of Vendor Clustering in Order Aggregation}}{21}{}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Key Inputs for Neural Prophet}}{27}{}%
-\contentsline {table}{\numberline {2.3}{\ignorespaces Example of Forecasted Sales and Smoothed Trend}}{28}{}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Example of Vendor Clustering in Order Aggregation}}{16}{}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Key Inputs for Neural Prophet}}{22}{}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Example of Forecasted Sales and Smoothed Trend}}{23}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Cost Comparison: Traditional vs. Collaborative Route Optimization}}{38}{}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Comparative Analysis of Clustering Algorithms}}{33}{}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Algorithm Performance Comparison for Route Optimization}}{35}{}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Cost Comparison: Traditional vs. Collaborative Route Optimization}}{37}{}%
+\addvspace {10\p@ }

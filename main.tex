@@ -32,6 +32,7 @@
 \usepackage{listings}
 \usepackage{pgfplots}
 \usepackage{booktabs}
+\usepackage{multirow}
 \usepgfplotslibrary{dateplot}
 \pgfplotsset{compat=1.18} 
 \usepackage{pgfplotstable}
@@ -51,7 +52,26 @@
 \definecolor{dartblue}{RGB}{0,0,255}
 \definecolor{dartgreen}{RGB}{0,128,0}
 \definecolor{dartred}{RGB}{255,0,0}
+\lstdefinelanguage{jsx}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, finally, for, function, if, in, instanceof, new, return, switch, this, throw, try, typeof, var, void, while, with, const, let, true, false, null, undefined, class, export, import, extends, super, render, React, Component},
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]`,
+  alsodigit={:,;},
+}
 
+% Optional: Set default style for all listings
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{green},
+  stringstyle=\color{red},
+  breaklines=true,
+  showstringspaces=false
+}
 \lstdefinelanguage{Dart}{
   keywords={abstract, as, assert, async, await, break, case, catch, class, const, continue, default, deferred, do, dynamic, else, enum, export, extends, factory, false, final, finally, for, get, if, implements, import, in, is, library, new, null, operator, part, rethrow, return, set, static, super, switch, sync, this, throw, true, try, typedef, var, void, while, with, yield},
   keywordstyle=\color{dartblue}\bfseries,
@@ -183,20 +203,21 @@
 \input{Chapters/introduction.tex}
 
 \input{Chapters/sys_arch.tex}
+\input{Chapters/methodology.tex}
 \input{Chapters/implementation.tex}
+\input{Chapters/results.tex}
 \input{Chapters/conclusion.tex}
 
 
 
+\clearpage
+\renewcommand{\bibname}{References}
+\addcontentsline{toc}{chapter}{References}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+% \input{references.tex}
 
-% \clearpage
-% \renewcommand{\bibname}{References}
-% \addcontentsline{toc}{chapter}{References}
-% \bibliographystyle{IEEEtran}
-% \bibliography{references}
-%\input{references.tex}
-
-% \input{Appendices/appendix_A.tex}
+\input{Appendices/appendix_A.tex}
 \input{Appendices/appendix_B.tex}
 \input{Appendices/appendix_C.tex}
 %\clearpage

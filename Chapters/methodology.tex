@@ -1,0 +1,290 @@
+\chapter{Methodology}
+
+\section{Vendor Clustering Module and Order Aggregation Module}
+
+Order aggregation is pivotal in supply chain management because it enables the consolidation of multiple small orders into a larger, bulk order, thereby reducing per unit costs, lowering shipping expenses, and streamlining procurement processes. Clustering algorithms have emerged as a powerful data-driven solution to group orders based on attributes such as timing, location, and product similarity; among these, Density-Based Spatial Clustering\cite{ester1996density} of Applications with Noise (DBSCAN) is particularly attractive because it automatically detects clusters based on data density and effectively identifies outliers without forcing every order into a cluster, ensuring that only naturally cohesive orders are consolidated for bulk purchasing.
+
+Despite these advantages, DBSCAN's\cite{john2023exploration} performance relies heavily on the correct setting of two parameters: $\varepsilon$ (the neighborhood radius) and $\text{min\_samples}$ (the minimum number of points necessary to form a dense region). An improperly chosen $\varepsilon$ can lead to overly fragmented micro-clusters or one excessively large cluster, while a poorly chosen $\text{min\_samples}$ might incorrectly label potential clusters or force groupings that do not reflect actual order density. These challenges become even more pronounced in a dynamic environment such as daily order aggregation, where patterns vary significantly. Hence, a Genetic Algorithm (GA)\cite{perafan2022performance} is employed to automatically find the most effective DBSCAN parameters leading to the hybrid DBSCAN approach. Moreover, appropriately tuned $\varepsilon$ and $\text{min\_samples}$ serve as critical thresholds: a well-chosen $\varepsilon$ ensures that orders located significantly far from dense regions are not aggregated but are instead classified as noise, while the $\text{min\_samples}$ parameter guarantees that only sufficiently dense groups of orders form clusters, thereby preventing the inclusion of isolated orders that should remain unaggregated.
+
+The hybrid methodology operates in two broad phases: (1) Parameter selection for DBSCAN using genetic algorithm, and (2) DBSCAN algorithm for clustering orders.
+
+\subsection{Parameter Selection with Genetic Algorithm}
+
+The GA begins by generating a population of parameter pairs ($\varepsilon$, $\text{min\_samples}$) within predefined ranges say, $\varepsilon$ in $[0.001, 0.1]$ and $\text{min\_samples}$ in $[2, 10]$. Each candidate solution is tested by running DBSCAN on the current dataset of orders. A simple fitness function, defined as:
+\begin{equation}
+    \text{fitness}(\varepsilon, m) = \left( |\{\, \ell \in L \mid \ell \neq -1 \,\}| \right) - \left( \sum_{i=1}^{N} \mathbf{1}\{L_i = -1\} \right)
+    \label{eq:fitness}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{$\epsilon$}: Neighborhood radius in DBSCAN (eps).
+    \item \textbf{$m$}: Minimum number of points required to form a cluster (min\_samples).
+    \item \textbf{$L$}: Set (or list) of labels assigned by DBSCAN to each data point.
+    \item \textbf{$\ell$}: An individual label from $L$.
+    \item \textbf{$-1$}: Label indicating noise/outliers (points not assigned to any cluster).
+    \item \textbf{$\{\ell \in L \mid \ell \neq -1\}$}: Subset of labels corresponding to all clustered points (excluding noise).
+    \item \textbf{$\bigl|\{\ell \in L \mid \ell \neq -1\}\bigr|$}: Number of clustered points (i.e., total points with labels $\neq -1$).
+    \item \textbf{$\sum_{i=1}^{N} \mathbf{1}\{L_i = -1\}$}: Number of outliers/noise points, where $\mathbf{1}\{\cdot\}$ is the indicator function.
+    \item \textbf{$N$}: Total number of data points under consideration.
+    \item \textbf{$fitness(\epsilon, m)$}: Objective to maximize: number of clustered points minus number of outliers.
+\end{itemize}
+
+Equation~\ref{eq:fitness} rewards configurations that produce more dense groupings and fewer leftover or ``noise'' points. Following the canonical GA steps (selection, crossover, and mutation), the population evolves over multiple generations, gradually converging on an optimal parameter pair. These final ($\varepsilon$, $\text{min\_samples}$) values yield the best clustering outcome for that day's distribution of orders.
+
+\subsection{DBSCAN Algorithm for Clustering Orders}
+
+Once the system obtains the GA-tuned DBSCAN parameters, these parameters are applied to the orders if the dataset contains 100 or more orders. For datasets with fewer than 100 orders, the method defaults to a simpler DBSCAN approach that uses a median-based $\varepsilon$ and a fixed $\text{min\_samples} = 2$. This tiered design minimizes computational overhead for small datasets while ensuring that larger datasets benefit from thorough optimization. After DBSCAN completes its clustering, a subsequent function aggregates the orders within each cluster, but only if the total order quantity for that cluster falls within the acceptable range:
+\begin{equation}
+    \text{MOQ} \leq \text{(Cluster Quantity)} \leq \text{MOQ} \times \left(1 + \frac{\text{Buffer \%}}{100}\right)
+    \label{eq:moq}
+\end{equation}
+
+
+
+The output of the hybrid DBSCAN approach is the optimal clustering of vendors to participate in aggregated orders. This grouping ensures that:
+
+\begin{itemize}
+    \item Orders within the same cluster have natural cohesion based on their attributes.
+    \item Each cluster's total order meets the MOQ requirements without excessive overordering.
+    \item Outlier orders that don't naturally fit into clusters remain unaggregated.
+\end{itemize}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Vendor} & \textbf{Order Quantity} & \textbf{Cluster ID} \\
+        \hline
+        Vendor A        & 50                      & 1                   \\
+        Vendor B        & 30                      & 1                   \\
+        Vendor C        & 10                      & -1 (Noise)          \\
+        Vendor D        & 20                      & 1                   \\
+        \hline
+    \end{tabular}
+    \caption{Example of Vendor Clustering in Order Aggregation}
+\end{table}
+
+In this example, Vendors A, B, and D are clustered together (Cluster ID 1), contributing a total order of 100 units, meeting the MOQ. Vendor C is identified as an outlier (noise) and is not included in the aggregated order.
+
+Once the optimal vendor clustering is determined, the platform finalizes the bulk order for each viable cluster and notifies all participating vendors. The order details are then passed to the logistics module for route optimisation and delivery scheduling, ensuring seamless fulfilment. By leveraging this hybrid approach, the platform provides an efficient, scalable, and automated solution for order aggregation, empowering vendors to compete effectively with larger retailers while ensuring only naturally cohesive orders are combined.
+
+
+\section{Logistics Using Environment Adaptive Genetic Algorithm (EAGA)}
+
+Logistics optimisation is a key component of the ASTRO platform, ensuring efficient delivery of aggregated orders to vendors while minimizing transportation costs and environmental impact. In the project, we employ the Environment Adaptive Genetic Algorithm (EAGA), a specialized variant of the Genetic Algorithm\cite{baker2003genetic} tailored to optimize routes for delivery vehicles. This algorithm determines the most efficient Route to deliver products to different vendors included in an aggregated order, focusing on reducing fuel consumption, delivery time, and carbon emissions while adapting to environmental conditions.
+
+\subsection{Mechanics of Logistics Optimisation}
+
+Once the order aggregation process is complete, the platform identifies the vendors participating in the bulk order and their respective delivery locations. The challenge is to determine the optimal route for a delivery vehicle to service all vendors while adapting to environmental conditions and adhering to constraints such as delivery time windows, vehicle capacity, and geographic proximity.
+
+The EAGA is designed to achieve this by incorporating concepts of environmental adaptability, Route flexibility, and comprehensive cost evaluation. Here's how it works:
+
+\textbf{Input Data:}
+The algorithm takes the following inputs:
+\begin{itemize}
+    \item Vendor locations (latitude and longitude).
+    \item Delivery quantities for each vendor (ensuring vehicle capacity constraints are met).
+    \item Service time windows for each vendor (if applicable).
+    \item Vehicle starting point (typically the supplier's location).
+    \item Environmental data including weather conditions, temperature, and elevation changes.
+\end{itemize}
+
+\textbf{Route Representation:}
+The delivery route is represented as a sequence of vendor locations, starting and ending at the supplier's location. For example:
+
+\[
+    \text{Route: Supplier} \rightarrow \text{Vendor A} \rightarrow \text{Vendor B} \rightarrow \text{Vendor C} \rightarrow \text{Supplier}
+\]
+
+\textbf{Comprehensive Cost Function:}
+The EAGA employs a sophisticated cost function that evaluates route quality based on multiple factors. The total cost is calculated as:
+
+\begin{equation}
+    \text{TC} = w_{\text{dist}} \times D + w_{\text{weather}} \times W + w_{\text{elev}} \times E + w_{\text{fuel}} \times F
+\end{equation}
+
+\noindent where:
+\begin{itemize}
+    \item $\text{TC}$ is the total cost
+    \item $w_{\text{dist}}$ is the weight for distance component
+    \item $w_{\text{weather}}$ is the weight for weather component
+    \item $w_{\text{elev}}$ is the weight for elevation component
+    \item $w_{\text{fuel}}$ is the weight for fuel component
+    \item $D$ is the total distance
+    \item $W$ is the weather cost
+    \item $E$ is the elevation cost
+    \item $F$ is the fuel cost
+\end{itemize}
+
+\textbf{Weather Cost Calculation:}
+Weather cost incorporates delays and additional fuel consumption caused by adverse weather conditions:
+\begin{equation}
+    W = W_t + W_p + W_w
+\end{equation}
+
+where $W$ is the total weather cost, $W_t$ is the temperature cost, $W_p$ is the precipitation cost, and $W_w$ is the wind cost.
+
+\begin{itemize}
+    \item Temperature cost: If the average temperature ($\text{avg\_temp}$) exceeds 30°C, the penalty is calculated as:
+          \begin{equation}
+              W_t = 0.05 \times (\text{avg\_temp} - 25)^2
+          \end{equation}
+
+    \item Precipitation cost: If there is any precipitation, the penalty is calculated as:
+          \begin{equation}
+              W_p = 0.2 \times \text{avg\_precip}
+          \end{equation}
+
+    \item Wind cost: If the average wind speed ($\text{avg\_wind}$) exceeds 10 m/s, the penalty is calculated as:
+          \begin{equation}
+              W_w = 0.1 \times (\text{avg\_wind} - 5)^2
+          \end{equation}
+\end{itemize}
+
+\textbf{Elevation Cost Calculation:}
+Elevation cost reflects the impact of terrain on vehicle performance:
+\begin{equation}
+    E = 0.005 \times \left( \frac{|\text{elevation\_change}|}{100} \right)^2
+\end{equation}
+
+\textbf{Fuel Cost Calculation:}
+Fuel cost is normalized to account for variations in consumption due to multiple factors:
+\begin{equation}
+    F = F_b + F_t + F_w + F_e
+\end{equation}
+
+\begin{itemize}
+    \item Temperature component ($F_t$): For temperatures above 30°C:
+          \begin{equation}
+              F_t = 0.01 \times (\text{avg\_temp} - 30)
+          \end{equation}
+
+    \item Wind component ($F_w$): For wind speeds above 5 m/s:
+          \begin{equation}
+              F_w = 0.02 \times (\text{avg\_wind} - 5)
+          \end{equation}
+
+    \item Elevation component ($F_e$):
+          \begin{equation}
+              F_e =
+              \begin{cases}
+                  0.0005 \times \text{elevation\_change}    & \text{if uphill}   \\
+                  -0.0003 \times |\text{elevation\_change}| & \text{if downhill}
+              \end{cases}
+          \end{equation}
+\end{itemize}
+
+\textbf{Genetic Algorithm Operations:}
+\begin{itemize}
+    \item \textbf{Selection:} Tournament selection is employed, choosing low-cost routes for reproduction.
+    \item \textbf{Crossover:} The ordered crossover operator ensures valid offspring routes while maintaining vendor order.
+    \item \textbf{Mutation:} Swap mutation introduces diversity by randomly swapping vendors with a probability that dynamically decays over generations.
+    \item \textbf{Parameter Adaptation:} The algorithm dynamically adjusts parameters based on the number of vendors:
+          \begin{itemize}
+              \item Population Size: $P = P_0 \times \frac{v}{100}$
+              \item Number of generations: $G = G_0 \times \frac{v}{100}$
+              \item Mutation rate: $\mu = \mu_0 \times \left(1 + \frac{v - 100}{1000}\right)$
+          \end{itemize}
+          where $P_0=100$, $G_0=300$, $\mu_0=0.1$, and $v$ is the number of vendors.
+    \item \textbf{Elitism:} The best solutions from each generation are preserved, accelerating convergence toward an optimal solution.
+\end{itemize}
+
+\textbf{Output:}
+The algorithm provides the optimized delivery route, detailing the order in which vendors should be serviced.
+
+\subsection{Advantages of Using EAGA for Route Optimization}
+
+The Environment Adaptive Genetic Algorithm is specifically chosen for the project because it aligns with the platform's goals of cost efficiency, environmental sustainability, and adaptability. Key advantages include:
+
+\begin{itemize}
+    \item \textbf{Environmental Adaptability:} By factoring in weather conditions, temperature, and elevation changes, the algorithm adapts routes to real-world conditions.
+    \item \textbf{Comprehensive Cost Evaluation:} The multi-factor cost function ensures that all relevant aspects of route efficiency are considered.
+    \item \textbf{Scalability:} Parameter adaptation allows the algorithm to efficiently handle varying numbers of vendors.
+    \item \textbf{Flexibility with Constraints:} It handles dynamic vendor locations, varying delivery quantities, and service time windows, ensuring practical applicability.
+    \item \textbf{Sustainability Focus:} By minimizing fuel consumption and considering environmental factors, the algorithm promotes eco-friendly logistics.
+\end{itemize}
+
+
+
+After the aggregated order is finalized, the vendor delivery details are fed into the logistics module. The EAGA computes the optimal delivery route and provides the route to the delivery driver. The platform ensures that real-time environmental data, such as weather conditions, traffic updates, or vendor availability changes, are seamlessly integrated into the routing process.
+
+This integration ensures timely and efficient delivery of products, enhancing vendor satisfaction while supporting the platform's commitment to sustainability and cost-effective operations.
+
+This chapter has outlined the system's architecture and described each component's role in creating a cohesive platform for demand forecasting, order aggregation, and logistics management. Through effective system integration and real-time notifications, the platform provides a unified experience that supports vendors in optimizing their operations, managing inventory, and coordinating logistics. The collaborative approach facilitated by this platform empowers vendors to maintain competitive advantages, meeting demand efficiently and enhancing overall supply chain resilience.
+\section{Demand Forecasting with Neural Prophet}
+
+ASTRO platform, demand forecasting\cite{gardner1980forecasting} is essential for streamlining inventory management, optimizing order cycles, and enabling vendor collaboration. Using Neural Prophet\cite{triebe2021neuralprophet}, we forecast future sales for each store-item combination. This helps vendors make timely decisions about inventory and orders while facilitating joint purchasing to achieve bulk discounts. The model’s capability to handle trends and seasonality makes it ideal for predicting sales patterns critical to the platform’s success.
+
+\subsection{Inputs for Neural Prophet}
+
+The forecasting process begins with preparing the data. The key inputs used in the project include:
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Column Name} & \textbf{Description}           & \textbf{Format}                \\
+        \hline
+        \texttt{ds}          & Date of sales                  & Datetime (\texttt{YYYY-MM-DD}) \\
+        \hline
+        \texttt{y}           & Sales value for the given date & Numeric                        \\
+        \hline
+    \end{tabular}
+    \caption{Key Inputs for Neural Prophet}
+\end{table}
+
+The \texttt{ds} column represents the timeline for sales data, while \texttt{y} contains the actual number of items sold at a given store for a particular item. Both columns are preprocessed to ensure consistency. Missing sales values (\texttt{y}) are interpolated to maintain data continuity, and the \texttt{ds} column is checked for valid date formatting.
+
+\subsection{Neural Prophet Structure}
+
+Neural Prophet decomposes the sales data into the following components to identify patterns:
+The NeuralProphet model consists of multiple modules, each contributing an additive component to the forecast. The forecasted value \( \hat{y}_t \) is the sum of the following components:
+
+\begin{equation}
+    \hat{y}_t = T(t) + S(t) + E(t) + F(t) + A(t) + L(t)
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item \( T(t) \) = Trend at time \( t \): This captures long-term growth or decline in the sales data.
+    \item \( S(t) \) = Seasonal effects at time \( t \): This models recurring patterns in sales, such as seasonal peaks.
+    \item \( E(t) \) = Event and holiday effects at time \( t \): This component adjusts for external events or holidays that affect demand.
+    \item \( F(t) \) = Regression effects for future-known exogenous variables at time \( t \): This accounts for external factors, such as planned promotions or events, that are known in advance.
+    \item \( A(t) \) = Auto-regression effects based on past observations at time \( t \): This models the relationship between past sales data and current demand.
+    \item \( L(t) \) = Regression effects for lagged observations of exogenous variables at time \( t \): This captures the delayed impact of external variables on sales.
+\end{itemize}
+
+Each component is modeled independently, and their outputs are summed to generate the final forecast \( \hat{y}_t \). The NeuralProphet framework is flexible, allowing each of these components to be switched on or off depending on the data and requirements of the project.
+
+
+The model generates forecasts over a predefined time horizon, typically ranging from 30 to 60 days based on vendor needs. The outputs include:
+
+\begin{itemize}
+    \item \textbf{Predicted Sales} (\texttt{yhat1}): Projected daily sales for the forecasted period.
+    \item \textbf{Smoothed Sales Trend} (\texttt{yhat1\_trend}): Rolling averages (e.g., 30-day mean) applied to predicted values to highlight trends and reduce noise.
+\end{itemize}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Date (ds)} & \textbf{Predicted Sales (yhat1)} & \textbf{Smoothed Sales (yhat1\_trend)} \\
+        \hline
+        2024-12-01         & 100                              & 98                                     \\
+        2024-12-02         & 105                              & 99                                     \\
+        2024-12-03         & 110                              & 101                                    \\
+        \hline
+    \end{tabular}
+    \caption{Example of Forecasted Sales and Smoothed Trend}
+\end{table}
+
+
+
+The demand forecasting module integrates seamlessly with other parts of the platform, creating a cohesive system that enhances vendor operations:
+
+\begin{itemize}
+    \item \textbf{Inventory Management}: Forecasted sales help vendors prepare for upcoming demand, ensuring stock levels are optimized.
+    \item \textbf{Order Aggregation}: Predictions trigger notifications to vendors nearing their replenishment cycle. These notifications encourage vendors to place joint orders, maximizing cost savings.
+    \item \textbf{Logistics Optimisation}: Predicted delivery schedules align with logistics planning, enabling route optimisation and efficient load distribution.
+\end{itemize}
+By integrating Neural Prophet’s forecasts into the platform, vendors can proactively manage inventory, coordinate joint purchases, and reduce costs. The model’s ability to deliver actionable insights ensures the platform’s operational efficiency and supports the growth of small-scale vendors.

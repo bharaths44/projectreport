@@ -4,7 +4,11 @@
 \contentsline {figure}{\numberline {2.1}{\ignorespaces System Architecture}}{10}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces NeuralProphet Demand Forecasting}}{40}{}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces NeuralProphet Long-term Trend Analysis}}{40}{}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces NeuralProphet Weekly Seasonality Analysis}}{41}{}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces NeuralProphet Yearly Seasonality Analysis}}{41}{}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Effect of learning rate on MAE and RMSE for NeuralProphet model}}{36}{}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Effect of Epochs on MAE and RMSE for NeuralProphet model}}{36}{}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces NeuralProphet Demand Forecasting}}{38}{}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces NeuralProphet Long-term Trend Analysis}}{38}{}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces NeuralProphet Weekly Seasonality Analysis}}{38}{}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces NeuralProphet Yearly Seasonality Analysis}}{39}{}%
+\addvspace {10\p@ }

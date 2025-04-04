@@ -1,6 +1,6 @@
 \chapter{Implementation}
 
-\section{System Overview}
+
 
 The ASTRO platform has been implemented using a modern technology stack that ensures scalability, performance, and cross-platform compatibility. The implementation follows a client-server architecture with clear separation of concerns:
 
@@ -75,102 +75,149 @@ Key API endpoints include:
           \end{itemize}
 \end{enumerate}
 
-Each endpoint is implemented with appropriate request validation, error handling, and business logic to ensure robust operation of the platform.
-
 \section{Frontend Implementation}
 
 \subsection{React and TypeScript Application}
 
-The frontend client application is implemented using React with TypeScript and Tailwind CSS, providing a robust and modern web development stack. Key advantages of using this technology combination include:
+The ASTRO platform frontend is implemented using React with TypeScript and Tailwind CSS, featuring a comprehensive routing structure and modern UI components. Our implementation features:
 
 \begin{itemize}
-    \item \textbf{Type Safety}: TypeScript adds static typing to JavaScript, enabling early error detection and improved developer experience
-    \item \textbf{Component-Based Architecture}: React's modular component system promotes reusability and maintainable code
-    \item \textbf{Utility-First CSS}: Tailwind's approach allows for rapid UI development without leaving HTML
-    \item \textbf{Responsive Design}: Tailwind's responsive utilities make building adaptive interfaces straightforward
-    \item \textbf{Performance Optimizations}: React's virtual DOM and Tailwind's PurgeCSS integration ensure efficient applications
+    \item \textbf{Type-Safe Development}: TypeScript provides static typing throughout the codebase, enabling early error detection during development and improving code quality
+    \item \textbf{Component Architecture}: A modular system of UI components organized by business domain (vendors, suppliers, orders) to maximize code reusability
+    \item \textbf{Tailwind Integration}: Utility-first CSS approach through Tailwind enables rapid styling without context-switching between files
+    \item \textbf{Responsive Layout}: Adaptive interface designs that work across desktop and mobile devices using Tailwind's responsive utility classes
+    \item \textbf{Modern UI Components}: Custom component library including toasts, tooltips, and interactive elements for a consistent user experience
 \end{itemize}
 
 \subsection{Application Architecture}
 
-The React application follows a modern architecture pattern leveraging React hooks and context for state management:
+Our React application follows a structured architecture organized around the following principles:
 
 \begin{itemize}
-    \item \textbf{Custom Hooks}: Encapsulating business logic and state management
-    \item \textbf{Context API}: For global state management and theme configuration
-    \item \textbf{TypeScript Interfaces}: Strict typing of props, state, and API responses
-    \item \textbf{Component Composition}: Building complex UIs from simpler, reusable components
-    \item \textbf{Tailwind Configuration}: Extended theme with custom colors and component classes
+    \item \textbf{React Query Integration}: Centralized data fetching through QueryClientProvider for efficient server state management
+    \item \textbf{Context-Based Authentication}: Custom AuthProvider context manages user authentication state and permissions
+    \item \textbf{Route-Based Code Structure}: Features organized by routes (e.g., /dashboard, /products, /orders) for intuitive navigation
+    \item \textbf{Separation of Concerns}: Clear distinction between vendor and supplier interfaces with dedicated components and routes
+    \item \textbf{Centralized Notifications}: Global toast notifications through Toaster components for system alerts and user feedback
 \end{itemize}
+
+Our routing structure demonstrates the application's organization:
+
+\begin{lstlisting}[language=jsx, basicstyle=\small\ttfamily]
+<Routes>
+  <Route path="/" element={<Index />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/register" element={<Register />} />
+  <Route path="/complete-profile" element={<CompleteProfile />} />
+  <Route path="/dashboard" element={<Dashboard />} />
+  <Route path="/products" element={<Products />} />
+  <Route path="/orders" element={<Orders />} />
+  <Route path="/suppliers" element={<Suppliers />} />
+  <Route path="/settings" element={<Settings />} />
+  <Route path="/forecast" element={<DemandForecast />} />
+  <Route path="/route-optimization" element={<OrderAggregation />} />
+  <Route path="*" element={<NotFound />} />
+</Routes>
+\end{lstlisting}
 
 \subsection{Key UI Components}
 
-The application includes several key screens and components:
+The application is structured around several core screens that support the platform's functionality:
 
 \begin{enumerate}
-    \item \textbf{Dashboard}: Provides an overview of key metrics and recent activities
-    \item \textbf{Inventory Management}: Allows vendors to track their inventory levels
-    \item \textbf{Order Creation}: Interface for creating new orders
-    \item \textbf{Forecast Visualization}: Displays demand forecasts with interactive charts using Recharts
-    \item \textbf{Cluster Notification}: Alerts vendors about potential order aggregation opportunities
-    \item \textbf{Order Tracking}: Real-time tracking of order status and delivery
+    \item \textbf{Dashboard (/dashboard)}: Central hub displaying key metrics, recent orders, and aggregation opportunities
+    \item \textbf{Products (/products)}: Interface for vendors to browse and select products from suppliers
+    \item \textbf{Orders (/orders)}: Comprehensive order management with status tracking and history
+    \item \textbf{Suppliers (/suppliers)}: Directory of available suppliers with filtering capabilities
+    \item \textbf{Demand Forecast (/forecast)}: Interactive visualization of product demand predictions
+    \item \textbf{Order Aggregation (/order-aggregation)}: Interface for suppliers to manage aggregated orders and optimize delivery routes
 \end{enumerate}
+
+Each screen is designed with role-based access control, ensuring users only see functionality relevant to their role as either vendor or supplier.
 
 \section{Integration and Communication}
 
 \subsection{API Integration}
 
-The React application communicates with the FastAPI backend through RESTful API calls, implemented using Axios with React Query:
+The frontend communicates with our FastAPI backend through React Query, providing efficient data fetching and caching:
 
 \begin{itemize}
-    \item \textbf{React Query}: For data fetching, caching, and synchronization
-    \item \textbf{Axios Interceptors}: Handling authentication and request/response formatting
-    \item \textbf{TypeScript Types}: Ensuring type safety in API requests and responses
-    \item \textbf{Custom Hooks}: Wrapping API calls in reusable React hooks for component consumption
+    \item \textbf{Centralized Query Client}: A shared QueryClientProvider wraps the application to manage all API requests
+    \item \textbf{Typed API Responses}: TypeScript interfaces ensure type safety between frontend components and API data
+    \item \textbf{Authentication Headers}: JWT tokens are automatically included in requests through Axios interceptors
+    \item \textbf{Custom API Hooks}: Domain-specific React hooks encapsulate data fetching logic (e.g., useOrders, useProducts)
 \end{itemize}
 
-\subsection{Real-time Notifications}
+\subsection{Data Models and API Integration}
 
-The system implements real-time notifications using Firebase Cloud Messaging (FCM) to deliver timely alerts to vendors:
+The ASTRO platform implements a comprehensive set of TypeScript interfaces to ensure type safety and data consistency across the application. These interfaces define the contract between frontend components and backend API services.
+
+\subsubsection{Core Business Entity Interfaces}
+
+We structured our data models around key business entities to ensure proper type checking and validation:
 
 \begin{itemize}
-    \item \textbf{Firebase Cloud Messaging}: Cross-platform notification delivery with support for both foreground and background messaging
-    \item \textbf{React Firebase Hooks}: Integration with React application state to handle incoming messages
-    \item \textbf{Notification Permission Management}: Streamlined handling of browser notification permissions
-    \item \textbf{Tailwind Notification Components}: Customized UI elements for displaying in-app notifications with consistent styling
-    \item \textbf{Service Worker Registration}: Background notification delivery even when the application is closed
-    \item \textbf{Topic-based Subscriptions}: Allowing vendors to subscribe to relevant notification categories (orders, inventory alerts, etc.)
+    \item \textbf{User Models}: The system distinguishes between different user types using specialized interfaces:
+          \begin{itemize}
+              \item \texttt{UserBase} interface provides common user attributes (ID, name, contact information)
+              \item \texttt{Vendor} and \texttt{Supplier} interfaces extend the base with role-specific properties
+          \end{itemize}
+
+    \item \textbf{Product Interface}: Represents product data including:
+          \begin{itemize}
+              \item Core product details (name, description, category)
+              \item Inventory management fields (price, stock level, MOQ)
+              \item Tracking metadata (supplier references, timestamps)
+          \end{itemize}
+
+    \item \textbf{Order Model}: Comprehensive order representation with:
+          \begin{itemize}
+              \item Order status tracking using a strongly-typed \texttt{OrderStatus} enum
+              \item Nested \texttt{OrderItem} objects with product references and quantities
+              \item Shipping details and payment information
+          \end{itemize}
 \end{itemize}
 
-The FCM implementation ensures reliable delivery of critical notifications across devices, with customizable delivery options for different notification priorities. For high-priority notifications, the system leverages FCM's capability to wake devices, ensuring time-sensitive information reaches vendors immediately.
-\section{Security Implementation}
-\subsection{Authentication and Authorization}
+\subsubsection{Algorithm Response Interfaces}
 
-The system leverages Firebase Authentication for secure user management:
-
-The authentication flow works as follows:
-
-\begin{enumerate}
-    \item The user authenticates with Firebase Authentication in the Flutter app
-    \item Firebase returns an ID token which is stored securely on the device
-    \item This token is included in API requests in the Authorization header
-    \item The backend verifies the token with Firebase Admin SDK
-    \item Upon successful verification, the system retrieves the user profile from Firestore
-\end{enumerate}
-
-Role-based authorization is implemented using Firestore's security rules and custom claims in the Firebase ID token, allowing for granular access control between vendors and suppliers.
-
-\subsection{Data Encryption}
-
-Sensitive data is encrypted both at rest and in transit:
+The platform employs specialized interfaces for machine learning components:
 
 \begin{itemize}
-    \item HTTPS for all API communications
-    \item Firebase's built-in encryption for database at rest
-    \item Secure storage for authentication tokens on client devices using Flutter Secure Storage
-    \item API keys and secrets managed through environment variables and Firebase Remote Config
+    \item \textbf{Demand Forecasting}: The \texttt{DemandForecast} interface structures time-series forecasting data:
+          \begin{itemize}
+              \item Sequential \texttt{ForecastPoint} objects with quantities and confidence intervals
+              \item Trend analysis and direction indicators
+              \item Model configuration parameters and performance metrics
+          \end{itemize}
+
+    \item \textbf{Order Aggregation}: The \texttt{OrderAggregationResponse} interface captures clustering results:
+          \begin{itemize}
+              \item \texttt{OrderAggregationCluster} objects with consolidated order information
+              \item Geographic coordinates for delivery planning
+              \item Algorithm performance metrics and configuration parameters
+          \end{itemize}
+
+    \item \textbf{Route Optimization}: The \texttt{RouteOptimizationResult} interface structures delivery routes:
+          \begin{itemize}
+              \item Sequenced waypoints with geographic coordinates
+              \item Distance and time calculations between points
+              \item Environmental data integration for adaptive routing
+          \end{itemize}
 \end{itemize}
 
+\subsubsection{Dashboard Data Interfaces}
+
+For the dashboard, specialized interfaces aggregate data for presentation:
+
+\begin{itemize}
+    \item \texttt{DashboardData}: Combines order statistics, supplier information, and financial metrics
+    \item \texttt{OrderStatusCount}: Provides a breakdown of orders by current status
+    \item \texttt{MonthlyOrderData}: Tracks order volume trends for visualization
+    \item \texttt{StatCardProps} and other component-specific interfaces for UI rendering
+\end{itemize}
+
+These strongly-typed interfaces ensure data consistency throughout the application while providing robust documentation and autocomplete support during development. The interface-driven approach facilitates seamless integration between frontend components and backend services by establishing clear contracts for data exchange.
+The notification system is particularly important for the order aggregation feature, as it alerts vendors about potential bulk ordering opportunities with nearby businesses, enabling real-time collaboration that would otherwise be difficult to coordinate.
 \section{Summary}
 
 The implementation of the ASTRO platform leverages modern technologies and architecture patterns to deliver a robust, scalable, and performant solution. By utilizing FastAPI for the backend and Flutter for the frontend, the system achieves a balance between development efficiency and runtime performance. The modular design ensures that each component order aggregation, logistics optimization and demand forecasting can evolve independently while maintaining integration with the broader system.

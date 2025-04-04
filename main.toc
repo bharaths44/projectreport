@@ -6,9 +6,9 @@
 \contentsline {paragraph}{}{i}{}%
 \contentsline {chapter}{Abstract}{ii}{}%
 \contentsline {paragraph}{}{ii}{}%
-\contentsline {chapter}{List of Abbreviations}{vi}{}%
-\contentsline {chapter}{List of Figures}{vii}{}%
-\contentsline {chapter}{List of Tables}{viii}{}%
+\contentsline {chapter}{List of Abbreviations}{v}{}%
+\contentsline {chapter}{List of Figures}{vi}{}%
+\contentsline {chapter}{List of Tables}{vii}{}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{}%
 \contentsline {section}{\numberline {1.1}Background}{2}{}%
 \contentsline {section}{\numberline {1.2}Problem Definition}{3}{}%
@@ -16,53 +16,48 @@
 \contentsline {section}{\numberline {1.4}Objectives}{5}{}%
 \contentsline {section}{\numberline {1.5}Relevance}{6}{}%
 \contentsline {chapter}{\numberline {2}System Architecture}{10}{}%
-\contentsline {section}{\numberline {2.1}Dataset}{12}{}%
-\contentsline {section}{\numberline {2.2}Preprocessing Steps}{13}{}%
-\contentsline {section}{\numberline {2.3}Feature Extraction}{15}{}%
-\contentsline {subsection}{\numberline {2.3.1}Time-Based Features}{15}{}%
-\contentsline {subsection}{\numberline {2.3.2}Lagged Variables}{16}{}%
-\contentsline {section}{\numberline {2.4}Project Modules and Their Integration}{17}{}%
-\contentsline {subsection}{\numberline {2.4.1}Order Aggregation Module}{17}{}%
-\contentsline {subsection}{\numberline {2.4.2}Route Optimisation Module}{17}{}%
-\contentsline {subsection}{\numberline {2.4.3}Demand Forecasting Module}{18}{}%
-\contentsline {section}{\numberline {2.5}Order Aggregation Using Hybrid DBSCAN with Genetic Algorithm}{19}{}%
-\contentsline {subsection}{\numberline {2.5.1}Vendor Clustering Module and Order Aggregation Module}{19}{}%
-\contentsline {subsection}{\numberline {2.5.2}Parameter Selection with Genetic Algorithm}{20}{}%
-\contentsline {subsection}{\numberline {2.5.3}DBSCAN Algorithm for Clustering Orders}{21}{}%
-\contentsline {subsection}{\numberline {2.5.4}Output and Implementation}{21}{}%
-\contentsline {subsection}{\numberline {2.5.5}Integration with the Platform}{22}{}%
-\contentsline {section}{\numberline {2.6}Logistics Using Environment Adaptive Genetic Algorithm (EAGA)}{22}{}%
-\contentsline {subsection}{\numberline {2.6.1}Mechanics of Logistics Optimisation}{22}{}%
-\contentsline {subsection}{\numberline {2.6.2}Advantages of Using EAGA for Route Optimization}{25}{}%
-\contentsline {subsection}{\numberline {2.6.3}Integration with the Platform}{26}{}%
-\contentsline {section}{\numberline {2.7}Demand Forecasting with Neural Prophet}{26}{}%
-\contentsline {subsection}{\numberline {2.7.1}Inputs for Neural Prophet}{26}{}%
-\contentsline {subsection}{\numberline {2.7.2}Neural Prophet Structure}{27}{}%
-\contentsline {subsection}{\numberline {2.7.3}Outputs}{28}{}%
-\contentsline {subsection}{\numberline {2.7.4}Integration with Platform Workflow}{28}{}%
-\contentsline {chapter}{\numberline {3}Implementation}{30}{}%
-\contentsline {section}{\numberline {3.1}System Overview}{30}{}%
-\contentsline {section}{\numberline {3.2}Backend Implementation}{30}{}%
-\contentsline {subsection}{\numberline {3.2.1}FastAPI Framework}{30}{}%
-\contentsline {subsection}{\numberline {3.2.2}Database Schema}{31}{}%
-\contentsline {subsection}{\numberline {3.2.3}API Endpoints}{31}{}%
-\contentsline {section}{\numberline {3.3}Frontend Implementation}{32}{}%
-\contentsline {subsection}{\numberline {3.3.1}React and TypeScript Application}{32}{}%
-\contentsline {subsection}{\numberline {3.3.2}Application Architecture}{33}{}%
-\contentsline {subsection}{\numberline {3.3.3}Key UI Components}{33}{}%
-\contentsline {section}{\numberline {3.4}Integration and Communication}{34}{}%
-\contentsline {subsection}{\numberline {3.4.1}API Integration}{34}{}%
-\contentsline {subsection}{\numberline {3.4.2}Real-time Notifications}{34}{}%
-\contentsline {section}{\numberline {3.5}Security Implementation}{35}{}%
-\contentsline {subsection}{\numberline {3.5.1}Authentication and Authorization}{35}{}%
-\contentsline {subsection}{\numberline {3.5.2}Data Encryption}{35}{}%
-\contentsline {section}{\numberline {3.6}Summary}{36}{}%
-\contentsline {chapter}{\numberline {4}Conclusion}{37}{}%
-\contentsline {subsubsection}{Cost Comparison Analysis}{38}{}%
-\contentsline {paragraph}{Traditional Delivery Approach}{39}{}%
-\contentsline {paragraph}{Collaborative Delivery Approach}{39}{}%
-\contentsline {paragraph}{Impact Assessment}{39}{}%
-\contentsline {chapter}{Appendix B: Vision, Mission, PO, PSO, and CO}{42}{}%
-\contentsline {paragraph}{\ }{43}{}%
-\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{46}{}%
-\contentsline {paragraph}{\ }{47}{}%
+\contentsline {section}{\numberline {2.1}Vendor Clustering Module}{11}{}%
+\contentsline {section}{\numberline {2.2}Route Optimisation Module}{11}{}%
+\contentsline {section}{\numberline {2.3}Demand Forecasting Module}{12}{}%
+\contentsline {chapter}{\numberline {3}Methodology}{14}{}%
+\contentsline {section}{\numberline {3.1}Vendor Clustering Module and Order Aggregation Module}{14}{}%
+\contentsline {subsection}{\numberline {3.1.1}Parameter Selection with Genetic Algorithm}{15}{}%
+\contentsline {subsection}{\numberline {3.1.2}DBSCAN Algorithm for Clustering Orders}{16}{}%
+\contentsline {section}{\numberline {3.2}Logistics Using Environment Adaptive Genetic Algorithm (EAGA)}{17}{}%
+\contentsline {subsection}{\numberline {3.2.1}Mechanics of Logistics Optimisation}{17}{}%
+\contentsline {subsection}{\numberline {3.2.2}Advantages of Using EAGA for Route Optimization}{20}{}%
+\contentsline {section}{\numberline {3.3}Demand Forecasting with Neural Prophet}{21}{}%
+\contentsline {subsection}{\numberline {3.3.1}Inputs for Neural Prophet}{21}{}%
+\contentsline {subsection}{\numberline {3.3.2}Neural Prophet Structure}{22}{}%
+\contentsline {chapter}{\numberline {4}Implementation}{24}{}%
+\contentsline {section}{\numberline {4.1}Backend Implementation}{24}{}%
+\contentsline {subsection}{\numberline {4.1.1}FastAPI Framework}{24}{}%
+\contentsline {subsection}{\numberline {4.1.2}Database Schema}{25}{}%
+\contentsline {subsection}{\numberline {4.1.3}API Endpoints}{25}{}%
+\contentsline {section}{\numberline {4.2}Frontend Implementation}{26}{}%
+\contentsline {subsection}{\numberline {4.2.1}React and TypeScript Application}{26}{}%
+\contentsline {subsection}{\numberline {4.2.2}Application Architecture}{27}{}%
+\contentsline {subsection}{\numberline {4.2.3}Key UI Components}{28}{}%
+\contentsline {section}{\numberline {4.3}Integration and Communication}{28}{}%
+\contentsline {subsection}{\numberline {4.3.1}API Integration}{28}{}%
+\contentsline {subsection}{\numberline {4.3.2}Data Models and API Integration}{29}{}%
+\contentsline {subsubsection}{Core Business Entity Interfaces}{29}{}%
+\contentsline {subsubsection}{Algorithm Response Interfaces}{30}{}%
+\contentsline {subsubsection}{Dashboard Data Interfaces}{30}{}%
+\contentsline {section}{\numberline {4.4}Summary}{31}{}%
+\contentsline {chapter}{\numberline {5}Results}{32}{}%
+\contentsline {section}{\numberline {5.1}Vendor Clustering}{32}{}%
+\contentsline {section}{\numberline {5.2}Route Optimization}{34}{}%
+\contentsline {section}{\numberline {5.3}Demand Forecasting}{35}{}%
+\contentsline {section}{\numberline {5.4}Cost Comparison Analysis}{36}{}%
+\contentsline {chapter}{\numberline {6}Conclusion and Future Enhancements}{40}{}%
+\contentsline {paragraph}{Traditional Delivery Approach}{41}{}%
+\contentsline {paragraph}{Collaborative Delivery Approach}{41}{}%
+\contentsline {paragraph}{Impact Assessment}{41}{}%
+\contentsline {chapter}{References}{44}{}%
+\contentsline {chapter}{Appendix A: Presentation}{46}{}%
+\contentsline {paragraph}{\ }{46}{}%
+\contentsline {chapter}{Appendix B: Vision, Mission, PO, PSO, and CO}{57}{}%
+\contentsline {paragraph}{\ }{57}{}%
+\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{60}{}%
+\contentsline {paragraph}{\ }{61}{}%
