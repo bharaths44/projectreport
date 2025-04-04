@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.12)  4 APR 2025 10:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.12)  4 APR 2025 11:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -747,8 +747,6 @@ Package pdftex.def Info: Figures/logo1.png  used on input line 2.
 [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./Figures/logo1.png>]
-
-[2]
 Underfull \hbox (badness 4739) in paragraph at lines 47--48
 \T1/cmr/bx/it/12 (U2109009), [], [], []
  []
@@ -765,7 +763,7 @@ Overfull \hbox (75.83408pt too wide) in alignment at lines 52--58
 
 )
 
-[3] (./Chapters/acknowledgements.tex
+[2] (./Chapters/acknowledgements.tex
 Underfull \hbox (badness 4279) in paragraph at lines 10--11
 [] [][] \T1/cmr/m/n/12 We are highly in-debted to our project co-or-di-na-tors, [],
  []
@@ -843,7 +841,7 @@ Chapter 1.
 
 [9]
 Chapter 2.
-<Figures/sys_arch.pdf, id=82, 2068.72874pt x 3310.3675pt>
+<Figures/sys_arch.pdf, id=78, 2068.72874pt x 3310.3675pt>
 File: Figures/sys_arch.pdf Graphic file (type pdf)
 <use Figures/sys_arch.pdf>
 Package pdftex.def Info: Figures/sys_arch.pdf  used on input line 7.
@@ -943,11 +941,11 @@ PGFPlots: reading {Figures/forecast.csv}
 PGFPlots: reading {Figures/forecast.csv}
 Package pgfplots info on input line 366: Using 'lua backend=false' for axis: x coord trafo unsupported.
 PGFPlots: reading {Figures/forecast.csv}
-) (./Chapters/conclusion.tex
+
 
 [37]
 
-[38]
+[38]) (./Chapters/conclusion.tex
 
 [39]
 Chapter 6.
@@ -969,12 +967,12 @@ Chapter 6.
 ]) (./Appendices/appendix_A.tex
 
 [45]
-<Appendices/GRP_3.pdf, id=246, 722.7pt x 542.025pt>
+<Appendices/GRP_3.pdf, id=242, 722.7pt x 542.025pt>
 File: Appendices/GRP_3.pdf Graphic file (type pdf)
 <use Appendices/GRP_3.pdf>
 Package pdftex.def Info: Appendices/GRP_3.pdf  used on input line 10.
 (pdftex.def)             Requested size: 722.69823pt x 542.02367pt.
-<Appendices/GRP_3.pdf, id=248, page=1, 722.7pt x 542.025pt>
+<Appendices/GRP_3.pdf, id=244, page=1, 722.7pt x 542.025pt>
 File: Appendices/GRP_3.pdf Graphic file (type pdf)
 <use Appendices/GRP_3.pdf, page 1>
 Package pdftex.def Info: Appendices/GRP_3.pdf , page1 used on input line 10.
@@ -1006,7 +1004,7 @@ Package pdftex.def Info: Appendices/GRP_3.pdf , page1 used on input line 10.
 [47
 
  <./Appendices/GRP_3.pdf>]
-<Appendices/GRP_3.pdf, id=290, page=2, 722.7pt x 542.025pt>
+<Appendices/GRP_3.pdf, id=287, page=2, 722.7pt x 542.025pt>
 File: Appendices/GRP_3.pdf Graphic file (type pdf)
 <use Appendices/GRP_3.pdf, page 2>
 Package pdftex.def Info: Appendices/GRP_3.pdf , page2 used on input line 10.
@@ -1024,7 +1022,7 @@ Package pdftex.def Info: Appendices/GRP_3.pdf , page2 used on input line 10.
 [48
 
  <./Appendices/GRP_3.pdf>]
-<Appendices/GRP_3.pdf, id=297, page=3, 722.7pt x 542.025pt>
+<Appendices/GRP_3.pdf, id=294, page=3, 722.7pt x 542.025pt>
 File: Appendices/GRP_3.pdf Graphic file (type pdf)
 <use Appendices/GRP_3.pdf, page 3>
 Package pdftex.def Info: Appendices/GRP_3.pdf , page3 used on input line 10.
@@ -1042,7 +1040,7 @@ Package pdftex.def Info: Appendices/GRP_3.pdf , page3 used on input line 10.
 [49
 
  <./Appendices/GRP_3.pdf>]
-<Appendices/GRP_3.pdf, id=302, page=4, 722.7pt x 542.025pt>
+<Appendices/GRP_3.pdf, id=299, page=4, 722.7pt x 542.025pt>
 File: Appendices/GRP_3.pdf Graphic file (type pdf)
 <use Appendices/GRP_3.pdf, page 4>
 Package pdftex.def Info: Appendices/GRP_3.pdf , page4 used on input line 10.
@@ -1060,7 +1058,7 @@ Package pdftex.def Info: Appendices/GRP_3.pdf , page4 used on input line 10.
 [50
 
  <./Appendices/GRP_3.pdf>]
-<Appendices/GRP_3.pdf, id=307, page=5, 722.7pt x 542.025pt>
+<Appendices/GRP_3.pdf, id=304, page=5, 722.7pt x 542.025pt>
 File: Appendices/GRP_3.pdf Graphic file (type pdf)
 <use Appendices/GRP_3.pdf, page 5>
 Package pdftex.def Info: Appendices/GRP_3.pdf , page5 used on input line 10.
@@ -1078,7 +1076,7 @@ Package pdftex.def Info: Appendices/GRP_3.pdf , page5 used on input line 10.
 [51
 
  <./Appendices/GRP_3.pdf>]
-<Appendices/GRP_3.pdf, id=316, page=6, 722.7pt x 542.025pt>
+<Appendices/GRP_3.pdf, id=312, page=6, 722.7pt x 542.025pt>
 File: Appendices/GRP_3.pdf Graphic file (type pdf)
 <use Appendices/GRP_3.pdf, page 6>
 Package pdftex.def Info: Appendices/GRP_3.pdf , page6 used on input line 10.
@@ -1096,7 +1094,7 @@ Package pdftex.def Info: Appendices/GRP_3.pdf , page6 used on input line 10.
 [52
 
  <./Appendices/GRP_3.pdf>]
-<Appendices/GRP_3.pdf, id=325, page=7, 722.7pt x 542.025pt>
+<Appendices/GRP_3.pdf, id=322, page=7, 722.7pt x 542.025pt>
 File: Appendices/GRP_3.pdf Graphic file (type pdf)
 <use Appendices/GRP_3.pdf, page 7>
 Package pdftex.def Info: Appendices/GRP_3.pdf , page7 used on input line 10.
@@ -1114,7 +1112,7 @@ Package pdftex.def Info: Appendices/GRP_3.pdf , page7 used on input line 10.
 [53
 
  <./Appendices/GRP_3.pdf>]
-<Appendices/GRP_3.pdf, id=332, page=8, 722.7pt x 542.025pt>
+<Appendices/GRP_3.pdf, id=329, page=8, 722.7pt x 542.025pt>
 File: Appendices/GRP_3.pdf Graphic file (type pdf)
 <use Appendices/GRP_3.pdf, page 8>
 Package pdftex.def Info: Appendices/GRP_3.pdf , page8 used on input line 10.
@@ -1132,7 +1130,7 @@ Package pdftex.def Info: Appendices/GRP_3.pdf , page8 used on input line 10.
 [54
 
  <./Appendices/GRP_3.pdf>]
-<Appendices/GRP_3.pdf, id=338, page=9, 722.7pt x 542.025pt>
+<Appendices/GRP_3.pdf, id=335, page=9, 722.7pt x 542.025pt>
 File: Appendices/GRP_3.pdf Graphic file (type pdf)
 <use Appendices/GRP_3.pdf, page 9>
 Package pdftex.def Info: Appendices/GRP_3.pdf , page9 used on input line 10.
@@ -1150,7 +1148,7 @@ Package pdftex.def Info: Appendices/GRP_3.pdf , page9 used on input line 10.
 [55
 
  <./Appendices/GRP_3.pdf>]
-<Appendices/GRP_3.pdf, id=355, page=10, 722.7pt x 542.025pt>
+<Appendices/GRP_3.pdf, id=352, page=10, 722.7pt x 542.025pt>
 File: Appendices/GRP_3.pdf Graphic file (type pdf)
 <use Appendices/GRP_3.pdf, page 10>
 Package pdftex.def Info: Appendices/GRP_3.pdf , page10 used on input line 10.
@@ -1202,18 +1200,18 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 36489 strings out of 473190
- 902984 string characters out of 5715800
+ 36490 strings out of 473190
+ 902994 string characters out of 5715800
  2250510 words of memory out of 5000000
- 59132 multiletter control sequences out of 15000+600000
- 589404 words of font info for 124 fonts, out of 8000000 for 9000
+ 59133 multiletter control sequences out of 15000+600000
+ 589403 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,19n,105p,1625b,2307s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbi1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on main.pdf (72 pages, 2557973 bytes).
+Output written on main.pdf (71 pages, 2557954 bytes).
 PDF statistics:
- 494 PDF objects out of 1000 (max. 8388607)
- 310 compressed objects within 4 object streams
+ 491 PDF objects out of 1000 (max. 8388607)
+ 308 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
  83 words of extra memory for PDF output out of 10000 (max. 10000000)
 
