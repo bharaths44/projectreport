@@ -70,7 +70,7 @@ This evaluation clearly supports adopting a hybrid clustering strategy. Specific
         \toprule
         \textbf{Algorithm} & \textbf{Vendors} & \textbf{Dist. (km)} & \textbf{Cost (Rs.)} & \textbf{Time (s)} \\
         \midrule
-        \multirow{3}{*}{ACO}
+        \multirow{3}{*}{EAACO}
                            & 20               & 5197.54             & 29811.51            & 23.26             \\
                            & 50               & 8333.63             & 47618.80            & 50.43             \\
                            & 100              & 9648.29             & 54444.64            & 148.69            \\
@@ -82,7 +82,7 @@ This evaluation clearly supports adopting a hybrid clustering strategy. Specific
         \bottomrule
     \end{tabular}
 \end{table}
-As shown in Table~\ref{tab:perf-ro}, the EAGA outperformed ACO\cite{dorigo1997ant}, which was modified to incorporate the same environmental constraints as EAGA, in both travel distance and execution time. For 20 vendors, EAGA generated routes covering 4703.90 km in 20.53 seconds, while ACO required 23.26 seconds to produce routes spanning 5197.54 km. With 50 vendors, EAGA optimized the route to 6993.30 km in 60.75 seconds, whereas ACO produced routes covering 8333.63 km in 50.43 seconds. For 100 vendors, EAGA achieved routes of 8581.06 km in 142.21 seconds, while ACO took 148.69 seconds to generate routes of 9648.29 km. EAGA performed better due to its faster convergence and effective balance between exploration and exploitation, whereas ACO required more iterations to refine paths, leading to higher travel distances and execution times despite using identical environmental data inputs.
+As shown in Table~\ref{tab:perf-ro}, the EAGA outperformed EAACO\cite{dorigo1997ant}, which was modified to incorporate the same environmental constraints as EAGA, in both travel distance and execution time. For 20 vendors, EAGA generated routes covering 4703.90 km in 20.53 seconds, while EAACO required 23.26 seconds to produce routes spanning 5197.54 km. With 50 vendors, EAGA optimized the route to 6993.30 km in 60.75 seconds, whereas EAACO produced routes covering 8333.63 km in 50.43 seconds. For 100 vendors, EAGA achieved routes of 8581.06 km in 142.21 seconds, while EAACO took 148.69 seconds to generate routes of 9648.29 km. EAGA performed better due to its faster convergence and effective balance between exploration and exploitation, whereas EAACO required more iterations to refine paths, leading to higher travel distances and execution times despite using identical environmental data inputs.
 
 
 \section{Demand Forecasting}
