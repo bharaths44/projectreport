@@ -57,7 +57,7 @@
 \contentsline {chapter}{References}{44}{}%
 \contentsline {chapter}{Appendix A: Presentation}{46}{}%
 \contentsline {paragraph}{\ }{46}{}%
-\contentsline {chapter}{Appendix B: Vision, Mission, PO, PSO, and CO}{58}{}%
-\contentsline {paragraph}{\ }{58}{}%
-\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{61}{}%
-\contentsline {paragraph}{\ }{62}{}%
+\contentsline {chapter}{Appendix B: Vision, Mission, PO, PSO, and CO}{57}{}%
+\contentsline {paragraph}{\ }{57}{}%
+\contentsline {chapter}{Appendix C: CO-PO-PSO Mapping}{60}{}%
+\contentsline {paragraph}{\ }{61}{}%
